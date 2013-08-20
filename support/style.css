@@ -10,6 +10,10 @@ body, td, input, textarea {
   color: #222;
 }
 
+button {
+  cursor: pointer;
+}
+
 * {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
