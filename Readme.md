@@ -25,6 +25,9 @@ $(document).on('page:fetch', function() { NProgress.start(); });
 $(document).on('page:load',  function() { NProgress.done(); });
 ~~~
 
+Advanced usage
+--------------
+
 ### Percentages
 
 Just call `.set(n)`, where *n* is a number between `0..1`.
@@ -44,6 +47,49 @@ random amount.
 NProgress.inc();
 ~~~
 
+Configuration
+-------------
+
+Change the minimum percentage using `minimum`.
+
+~~~ js
+NProgress.configure({
+  minimum: 0.1
+});
+~~~
+
+You can change the markup using `template`. To keep the progress
+bar working, keep an element with `role='bar'` in there.
+
+~~~ js
+NProgress.configure({
+  template: "<div class='....'>...</div>"
+});
+~~~
+
+Change animation using `ease` (a CSS easing string) and `speed` (in ms).
+
+~~~ js
+NProgress.configure({
+  ease: 'ease', speed: 500
+});
+~~~
+
+Customization
+-------------
+
+Just edit `nprogress.css` to your liking. Tip: you probably only want to find
+and replace occurances of `#29d`.
+
+The included CSS file is pretty minimal... in fact, feel free to scrap it and
+make your own!
+
+Acknowledgements
+----------------
+
+(c) 2013 Rico Sta. Cruz, MIT License
+
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: nprogress.js
 [nprogress.css]: nprogress.css
+
