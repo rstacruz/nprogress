@@ -86,6 +86,22 @@
     return this;
   };
 
+  NProgress.start = function() {
+    if (!NProgress.status) NProgress.set(0);
+
+    var work = function() {
+      setTimeout(function() {
+        if (!NProgress.status) return;
+        NProgress.trickle();
+        work();
+      }, Settings.speed * 4);
+    };
+
+    work();
+
+    return this;
+  };
+
   /**
    * Hides the progress bar.
    * This is the *sort of* the same as setting the status to 100%, with the
@@ -114,12 +130,17 @@
     if (!n) {
       return NProgress.start();
     } else {
-      if (typeof amount !== 'number')
+      if (typeof amount !== 'number') {
         amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+      }
 
       n = clamp(n + amount, 0, 0.994);
       return NProgress.set(n);
     }
+  };
+
+  NProgress.trickle = function() {
+    return NProgress.inc(Math.random() * 0.002);
   };
 
   /**
