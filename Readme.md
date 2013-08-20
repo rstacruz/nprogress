@@ -1,7 +1,8 @@
 NProgress
 =========
 
-Progress bar animation.
+Slim progress bars for Ajax'y applications. Inspired by Google, YouTube, and
+Medium.
 
 Installation
 ------------
