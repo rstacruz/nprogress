@@ -18,7 +18,9 @@
     minimum: 0.08,
     easing: 'ease',
     speed: 200,
-    trickleSpeed: 0.02,
+    trickle: true,
+    trickleRate: 0.02,
+    trickleSpeed: 800,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -105,10 +107,10 @@
         if (!NProgress.status) return;
         NProgress.trickle();
         work();
-      }, Settings.speed * 4);
+      }, Settings.trickleSpeed);
     };
 
-    if (Settings.trickleSpeed) work();
+    if (Settings.trickle) work();
 
     return this;
   };
@@ -151,7 +153,7 @@
   };
 
   NProgress.trickle = function() {
-    return NProgress.inc(Math.random() * Settings.trickleSpeed);
+    return NProgress.inc(Math.random() * Settings.trickleRate);
   };
 
   /**

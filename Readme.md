@@ -88,11 +88,17 @@ Adjust animation settings using `ease` (a CSS easing string) and `speed` (in
 NProgress.configure({ ease: 'ease', speed: 500 });
 ~~~
 
-Want to turn off trickling? Set `trickleSpeed` to 0. Alternatively, set it to a
-number between `0...1` to adjust how fast the progress trickles.
+Want to turn off trickling? Set `trickle` to `false`.
 
 ~~~ js
-NProgress.configure({ trickleSpeed: 0 });
+NProgress.configure({ trickle: false });
+~~~
+
+You can adjust the `trickleRate` (how much to increase per trickle) and 
+`trickleSpeed` (how often to trickle, in ms).
+
+~~~ js
+NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
 ~~~
 
 Customization
