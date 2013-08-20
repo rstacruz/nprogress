@@ -2,10 +2,19 @@
 <html lang='en'>
 <head>
   <meta charset='utf-8'>
-  <title>NProgress</title>
+  <title>NProgress: slim progress bars in JavaScript</title>
   <link href='support/style.css' rel='stylesheet' />
   <link href='nprogress.css' rel='stylesheet' />
+
+  <meta name="viewport" content="width=device-width">
+  <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:100,400,700' rel='stylesheet' type='text/css'>
+  
+  <script src='vendor/jquery-1.10.js'></script>
+  <script src='nprogress.js'></script>
+
+  <script>if(location.hostname.match(/ricostacruz\.com$/)){var _gaq=_gaq||[];_gaq.push(["_setAccount","UA-20473929-1"]),_gaq.push(["_trackPageview"]),function(){var a=document.createElement("script");a.type="text/javascript",a.async=!0,a.src=("https:"==document.location.protocol?"https://ssl":"http://www")+".google-analytics.com/ga.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)}()}</script>
 </head>
+
 <body style='display: none'>
   <header class='page-header'>
     <span class='nprogress-logo fade out'></span>
@@ -49,9 +58,6 @@
       <p class='brief'>Perfect for Turbolinks, Pjax, and other Ajax-heavy apps.</p>
     </div>
   </div>
-  
-  <script src='vendor/jquery-1.10.js'></script>
-  <script src='nprogress.js'></script>
 
   <script>
     $('body').show();
