@@ -8,7 +8,7 @@
   var Settings = NProgress.settings = {
     minimum: 0.05,
     easing: 'ease',
-    speed: 350,
+    speed: 250,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -76,38 +76,42 @@
 
   /**
    * Shows the progress bar.
-   * This is the same as setting the status to 0%.
+   * This is the same as setting the status to 0%, except that it doesn't go backwards.
    *
    *     NProgress.start();
    *
    */
   NProgress.start = function() {
-    return NProgress.set(0);
+    if (!NProgress.status) NProgress.set(0);
+    return this;
   };
 
   /**
    * Hides the progress bar.
-   * This is the same as setting the status to 100%.
+   * This is the *sort of* the same as setting the status to 100%, with the
+   * difference being `done()` makes some placebo effect of some realistic motion.
    *
    *     NProgress.done();
    */
 
   NProgress.done = function() {
-    return NProgress.set(1);
+    return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
   };
 
   /**
    * Increments by a random amount.
    */
 
-  NProgress.inc = function() {
+  NProgress.inc = function(amount) {
     var n = NProgress.status;
 
     if (!n) {
       return NProgress.start();
     } else {
-      n += (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
-      n = clamp(n, 0, 0.994);
+      if (typeof amount !== 'number')
+        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+
+      n = clamp(n + amount, 0, 0.994);
       return NProgress.set(n);
     }
   };

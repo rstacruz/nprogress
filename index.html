@@ -35,10 +35,12 @@
 
   <script>
     NProgress.start();
+    setTimeout(function() { NProgress.done(); }, 1000);
+
     $("#b-0").click(function() { NProgress.set(0.0); });
     $("#b-40").click(function() { NProgress.set(0.4); });
     $("#b-inc").click(function() { NProgress.inc(); });
-    $("#b-100").click(function() { NProgress.set(1); });
+    $("#b-100").click(function() { NProgress.done(); });
   </script>
 </body>
 </html>
