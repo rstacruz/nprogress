@@ -15,6 +15,15 @@ body, td, input, textarea {
   -webkit-font-smoothing: antialiased;
 }
 
+.fade {
+  transition: all 300ms linear 700ms;
+  opacity: 1;
+}
+
+.fade.out {
+  opacity: 0;
+}
+
 button {
   margin: 0;
   padding: 0;
@@ -74,13 +83,27 @@ button {
   font-size: 0.9em;
 }
 
+.page-header {
+  margin: 1.5em auto;
+  text-align: center;
+  max-width: 400px;
+  padding: 0 20px;
+}
+
 .page-header h1 {
   font-size: 2.0em;
   text-align: center;
   font-weight: 100;
   line-height: 1.3;
   color: #333;
-  margin: 1em 0 1em 0;
+  margin: 0;
+}
+
+.page-header p {
+  line-height: 1.4;
+  font-size: 1.1em;
+  font-style: italic;
+  color: #888;
 }
 
 .page-header h1 i {
@@ -91,7 +114,8 @@ button {
 
 @media (min-width: 480px) {
   .page-header h1 {
-    font-size: 3em;
-    margin: 1.5em 0 1.5em 0;
+    font-size: 3em; }
+  .page-header {
+    margin: 3.5em auto;
   }
 }

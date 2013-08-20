@@ -9,9 +9,10 @@
 <body>
   <header class='page-header'>
     <h1>NProgress<i>.js</i></h1>
+    <p>Small, nano-scopic progress bar. Featuring realistic trickle animations to convince your users that something is happening!</p>
   </header>
 
-  <div class='controls'>
+  <div class='controls fade out'>
     <p>
       <button class='button play' id='b-0'></button>
       <i>NProgress</i><b>.start()</b>
@@ -43,7 +44,7 @@
 
   <script>
     NProgress.start();
-    setTimeout(function() { NProgress.done(); }, 1000);
+    setTimeout(function() { NProgress.done(); $('.controls').removeClass('out'); }, 1000);
 
     $("#b-0").click(function() { NProgress.start(); });
     $("#b-40").click(function() { NProgress.set(0.4); });
