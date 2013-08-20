@@ -1,4 +1,7 @@
-(function(NProgress) {
+/*! NProgress (c) 2013, Nadarei Inc.
+ *  http://ricostacruz.com/nprogress */
+
+;(function(NProgress) {
 
   this.NProgress = NProgress;
 
