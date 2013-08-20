@@ -28,7 +28,8 @@ $(document).on('page:load',  function() { NProgress.done(); });
 Advanced usage
 --------------
 
-__Percentages:__ Just call `.set(n)`, where *n* is a number between `0..1`.
+__Percentages:__ To set a progress percentage, call `.set(n)`, where *n* is a
+number between `0..1`.
 
 ~~~ js
 NProgress.set(0.0);     // Same as .start()
@@ -37,7 +38,8 @@ NProgress.set(1.0);     // Same as .done()
 ~~~
 
 __Incrementing:__ To increment the progress bar, just use `.inc()`. This
-increments it with a random amount.
+increments it with a random amount. This will never get to 100%: use it for
+every image load (or similar).
 
 ~~~ js
 NProgress.inc();
@@ -57,9 +59,7 @@ Configuration
 Change the minimum percentage using `minimum`.
 
 ~~~ js
-NProgress.configure({
-  minimum: 0.1
-});
+NProgress.configure({ minimum: 0.1 });
 ~~~
 
 You can change the markup using `template`. To keep the progress
@@ -74,9 +74,14 @@ NProgress.configure({
 Change animation using `ease` (a CSS easing string) and `speed` (in ms).
 
 ~~~ js
-NProgress.configure({
-  ease: 'ease', speed: 500
-});
+NProgress.configure({ ease: 'ease', speed: 500 });
+~~~
+
+Want to turn off trickling? Set `trickleSpeed` to 0. Alternatively, set it to a
+number between `0...1` to adjust how fast the progress trickles.
+
+~~~ js
+NProgress.configure({ trickleSpeed: 0 });
 ~~~
 
 Customization
