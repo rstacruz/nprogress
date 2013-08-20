@@ -62,7 +62,7 @@
           setTimeout(function() {
             $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
             setTimeout(function() {
-              $progress.remove();
+              NProgress.remove();
               next();
             }, speed);
           }, speed);
@@ -146,6 +146,7 @@
 
   NProgress.render = function() {
     if (NProgress.isRendered()) return $("#nprogress");
+    $('body').addClass('nprogress-busy');
 
     var $el = $("<div id='nprogress'>")
       .html(Settings.template)
@@ -157,6 +158,15 @@
     });
 
     return $el;
+  };
+
+  /**
+   * (Internal) Removes the element. Opposite of render().
+   */
+
+  NProgress.remove = function() {
+    $('body').removeClass('nprogress-busy');
+    $('#nprogress').remove();
   };
 
   /**

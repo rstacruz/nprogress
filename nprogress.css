@@ -1,6 +1,12 @@
+/* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
   -webkit-pointer-events: none;
+}
+
+/* Make the entire page show a busy cursor */
+body.nprogress-busy {
+  cursor: wait;
 }
 
 #nprogress .bar {
@@ -24,6 +30,7 @@
   height: 100%;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  opacity: 1.0;
 }
 
 /* Remove these to get rid of the spinner */
