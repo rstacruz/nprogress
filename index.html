@@ -57,6 +57,14 @@
       </a>
       <p class='brief'>Perfect for Turbolinks, Pjax, and other Ajax-heavy apps.</p>
     </div>
+    <div class='hr-rule'></div>
+    <div class='share-buttons'>
+      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&repo=nprogress&type=watch&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+      <iframe src="http://ghbtns.com/github-btn.html?user=rstacruz&type=follow&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="175" height="20"></iframe>
+      <a href="https://news.ycombinator.com/submit" class="hn-button" data-title="NProgress" data-url="http://ricostacruz.com/nprogress/" data-count="horizontal" data-style="twitter">HN</a>
+    </div>
   </div>
 
   <script>
@@ -70,5 +78,7 @@
     $("#b-inc").click(function() { NProgress.inc(); });
     $("#b-100").click(function() { NProgress.done(); });
   </script>
+
+  <script>var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
 </body>
 </html>

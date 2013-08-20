@@ -196,3 +196,16 @@ p.brief.big {
   font-size: 1.1em;
 }
 
+
+/* ---- */
+
+div.hr-rule {
+  height: 1px;
+  width: 100px;
+  margin: 40px auto;
+  background: #ddd;
+}
+.share-buttons {
+  margin: 0 auto;
+  text-align: center;
+}
