@@ -149,13 +149,14 @@
     $('body').addClass('nprogress-busy');
 
     var $el = $("<div id='nprogress'>")
-      .html(Settings.template)
-      .appendTo(document.body);
+      .html(Settings.template);
 
     $el.find('[role~="bar"]').css({
       transition: 'all 0 linear',
       transform: 'translate3d(-100%,0,0)'
     });
+
+    $el.appendTo(document.body);
 
     return $el;
   };
