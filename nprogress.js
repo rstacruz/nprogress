@@ -9,7 +9,7 @@
     minimum: 0.05,
     easing: 'ease',
     speed: 200,
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
   /**
