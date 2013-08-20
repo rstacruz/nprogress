@@ -6,7 +6,7 @@
   var NProgress = {};
 
   var Settings = NProgress.settings = {
-    minimum: 0.05,
+    minimum: 0.08,
     easing: 'ease',
     speed: 300,
     trickleSpeed: 0.008,

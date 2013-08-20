@@ -48,12 +48,12 @@ button {
 }
 
 .button:hover {
-  background: #29d;
+  background: #2d9;
   color: #fff;
 }
 
 .button:active {
-  background: #29d;
+  background: #2d9;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
 }
 
@@ -75,7 +75,7 @@ button {
 }
 
 .controls b {
-  color: #29b;
+  color: #29d;
   font-weight: bold;
 }
 

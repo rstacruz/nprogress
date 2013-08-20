@@ -15,15 +15,16 @@
   height: 2px;
 }
 
-/* Uncomment this for a fancy blurring effect
+/* Fancy blur effect */
 #nprogress .peg {
   display: block;
   position: absolute;
   right: 0px;
-  width: 70px;
+  width: 100px;
   height: 100%;
-  box-shadow: 0 0 8px #29d;
-} */
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+}
 
 /* Remove these to get rid of the spinner */
 #nprogress .spinner {
