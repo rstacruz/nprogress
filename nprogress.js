@@ -47,30 +47,32 @@
         speed     = Settings.speed,
         ease      = Settings.easing;
 
-    setTimeout(function() {
-      $progress.queue(function(next) {
-        var perc = -1 + n; /* -1.0 ... 0.0 */
+    $progress[0].offsetWidth; /* Repaint */
 
-        $bar.css({
-          transition: 'all '+speed+'ms '+ease,
-          transform: 'translate3d('+(perc*100)+'%,0,0)'
-        });
+    $progress.queue(function(next) {
+      var perc = -1 + n; /* -1.0 ... 0.0 */
 
-        if (n === 1) {
-          $progress.css({ transition: 'none', opacity: 1 });
-
-          setTimeout(function() {
-            $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
-            setTimeout(function() {
-              NProgress.remove();
-              next();
-            }, speed);
-          }, speed);
-        } else {
-          setTimeout(next, speed);
-        }
+      $bar.css({
+        transition: 'all '+speed+'ms '+ease,
+        transform: 'translate3d('+(perc*100)+'%,0,0)'
       });
-    }, 0);
+
+      if (n === 1) {
+        // Fade out
+        $progress.css({ transition: 'none', opacity: 1 });
+        $progress[0].offsetWidth; /* Repaint */
+
+        setTimeout(function() {
+          $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
+          setTimeout(function() {
+            NProgress.remove();
+            next();
+          }, speed);
+        }, speed);
+      } else {
+        setTimeout(next, speed);
+      }
+    });
 
     return this;
   };

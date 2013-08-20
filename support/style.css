@@ -21,6 +21,11 @@ button {
 
 .fade {
   transition: all 300ms linear 700ms;
+  -webkit-transform: translate3d(0,0,0);
+  -moz-transform: translate3d(0,0,0);
+  -ms-transform: translate3d(0,0,0);
+  -o-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
   opacity: 1;
 }
 
@@ -64,7 +69,6 @@ button {
 .button.primary:hover {
   background: #1c8;
 }
-
 
 .button:active {
   background: #2d9;
