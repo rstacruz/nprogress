@@ -92,9 +92,15 @@
    * difference being `done()` makes some placebo effect of some realistic motion.
    *
    *     NProgress.done();
+   *
+   * If `true` is passed, it will show the progress bar even if its hidden.
+   *
+   *     NProgress.done(true);
    */
 
-  NProgress.done = function() {
+  NProgress.done = function(force) {
+    if (!force && !NProgress.status) return this;
+
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
   };
 

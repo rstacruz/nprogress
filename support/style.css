@@ -1,3 +1,8 @@
+i, b {
+  font-style: normal;
+  font-weight: normal;
+}
+
 body, td, input, textarea {
   font-family: source sans pro, sans-serif;
   font-size: 14px;
@@ -29,6 +34,10 @@ button {
   text-align: left;
 }
 
+.button.play:before {
+  content: '\25b6';
+}
+
 .button:hover {
   background: #29d;
   color: #fff;
@@ -42,17 +51,23 @@ button {
 .controls {
   text-align: left;
   margin: 0 auto;
-  max-width: 280px;
+  max-width: 300px;
   color: #666;
 }
 
 .controls .button {
-  width: 80px;
+  width: 40px;
   margin-right: 10px;
+  text-align: center;
+}
+
+.controls i {
+  color: #999;
 }
 
 .controls b {
-  color: #222;
+  color: #29b;
+  font-weight: bold;
 }
 
 .controls {
@@ -71,6 +86,7 @@ button {
 .page-header h1 i {
   color: #aaa;
   font-style: normal;
+  font-weight: 100;
 }
 
 @media (min-width: 480px) {

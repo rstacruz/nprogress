@@ -13,20 +13,28 @@
 
   <div class='controls'>
     <p>
-      <button class='button' id='b-0'>.start()</button>
-      <b>Shows</b> the progress bar
+      <button class='button play' id='b-0'></button>
+      <i>NProgress</i><b>.start()</b>
+      &mdash;
+      shows the progress bar
     </p>
     <p>
-      <button class='button' id='b-40'>.set(0.4)</button>
-      <b>Sets</b> the progress
+      <button class='button play' id='b-40'></button>
+      <i>NProgress</i><b>.set(0.4)</b>
+      &mdash;
+      sets a percentage
     </p>
     <p>
-      <button class='button' id='b-inc'>.inc()</button>
-      <b>Increments</b> by some amount
+      <button class='button play' id='b-inc'></button>
+      <i>NProgress</i><b>.inc()</b>
+      &mdash;
+      increments by a little
     </p>
     <p>
-      <button class='button' id='b-100'>.done()</button>
-      <b>Completes</b> the progress
+      <button class='button play' id='b-100'></button>
+      <i>NProgress</i><b>.done()</b>
+      &mdash;
+      completes the progress
     </p>
   </div>
   
@@ -37,7 +45,7 @@
     NProgress.start();
     setTimeout(function() { NProgress.done(); }, 1000);
 
-    $("#b-0").click(function() { NProgress.set(0.0); });
+    $("#b-0").click(function() { NProgress.start(); });
     $("#b-40").click(function() { NProgress.set(0.4); });
     $("#b-inc").click(function() { NProgress.inc(); });
     $("#b-100").click(function() { NProgress.done(); });

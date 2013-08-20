@@ -28,9 +28,7 @@ $(document).on('page:load',  function() { NProgress.done(); });
 Advanced usage
 --------------
 
-### Percentages
-
-Just call `.set(n)`, where *n* is a number between `0..1`.
+__Percentages:__ Just call `.set(n)`, where *n* is a number between `0..1`.
 
 ~~~ js
 NProgress.set(0.0);     // Same as .start()
@@ -38,13 +36,19 @@ NProgress.set(0.4);
 NProgress.set(1.0);     // Same as .done()
 ~~~
 
-### Incrementing
-
-To increment the progress bar, just use `.inc()`. This increments it with a 
-random amount.
+__Incrementing:__ To increment the progress bar, just use `.inc()`. This
+increments it with a random amount.
 
 ~~~ js
 NProgress.inc();
+~~~
+
+__Force-done:__ By passing `true` to `done()`, it will show the progress bar
+even if it's not being shown. (The default behavior is that *.done()* will not
+    do anything if *.start()* isn't called)
+
+~~~ js
+NProgress.done(true);
 ~~~
 
 Configuration
