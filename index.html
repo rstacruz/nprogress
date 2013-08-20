@@ -12,31 +12,36 @@
     <p>Small, nanoscopic progress bar. Featuring realistic trickle animations to convince your users that something is happening!</p>
   </header>
 
-  <div class='controls fade out'>
-    <p>
-      <button class='button play' id='b-0'></button>
-      <i>NProgress</i><b>.start()</b>
-      &mdash;
-      shows the progress bar
-    </p>
-    <p>
-      <button class='button play' id='b-40'></button>
-      <i>NProgress</i><b>.set(0.4)</b>
-      &mdash;
-      sets a percentage
-    </p>
-    <p>
-      <button class='button play' id='b-inc'></button>
-      <i>NProgress</i><b>.inc()</b>
-      &mdash;
-      increments by a little
-    </p>
-    <p>
-      <button class='button play' id='b-100'></button>
-      <i>NProgress</i><b>.done()</b>
-      &mdash;
-      completes the progress
-    </p>
+  <div class='contents fade out'>
+    <div class='controls'>
+      <p>
+        <button class='button play' id='b-0'></button>
+        <i>NProgress</i><b>.start()</b>
+        &mdash;
+        shows the progress bar
+      </p>
+      <p>
+        <button class='button play' id='b-40'></button>
+        <i>NProgress</i><b>.set(0.4)</b>
+        &mdash;
+        sets a percentage
+      </p>
+      <p>
+        <button class='button play' id='b-inc'></button>
+        <i>NProgress</i><b>.inc()</b>
+        &mdash;
+        increments by a little
+      </p>
+      <p>
+        <button class='button play' id='b-100'></button>
+        <i>NProgress</i><b>.done()</b>
+        &mdash;
+        completes the progress
+      </p>
+    </div>
+    <div class='actions'>
+      <a href='https://github.com/rstacruz/nprogress' class='button primary'>Download</a>
+    </div>
   </div>
   
   <script src='vendor/jquery-1.10.js'></script>
@@ -44,7 +49,7 @@
 
   <script>
     NProgress.start();
-    setTimeout(function() { NProgress.done(); $('.controls').removeClass('out'); }, 1000);
+    setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);
 
     $("#b-0").click(function() { NProgress.start(); });
     $("#b-40").click(function() { NProgress.set(0.4); });

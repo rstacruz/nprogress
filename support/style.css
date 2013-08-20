@@ -37,6 +37,7 @@ button {
 
 .button {
   display: inline-block;
+  text-decoration: none;
 
   background: #eee;
   color: #777;
@@ -56,6 +57,15 @@ button {
   color: #fff;
 }
 
+.button.primary {
+  background: #2d9;
+  color: #fff;
+}
+.button.primary:hover {
+  background: #1c8;
+}
+
+
 .button:active {
   background: #2d9;
   box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
@@ -72,6 +82,7 @@ button {
   width: 40px;
   margin-right: 10px;
   text-align: center;
+  text-indent: -4px;
 }
 
 .controls i {
@@ -123,3 +134,16 @@ button {
     margin: 3.5em auto;
   }
 }
+
+/* --- */
+
+.actions {
+  text-align: center;
+  margin: 3em 0;
+}
+
+.button {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
