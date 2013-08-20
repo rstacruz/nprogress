@@ -15,7 +15,7 @@
   height: 2px;
 }
 
-/*
+/* Uncomment this for a fancy blurring effect
 #nprogress .peg {
   display: block;
   position: absolute;
@@ -26,20 +26,19 @@
 } */
 
 /* Remove these to get rid of the spinner */
-
 #nprogress .spinner {
   display: block;
   position: fixed;
   z-index: 100;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 15px;
 }
 
 #nprogress .spinner-icon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 
-  border-top:  solid 2px #29d;
+  border-top:  solid 3px #29d;
   border-radius: 8px;
 
   -webkit-animation: nprogress-spinner 300ms linear infinite;

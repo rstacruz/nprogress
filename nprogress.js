@@ -8,7 +8,7 @@
   var Settings = NProgress.settings = {
     minimum: 0.05,
     easing: 'ease',
-    speed: 200,
+    speed: 350,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -77,10 +77,10 @@
    * Shows the progress bar.
    * This is the same as setting the status to 0%.
    *
-   *     NProgress.show();
+   *     NProgress.start();
    *
    */
-  NProgress.show = function() {
+  NProgress.start = function() {
     return NProgress.set(0);
   };
 
@@ -88,10 +88,10 @@
    * Hides the progress bar.
    * This is the same as setting the status to 100%.
    *
-   *     NProgress.hide();
+   *     NProgress.done();
    */
 
-  NProgress.hide = function() {
+  NProgress.done = function() {
     return NProgress.set(1);
   };
 

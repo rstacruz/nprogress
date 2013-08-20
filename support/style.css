@@ -1,0 +1,76 @@
+body, td, input, textarea {
+  font-family: source sans pro, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #222;
+}
+
+* {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+.button {
+  display: inline-block;
+
+  background: #eee;
+  color: #777;
+  border-radius: 2px;
+
+  padding: 8px 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.button:hover {
+  background: #29d;
+  color: #fff;
+}
+
+.button:active {
+  background: #29d;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.controls {
+  text-align: left;
+  margin: 0 auto;
+  max-width: 280px;
+  color: #666;
+}
+
+.controls .button {
+  width: 80px;
+  margin-right: 10px;
+}
+
+.controls b {
+  color: #222;
+}
+
+.controls {
+  font-size: 0.9em;
+}
+
+.page-header h1 {
+  font-size: 2.0em;
+  text-align: center;
+  font-weight: 100;
+  line-height: 1.3;
+  color: #333;
+  margin: 1em 0 1em 0;
+}
+
+@media (min-width: 480px) {
+  .page-header h1 {
+    font-size: 3em;
+    margin: 1.5em 0 1.5em 0;
+  }
+}

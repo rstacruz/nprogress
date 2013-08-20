@@ -7,15 +7,34 @@
   <link href='nprogress.css' rel='stylesheet' />
 </head>
 <body>
-  <button id='b-0'>0%</button>
-  <button id='b-40'>40%</button>
-  <button id='b-100'>100%</button>
-  <button id='b-inc'>+</button>
+  <header class='page-header'>
+    <h1>NProgress</h1>
+  </header>
+
+  <div class='controls'>
+    <p>
+      <button class='button' id='b-0'>.start()</button>
+      <b>Shows</b> the progress bar
+    </p>
+    <p>
+      <button class='button' id='b-40'>.set(0.4)</button>
+      <b>Sets</b> the progress
+    </p>
+    <p>
+      <button class='button' id='b-inc'>.inc()</button>
+      <b>Increments</b> by some amount
+    </p>
+    <p>
+      <button class='button' id='b-100'>.done()</button>
+      <b>Completes</b> the progress
+    </p>
+  </div>
   
   <script src='vendor/jquery-1.10.js'></script>
   <script src='nprogress.js'></script>
 
   <script>
+    NProgress.start();
     $("#b-0").click(function() { NProgress.set(0.0); });
     $("#b-40").click(function() { NProgress.set(0.4); });
     $("#b-inc").click(function() { NProgress.inc(); });
