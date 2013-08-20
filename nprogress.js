@@ -13,8 +13,8 @@
   var Settings = NProgress.settings = {
     minimum: 0.08,
     easing: 'ease',
-    speed: 300,
-    trickleSpeed: 0.015,
+    speed: 200,
+    trickleSpeed: 0.02,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
