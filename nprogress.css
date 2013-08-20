@@ -38,14 +38,16 @@
   width: 14px;
   height: 14px;
 
-  border-top:  solid 3px #29d;
-  border-radius: 8px;
+  border:  solid 2px transparent;
+  border-top-color:  #29d;
+  border-left-color: #29d;
+  border-radius: 10px;
 
-  -webkit-animation: nprogress-spinner 300ms linear infinite;
-  -moz-animation: nprogress-spinner 300ms linear infinite;
-  -ms-animation: nprogress-spinner 300ms linear infinite;
-  -o-animation: nprogress-spinner 300ms linear infinite;
-  animation: nprogress-spinner 300ms linear infinite;
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  -moz-animation:    nprogress-spinner 400ms linear infinite;
+  -ms-animation:     nprogress-spinner 400ms linear infinite;
+  -o-animation:      nprogress-spinner 400ms linear infinite;
+  animation:         nprogress-spinner 400ms linear infinite;
 }
 
 @-webkit-keyframes nprogress-spinner {

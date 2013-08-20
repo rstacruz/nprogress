@@ -68,6 +68,11 @@ button {
   margin: 1em 0 1em 0;
 }
 
+.page-header h1 i {
+  color: #aaa;
+  font-style: normal;
+}
+
 @media (min-width: 480px) {
   .page-header h1 {
     font-size: 3em;
