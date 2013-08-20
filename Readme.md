@@ -116,6 +116,6 @@ Acknowledgements
 (c) 2013 Rico Sta. Cruz, MIT License
 
 [Turbolinks]: https://github.com/rails/turbolinks
-[nprogress.js]: nprogress.js
-[nprogress.css]: nprogress.css
+[nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
+[nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
 
