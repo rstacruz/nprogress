@@ -1,9 +1,13 @@
 /*! NProgress (c) 2013, Rico Sta. Cruz
  *  http://ricostacruz.com/nprogress */
 
-;(function(NProgress) {
+;(function(factory) {
 
-  this.NProgress = NProgress;
+  if (typeof module === 'object') {
+    module.exports = factory(this.jQuery || require('dom'));
+  } else {
+    this.NProgress = factory(this.jQuery);
+  }
 
 })(function($) {
   var NProgress = {};
@@ -211,5 +215,5 @@
   }
 
   return NProgress;
-}(jQuery));
+});
 
