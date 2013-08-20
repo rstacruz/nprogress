@@ -12,3 +12,9 @@ Testing
 or
 
     $ open test/index.html
+
+Pushing
+-------
+
+    $ git push origin master
+    $ git push origin master:gh-pages
