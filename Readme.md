@@ -29,7 +29,7 @@ Ideas
 -----
 
  * Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
- ajaxComplete` events.
+ `ajaxComplete` events.
 
  * Make a fancy loading bar even without Turbolinks/Pjax! Bind it to
  `$(document).ready` and `$(window).load`.
