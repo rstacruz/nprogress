@@ -80,7 +80,8 @@ NProgress.configure({
 });
 ~~~
 
-Change animation using `ease` (a CSS easing string) and `speed` (in ms).
+Adjust animation settings using `ease` (a CSS easing string) and `speed` (in 
+    ms).
 
 ~~~ js
 NProgress.configure({ ease: 'ease', speed: 500 });
