@@ -1,4 +1,4 @@
-/*! NProgress (c) 2013, Nadarei Inc.
+/*! NProgress (c) 2013, Rico Sta. Cruz
  *  http://ricostacruz.com/nprogress */
 
 ;(function(NProgress) {
