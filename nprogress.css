@@ -5,7 +5,7 @@
 }
 
 /* Make the entire page show a busy cursor */
-body.nprogress-busy {
+.nprogress-busy body {
   cursor: wait;
 }
 

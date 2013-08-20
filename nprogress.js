@@ -148,7 +148,7 @@
 
   NProgress.render = function() {
     if (NProgress.isRendered()) return $("#nprogress");
-    $('body').addClass('nprogress-busy');
+    $('html').addClass('nprogress-busy');
 
     var $el = $("<div id='nprogress'>")
       .html(Settings.template);
@@ -168,7 +168,7 @@
    */
 
   NProgress.remove = function() {
-    $('body').removeClass('nprogress-busy');
+    $('html').removeClass('nprogress-busy');
     $('#nprogress').remove();
   };
 

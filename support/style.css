@@ -86,7 +86,6 @@ button {
   width: 40px;
   margin-right: 10px;
   text-align: center;
-  text-indent: -4px;
 }
 
 .controls i {
@@ -143,11 +142,12 @@ button {
 
 .actions {
   text-align: center;
-  margin: 3em 0;
+  margin: 4em 0;
 }
 
-.button {
-  padding-left: 20px;
-  padding-right: 20px;
+.big.button {
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 1.1em;
 }
 
