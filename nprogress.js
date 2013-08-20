@@ -44,10 +44,12 @@
    */
 
   NProgress.set = function(n) {
+    var started = NProgress.isStarted();
+
     n = clamp(n, Settings.minimum, 1);
     NProgress.status = (n === 1 ? null : n);
 
-    var $progress = NProgress.render(),
+    var $progress = NProgress.render(!started),
         $bar      = $progress.find('[role~="bar"]'),
         speed     = Settings.speed,
         ease      = Settings.easing;
@@ -55,11 +57,9 @@
     $progress[0].offsetWidth; /* Repaint */
 
     $progress.queue(function(next) {
-      var perc = -1 + n; /* -1.0 ... 0.0 */
-
       $bar.css({
         transition: 'all '+speed+'ms '+ease,
-        transform: 'translate3d('+(perc*100)+'%,0,0)'
+        transform: 'translate3d('+toBarPerc(n)+'%,0,0)'
       });
 
       if (n === 1) {
@@ -80,6 +80,10 @@
     });
 
     return this;
+  };
+
+  NProgress.isStarted = function() {
+    return typeof NProgress.status === 'number';
   };
 
   /**
@@ -151,16 +155,18 @@
    * setting.
    */
 
-  NProgress.render = function() {
+  NProgress.render = function(fromStart) {
     if (NProgress.isRendered()) return $("#nprogress");
     $('html').addClass('nprogress-busy');
 
     var $el = $("<div id='nprogress'>")
       .html(Settings.template);
 
+    var perc = fromStart ? '-100' : toBarPerc(NProgress.status || 0);
+
     $el.find('[role~="bar"]').css({
       transition: 'all 0 linear',
-      transform: 'translate3d(-100%,0,0)'
+      transform: 'translate3d('+perc+'%,0,0)'
     });
 
     $el.appendTo(document.body);
@@ -193,6 +199,15 @@
     if (n < min) return min;
     if (n > max) return max;
     return n;
+  }
+
+  /**
+   * (Internal) converts a percentage (`0..1`) to a bar translateX
+   * percentage (`-100%..0%`).
+   */
+
+  function toBarPerc(n) {
+    return (-1 + n) * 100;
   }
 
   return NProgress;
