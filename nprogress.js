@@ -6,10 +6,9 @@
   var NProgress = {};
 
   var Settings = NProgress.settings = {
-    minimum: 0.1,
-    exitmode: 'full',
+    minimum: 0.05,
     easing: 'ease',
-    speed: 300,
+    speed: 200,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div></div></div>'
   };
 
@@ -24,6 +23,10 @@
     $.extend(Settings, options);
   };
 
+  /**
+   * Last number.
+   */
+
   NProgress.status = null;
 
   /**
@@ -35,7 +38,7 @@
 
   NProgress.set = function(n) {
     n = clamp(n, Settings.minimum, 1);
-    NProgress.status = n;
+    NProgress.status = (n === 1 ? null : n);
 
     var $progress = NProgress.render(),
         $bar      = $progress.find('[role~="bar"]'),
@@ -71,13 +74,41 @@
   };
 
   /**
+   * Shows the progress bar.
+   * This is the same as setting the status to 0%.
+   *
+   *     NProgress.show();
+   *
+   */
+  NProgress.show = function() {
+    return NProgress.set(0);
+  };
+
+  /**
    * Hides the progress bar.
+   * This is the same as setting the status to 100%.
    *
    *     NProgress.hide();
    */
 
   NProgress.hide = function() {
     return NProgress.set(1);
+  };
+
+  /**
+   * Increments by a random amount.
+   */
+
+  NProgress.inc = function() {
+    var n = NProgress.status;
+
+    if (!n) {
+      return NProgress.show();
+    } else {
+      n += (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+      n = clamp(n, 0, 0.994);
+      return NProgress.set(n);
+    }
   };
 
   /**
@@ -97,8 +128,6 @@
       transform: 'translate3d(-100%,0,0)'
     });
 
-    $el[0].innerWidth;
-
     return $el;
   };
 
@@ -108,14 +137,6 @@
 
   NProgress.isRendered = function() {
     return ($("#nprogress").length > 0);
-  };
-
-  /**
-   * Shows the progress bar.
-   *
-   */
-  NProgress.show = function() {
-    return NProgress.set(NProgress.settings.minimum);
   };
 
   /**

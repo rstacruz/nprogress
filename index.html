@@ -7,17 +7,19 @@
   <link href='nprogress.css' rel='stylesheet' />
 </head>
 <body>
-  <button id='b0'>0%</button>
-  <button id='b1'>40%</button>
-  <button id='b2'>100%</button>
+  <button id='b-0'>0%</button>
+  <button id='b-40'>40%</button>
+  <button id='b-100'>100%</button>
+  <button id='b-inc'>+</button>
   
   <script src='vendor/jquery-1.10.js'></script>
   <script src='nprogress.js'></script>
 
   <script>
-    $("#b0").click(function() { NProgress.set(0.0); });
-    $("#b1").click(function() { NProgress.set(0.4); });
-    $("#b2").click(function() { NProgress.set(1); });
+    $("#b-0").click(function() { NProgress.set(0.0); });
+    $("#b-40").click(function() { NProgress.set(0.4); });
+    $("#b-inc").click(function() { NProgress.inc(); });
+    $("#b-100").click(function() { NProgress.set(1); });
   </script>
 </body>
 </html>
