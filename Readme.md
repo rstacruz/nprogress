@@ -6,7 +6,7 @@ Progress bar animation.
 Installation
 ------------
 
-Add jQuery, [nprogress.js] and [nprogress.css] to your project.
+Add jQuery (1.8 or above), [nprogress.js] and [nprogress.css] to your project.
 
 Usage
 -----
