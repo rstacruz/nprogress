@@ -6,10 +6,12 @@
   <link href='support/style.css' rel='stylesheet' />
   <link href='nprogress.css' rel='stylesheet' />
 </head>
-<body>
+<body style='display: none'>
   <header class='page-header'>
+    <span class='nprogress-logo fade out'></span>
     <h1>NProgress<i>.js</i></h1>
-    <p class='fade out'>Small nanoscopic progress bar. Featuring realistic trickle animations to convince your users that something is happening!</p>
+    <p class='fade out brief big'>Small nanoscopic progress bar. Featuring realistic
+    trickle animations to convince your users that something is happening!</p>
   </header>
 
   <div class='contents fade out'>
@@ -43,7 +45,8 @@
       <a href='https://github.com/rstacruz/nprogress' class='button primary big'>
         Download
         v<span class='version'></span>
-    </a>
+      </a>
+      <p class='brief'>Perfect for Turbolinks, Pjax, and other Ajax-heavy apps.</p>
     </div>
   </div>
   
@@ -51,6 +54,7 @@
   <script src='nprogress.js'></script>
 
   <script>
+    $('body').show();
     $('.version').text(NProgress.version);
     NProgress.start();
     setTimeout(function() { NProgress.done(); $('.fade').removeClass('out'); }, 1000);

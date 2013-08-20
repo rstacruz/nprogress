@@ -3,6 +3,10 @@ i, b {
   font-weight: normal;
 }
 
+body {
+  background: white;
+}
+
 body, td, input, textarea {
   font-family: source sans pro, sans-serif;
   font-size: 14px;
@@ -17,6 +21,30 @@ button {
 * {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+.nprogress-logo {
+  display: inline-block;
+
+  width: 100px;
+  height: 20px;
+  border: solid 4px #2d9;
+  border-radius: 10px;
+
+  position: relative;
+}
+.nprogress-logo:after {
+  content: '';
+  display: block;
+
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 40%;
+
+  background: #2d9;
+  border-radius: 3px;
 }
 
 .fade {
@@ -106,6 +134,7 @@ button {
   text-align: center;
   max-width: 400px;
   padding: 0 20px;
+  margin: 3em auto;
 }
 
 .page-header h1 {
@@ -117,11 +146,21 @@ button {
   margin: 0;
 }
 
-.page-header p {
+p.brief {
   line-height: 1.4;
-  font-size: 1.1em;
   font-style: italic;
   color: #888;
+}
+
+p.brief.big {
+  font-size: 1.1em;
+}
+
+@media (min-width: 480px) {
+  .page-header h1 {
+    margin-top: 1em;
+    margin-bottom: 0.4em;
+  }
 }
 
 .page-header h1 i {
@@ -134,7 +173,7 @@ button {
   .page-header h1 {
     font-size: 3em; }
   .page-header {
-    margin: 3.5em auto;
+    margin: 4.5em auto 3.5em auto;
   }
 }
 
@@ -142,7 +181,13 @@ button {
 
 .actions {
   text-align: center;
-  margin: 4em 0;
+  margin: 2em 0;
+}
+
+@media (min-width: 480px) {
+  .actions {
+    margin: 4.5em 0 3.5em 0;
+  }
 }
 
 .big.button {
