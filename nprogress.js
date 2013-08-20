@@ -21,6 +21,7 @@
    */
   NProgress.configure = function(options) {
     $.extend(Settings, options);
+    return this;
   };
 
   /**
@@ -46,31 +47,31 @@
         ease      = Settings.easing;
 
     setTimeout(function() {
-    $("#nprogress").queue(function(next) {
-      // Get percentage
-      var perc = -1 + n; /* -1.0 ... 0 */
-      // if (perc === 0) perc = 1.0;
+      $progress.queue(function(next) {
+        var perc = -1 + n; /* -1.0 ... 0.0 */
 
-      $bar.css({
-        transition: 'all '+speed+'ms '+ease,
-        transform: 'translate3d('+(perc*100)+'%,0,0)'
-      });
+        $bar.css({
+          transition: 'all '+speed+'ms '+ease,
+          transform: 'translate3d('+(perc*100)+'%,0,0)'
+        });
 
-      if (n === 1) {
-        $progress.css({ transition: 'none', opacity: 1 });
+        if (n === 1) {
+          $progress.css({ transition: 'none', opacity: 1 });
 
-        setTimeout(function() {
-          $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
           setTimeout(function() {
-            $progress.remove();
-            next();
+            $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
+            setTimeout(function() {
+              $progress.remove();
+              next();
+            }, speed);
           }, speed);
-        }, speed);
-      } else {
-        setTimeout(next, speed);
-      }
-    });
+        } else {
+          setTimeout(next, speed);
+        }
+      });
     }, 0);
+
+    return this;
   };
 
   /**
@@ -103,7 +104,7 @@
     var n = NProgress.status;
 
     if (!n) {
-      return NProgress.show();
+      return NProgress.start();
     } else {
       n += (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
       n = clamp(n, 0, 0.994);
