@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>NProgress</title>
+  <link href='support/style.css' rel='stylesheet' />
+  <link href='nprogress.css' rel='stylesheet' />
+</head>
+<body>
+  <button id='b0'>0%</button>
+  <button id='b1'>40%</button>
+  <button id='b2'>100%</button>
+  
+  <script src='vendor/jquery-1.10.js'></script>
+  <script src='nprogress.js'></script>
+
+  <script>
+    $("#b0").click(function() { NProgress.set(0.0); });
+    $("#b1").click(function() { NProgress.set(0.4); });
+    $("#b2").click(function() { NProgress.set(1); });
+  </script>
+</body>
+</html>
