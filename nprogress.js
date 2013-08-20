@@ -54,7 +54,7 @@
     NProgress.status = (n === 1 ? null : n);
 
     var $progress = NProgress.render(!started),
-        $bar      = $progress.find('[role~="bar"]'),
+        $bar      = $progress.find('[role="bar"]'),
         speed     = Settings.speed,
         ease      = Settings.easing;
 
@@ -168,7 +168,7 @@
 
     var perc = fromStart ? '-100' : toBarPerc(NProgress.status || 0);
 
-    $el.find('[role~="bar"]').css({
+    $el.find('[role="bar"]').css({
       transition: 'all 0 linear',
       transform: 'translate3d('+perc+'%,0,0)'
     });
