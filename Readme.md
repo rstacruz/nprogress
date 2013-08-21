@@ -128,8 +128,7 @@ Resources
 Acknowledgements
 ----------------
 
-© 2013, Rico Sta. Cruz. Released under the [MIT 
-License](http://www.opensource.org/licenses/mit-license.php).
+© 2013, Rico Sta. Cruz. Released under the [MIT License](License.md).
 
 **NProgress** is authored and maintained by [Rico Sta. Cruz][rsc] with help from 
 its [contributors][c]
