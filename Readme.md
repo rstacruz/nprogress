@@ -101,6 +101,12 @@ You can adjust the `trickleRate` (how much to increase per trickle) and
 NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
 ~~~
 
+Want to turn off loading spinner? Set `showSpinner` to `false`.
+
+~~~ js
+NProgress.configure({ showSpinner: false });
+~~~
+
 Customization
 -------------
 

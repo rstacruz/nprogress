@@ -22,6 +22,7 @@
     trickle: true,
     trickleRate: 0.02,
     trickleSpeed: 800,
+    showSpinner: true,
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -176,6 +177,8 @@
       transition: 'all 0 linear',
       transform: 'translate3d('+perc+'%,0,0)'
     });
+
+    if(!Settings.showSpinner) $el.find('.spinner').hide();
 
     $el.appendTo(document.body);
 
