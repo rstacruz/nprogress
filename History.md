@@ -7,6 +7,7 @@ v0.1.1 -- Unreleased
  * Implement the `showSpinner` option to allow removing the spinner. (#9, [Rahul 
      C S])
  * Registered as a Component in Component.io. (untested without jQuery tho!)
+ * Updated the Readme with better Turbolinks instructions. (#8)
 
 v0.1.0 -- August 20, 2013
 -------------------------
