@@ -17,6 +17,7 @@
   var Settings = NProgress.settings = {
     minimum: 0.08,
     easing: 'ease',
+    positionUsing: '',
     speed: 200,
     trickle: true,
     trickleRate: 0.02,
@@ -63,10 +64,11 @@
     $progress[0].offsetWidth; /* Repaint */
 
     $progress.queue(function(next) {
-      $bar.css({
-        transition: 'all '+speed+'ms '+ease,
-        transform: 'translate3d('+toBarPerc(n)+'%,0,0)'
-      });
+      // Set positionUsing if it hasn't already been set
+      if (Settings.positionUsing == '') Settings.positionUsing = NProgress.getPositioningCSS();
+      
+      // Add transition
+      $bar.css(barPositionCSS(n, speed, ease));
 
       if (n === 1) {
         // Fade out
@@ -198,6 +200,31 @@
   };
 
   /**
+   * Determine which positioning CSS rule to use.
+   */
+  NProgress.getPositioningCSS = function() {
+    // Sniff on document.body.style
+    var bodyStyle = document.body.style;
+
+    // Sniff prefixes
+    var vendorPrefix = ('WebkitTransform' in bodyStyle) ? 'Webkit' :
+                       ('MozTransform' in bodyStyle) ? 'Moz' :
+                       ('msTransform' in bodyStyle) ? 'ms' :
+                       ('OTransform' in bodyStyle) ? 'O' : '';
+
+    if (vendorPrefix + 'Perspective' in bodyStyle) {
+      // Modern browsers with 3D support, e.g. Webkit, IE10
+      return 'translate3d';
+    } else if (vendorPrefix + 'Transform' in bodyStyle) {
+      // Browsers without 3D support, e.g. IE9
+      return 'translate';
+    } else {
+      // Browsers without translate() support, e.g. IE7-8
+      return 'margin';
+    }
+  }
+
+  /**
    * Helpers
    */
 
@@ -214,6 +241,28 @@
 
   function toBarPerc(n) {
     return (-1 + n) * 100;
+  }
+
+
+  /**
+   * (Internal) returns the correct CSS for changing the bar's
+   * position given an n percentage, and speed and ease from Settings
+   */
+
+  function barPositionCSS(n, speed, ease) {
+    var barCSS;
+
+    if (Settings.positionUsing == 'translate3d') {
+      barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
+    } else if (Settings.positionUsing == 'translate') {
+      barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
+    } else {
+      barCSS = { 'margin-left': toBarPerc(n)+'%' };
+    }
+
+    barCSS.transition = 'all '+speed+'ms '+ease;
+
+    return barCSS;
   }
 
   return NProgress;
