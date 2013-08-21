@@ -182,7 +182,9 @@
     if (!Settings.showSpinner)
       $el.find('[role="spinner"]').remove();
 
-    $el.appendTo(Settings.appendTo);
+    $(Settings.appendTo)
+      .addClass('nprogress-parent')
+      .append($el);
 
     return $el;
   };
@@ -194,6 +196,7 @@
   NProgress.remove = function() {
     $('html').removeClass('nprogress-busy');
     $('#nprogress').remove();
+    $(Settings.appendTo).removeClass('nprogress-parent');
   };
 
   /**
@@ -273,4 +276,3 @@
 
   return NProgress;
 });
-
