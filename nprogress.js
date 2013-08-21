@@ -17,6 +17,7 @@
   var Settings = NProgress.settings = {
     minimum: 0.08,
     easing: 'ease',
+    appendTo: document.body,
     positionUsing: '',
     speed: 200,
     trickle: true,
@@ -181,7 +182,7 @@
     if (!Settings.showSpinner)
       $el.find('[role="spinner"]').remove();
 
-    $el.appendTo(document.body);
+    $el.appendTo(Settings.appendTo);
 
     return $el;
   };
