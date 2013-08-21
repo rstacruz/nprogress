@@ -119,8 +119,18 @@ Resources
 Acknowledgements
 ----------------
 
-(c) 2013 Rico Sta. Cruz, MIT License
+© 2013, Rico Sta. Cruz. Released under the [MIT 
+License](http://www.opensource.org/licenses/mit-license.php).
 
+**NProgress** is authored and maintained by [Rico Sta. Cruz][rsc] with help from 
+its [contributors][c]
+
+ * [My website](http://ricostacruz.com) (ricostacruz.com)
+ * [Github](http://github.com/rstacruz) (@rstacruz)
+ * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
+
+[rsc]: http://ricostacruz.com
+[c]:   http://github.com/rstacruz/nprogress/contributors
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
 [nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
