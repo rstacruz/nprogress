@@ -1,11 +1,15 @@
-v0.1.2 -- unleseade
--------------------
+v0.1.2 -- August 21, 2013
+--------------------------
+
+Minor update for proper [Bower] and [Component] support.
 
  * Add Bower support.
  * Fix Component support and use `component/jquery` as a dependency.
 
 v0.1.1 -- August 21, 2013
 -------------------------
+
+Minor fixes.
 
  * Removed the busy cursor that occurs when loading.
  * Added support for IE7 to IE9. (#3, [Mark Bao])
@@ -22,3 +26,5 @@ Initial release.
 
 [Rahul C S]: https://github.com/rahulcs
 [Mark Bao]: https://github.com/markbao
+[Bower]: http://bower.io
+[Component]: http://component.io

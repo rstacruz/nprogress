@@ -1,7 +1,7 @@
 Version numbers
 ---------------
 
-    $ bump package.json component.json nprogress.js
+    $ bump *.json nprogress.js
 
 Testing
 -------
