@@ -4,7 +4,7 @@
 ;(function(factory) {
 
   if (typeof module === 'function') {
-    module.exports = factory(this.jQuery || require('dom'));
+    module.exports = factory(this.jQuery || require('jquery'));
   } else {
     this.NProgress = factory(this.jQuery);
   }
