@@ -206,6 +206,7 @@
   /**
    * Determine which positioning CSS rule to use.
    */
+
   NProgress.getPositioningCSS = function() {
     // Sniff on document.body.style
     var bodyStyle = document.body.style;
@@ -226,7 +227,7 @@
       // Browsers without translate() support, e.g. IE7-8
       return 'margin';
     }
-  }
+  };
 
   /**
    * Helpers
