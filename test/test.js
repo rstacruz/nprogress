@@ -2,10 +2,17 @@ if (typeof module === 'object') require('./setup');
 
 testSuite('NProgress', function() {
 
+  beforeEach(function() {
+    this.settings = $.extend({}, NProgress.settings);
+  });
+
   afterEach(function() {
     $("#nprogress").remove();
     $('html').attr('class', '');
     NProgress.status = null;
+
+    // Restore settings
+    $.extend(NProgress.settings, this.settings);
   });
 
   describe('.set()', function() {
@@ -109,6 +116,27 @@ testSuite('NProgress', function() {
     it('should work', function() {
       NProgress.configure({ minimum: 0.5 });
       assert.equal(NProgress.settings.minimum, 0.5);
+    });
+  });
+
+  // ----
+
+  describe('.configure(showSpinner)', function() {
+    it('should render spinner by default', function() {
+      NProgress.start();
+
+      assert.equal($("#nprogress .spinner").length, 1);
+    });
+
+    it('should be true by default', function() {
+      assert.equal(NProgress.settings.showSpinner, true);
+    });
+
+    it('should hide (on false)', function() {
+      NProgress.configure({ showSpinner: false });
+      NProgress.start();
+
+      assert.equal($("#nprogress .spinner").length, 0);
     });
   });
 });
