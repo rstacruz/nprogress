@@ -1,3 +1,8 @@
+.nprogress-parent {
+  overflow: hidden;
+  position: relative;
+}
+
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
@@ -36,7 +41,7 @@
 /* Remove these to get rid of the spinner */
 #nprogress .spinner {
   display: block;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   top: 15px;
   right: 15px;
@@ -78,4 +83,3 @@
   0%   { transform: rotate(0deg);   transform: rotate(0deg); }
   100% { transform: rotate(360deg); transform: rotate(360deg); }
 }
-
