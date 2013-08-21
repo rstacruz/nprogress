@@ -183,7 +183,7 @@
   };
 
   /**
-   * (Internal) Removes the element. Opposite of render().
+   * Removes the element. Opposite of render().
    */
 
   NProgress.remove = function() {
