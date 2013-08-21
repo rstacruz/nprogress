@@ -1,5 +1,5 @@
-v0.1.1 -- Unreleased
---------------------
+v0.1.1 -- August 21, 2013
+-------------------------
 
  * Removed the busy cursor that occurs when loading.
  * Added support for IE7 to IE9. (#3, [Mark Bao])

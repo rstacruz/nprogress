@@ -17,4 +17,10 @@ Pushing
 -------
 
     $ git push origin master
+
+Releasing
+---------
+
+Tag and stuff (`git release`), then:
+
     $ git push origin master:gh-pages
