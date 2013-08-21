@@ -66,7 +66,7 @@
 
     $progress.queue(function(next) {
       // Set positionUsing if it hasn't already been set
-      if (Settings.positionUsing == '') Settings.positionUsing = NProgress.getPositioningCSS();
+      if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
       
       // Add transition
       $bar.css(barPositionCSS(n, speed, ease));
@@ -256,9 +256,9 @@
   function barPositionCSS(n, speed, ease) {
     var barCSS;
 
-    if (Settings.positionUsing == 'translate3d') {
+    if (Settings.positionUsing === 'translate3d') {
       barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
-    } else if (Settings.positionUsing == 'translate') {
+    } else if (Settings.positionUsing === 'translate') {
       barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
     } else {
       barCSS = { 'margin-left': toBarPerc(n)+'%' };
