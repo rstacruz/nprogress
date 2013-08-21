@@ -2,6 +2,9 @@ if (typeof module === 'object') require('./setup');
 
 testSuite('NProgress', function() {
 
+  var $ = window.jQuery || require('jquery');
+  var NProgress = window.NProgress || require('nprogress');
+
   beforeEach(function() {
     this.settings = $.extend({}, NProgress.settings);
   });
