@@ -9,9 +9,16 @@ Testing
     $ npm install
     $ npm test
 
-or
+or try it out in the browser:
 
     $ open test/index.html
+
+Testing component build
+-----------------------
+
+    $ component install
+    $ component build
+    $ open test/component.html
 
 Pushing
 -------
