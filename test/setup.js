@@ -25,6 +25,7 @@ function myEnv(jq) {
         window.console = console;
         global.window  = window;
         global.$       = window.$;
+        global.jQuery  = window.jQuery;
         global.NProgress = window.NProgress;
         done(errors);
       }
