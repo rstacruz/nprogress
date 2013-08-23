@@ -228,6 +228,14 @@
       return 'margin';
     }
   };
+   
+   NProgress.getCSSPropPrefix = function(){
+    var bodyStyle = document.body.style;
+    return ('WebkitTransform' in bodyStyle) ? '-webkit-' :
+           ('MozTransform' in bodyStyle) ? '-moz-' :
+           ('msTransform' in bodyStyle) ? '-ms-' :
+           ('OTransform' in bodyStyle) ? '-o-' : '';
+   }
 
   /**
    * Helpers
@@ -255,17 +263,19 @@
    */
 
   function barPositionCSS(n, speed, ease) {
-    var barCSS;
+    var barCSS = {};
+    var transformProp = NProgress.getCSSPropPrefix() + 'transform';
+    var transitionProp = NProgress.getCSSPropPrefix() + 'transition';
 
     if (Settings.positionUsing === 'translate3d') {
-      barCSS = { transform: 'translate3d('+toBarPerc(n)+'%,0,0)' };
+      barCSS[transformProp] = 'translate3d('+toBarPerc(n)+'%,0,0)';
     } else if (Settings.positionUsing === 'translate') {
-      barCSS = { transform: 'translate('+toBarPerc(n)+'%,0)' };
+      barCSS[transformProp] = 'translate('+toBarPerc(n)+'%,0)';
     } else {
-      barCSS = { 'margin-left': toBarPerc(n)+'%' };
+      barCSS['margin-left'] = toBarPerc(n)+'%';
     }
 
-    barCSS.transition = 'all '+speed+'ms '+ease;
+    barCSS[transitionProp] = 'all '+speed+'ms '+ease;
 
     return barCSS;
   }
