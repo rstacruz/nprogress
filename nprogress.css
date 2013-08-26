@@ -43,8 +43,9 @@
 }
 
 #nprogress .spinner-icon {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
 
   border:  solid 2px transparent;
   border-top-color:  #29d;
