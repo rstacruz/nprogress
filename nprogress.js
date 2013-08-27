@@ -5,6 +5,10 @@
 
   if (typeof module === 'function') {
     module.exports = factory(this.jQuery || require('jquery'));
+  } else if (typeof define === 'function' && define.amd) {
+    define(['jquery'], function($) {
+      return factory($);
+    });
   } else {
     this.NProgress = factory(this.jQuery);
   }
@@ -67,7 +71,7 @@
     $progress.queue(function(next) {
       // Set positionUsing if it hasn't already been set
       if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
-      
+
       // Add transition
       $bar.css(barPositionCSS(n, speed, ease));
 
