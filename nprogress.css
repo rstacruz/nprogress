@@ -50,7 +50,7 @@
   border:  solid 2px transparent;
   border-top-color:  #29d;
   border-left-color: #29d;
-  border-radius: 10px;
+  border-radius: 50%;
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;
   -moz-animation:    nprogress-spinner 400ms linear infinite;
