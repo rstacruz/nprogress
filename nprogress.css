@@ -1,7 +1,6 @@
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
-  -webkit-pointer-events: none;
 }
 
 #nprogress .bar {
@@ -27,10 +26,8 @@
   opacity: 1.0;
 
   -webkit-transform: rotate(3deg) translate(0px, -4px);
-  -moz-transform: rotate(3deg) translate(0px, -4px);
-  -ms-transform: rotate(3deg) translate(0px, -4px);
-  -o-transform: rotate(3deg) translate(0px, -4px);
-  transform: rotate(3deg) translate(0px, -4px);
+      -ms-transform: rotate(3deg) translate(0px, -4px);
+          transform: rotate(3deg) translate(0px, -4px);
 }
 
 /* Remove these to get rid of the spinner */
@@ -47,36 +44,21 @@
   height: 18px;
   box-sizing: border-box;
 
-  border:  solid 2px transparent;
-  border-top-color:  #29d;
+  border: solid 2px transparent;
+  border-top-color: #29d;
   border-left-color: #29d;
   border-radius: 50%;
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;
-  -moz-animation:    nprogress-spinner 400ms linear infinite;
-  -ms-animation:     nprogress-spinner 400ms linear infinite;
-  -o-animation:      nprogress-spinner 400ms linear infinite;
-  animation:         nprogress-spinner 400ms linear infinite;
+          animation: nprogress-spinner 400ms linear infinite;
 }
 
 @-webkit-keyframes nprogress-spinner {
-  0%   { -webkit-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-moz-keyframes nprogress-spinner {
-  0%   { -moz-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -moz-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-o-keyframes nprogress-spinner {
-  0%   { -o-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -o-transform: rotate(360deg); transform: rotate(360deg); }
-}
-@-ms-keyframes nprogress-spinner {
-  0%   { -ms-transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { -ms-transform: rotate(360deg); transform: rotate(360deg); }
+  0%   { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
 @keyframes nprogress-spinner {
-  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
-  100% { transform: rotate(360deg); transform: rotate(360deg); }
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
