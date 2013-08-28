@@ -373,7 +373,7 @@
   })();
 
   /**
-   * (Internal) Determines if an element or space separated list of class names contains as class name.
+   * (Internal) Determines if an element or space separated list of class names contains a class name.
    */
 
   function hasClass(element, name) {
@@ -400,7 +400,7 @@
    */
 
   function removeClass(element, name) {
-    var oldList = classList(element).replace(/\s+/gi, ' '),
+    var oldList = classList(element),
         newList;
 
     if (!hasClass(element, name)) return;
