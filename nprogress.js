@@ -6,9 +6,7 @@
   if (typeof module === 'function') {
     module.exports = factory();
   } else if (typeof define === 'function' && define.amd) {
-    define(function() {
-      return factory();
-    });
+    define(factory);
   } else {
     this.NProgress = factory();
   }
