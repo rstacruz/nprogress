@@ -8,9 +8,6 @@
     "bar",
     "spinner"
   ],
-  "dependencies": {
-    "jquery": "*"
-  },
   "license": "MIT",
   "main": "nprogress.js",
   "scripts": [

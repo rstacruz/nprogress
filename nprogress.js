@@ -4,16 +4,16 @@
 ;(function(factory) {
 
   if (typeof module === 'function') {
-    module.exports = factory(this.jQuery || require('jquery'));
+    module.exports = factory();
   } else if (typeof define === 'function' && define.amd) {
-    define(['jquery'], function($) {
-      return factory($);
+    define(function() {
+      return factory();
     });
   } else {
-    this.NProgress = factory(this.jQuery);
+    this.NProgress = factory();
   }
 
-})(function($) {
+})(function() {
   var NProgress = {};
 
   NProgress.version = '0.1.2';
@@ -27,6 +27,8 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
+    barSelector: '[role="bar"]',
+    spinnerSelector: '[role="spinner"]',
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -38,7 +40,12 @@
    *     });
    */
   NProgress.configure = function(options) {
-    $.extend(Settings, options);
+    var key, value;
+    for (key in options) {
+      value = options[key];
+      if (value !== undefined && options.hasOwnProperty(key)) Settings[key] = value;
+    }
+
     return this;
   };
 
@@ -61,27 +68,33 @@
     n = clamp(n, Settings.minimum, 1);
     NProgress.status = (n === 1 ? null : n);
 
-    var $progress = NProgress.render(!started),
-        $bar      = $progress.find('[role="bar"]'),
-        speed     = Settings.speed,
-        ease      = Settings.easing;
+    var progress = NProgress.render(!started),
+        bar      = progress.querySelector(Settings.barSelector),
+        speed    = Settings.speed,
+        ease     = Settings.easing;
 
-    $progress[0].offsetWidth; /* Repaint */
+    progress.offsetWidth; /* Repaint */
 
-    $progress.queue(function(next) {
+    queue(function(next) {
       // Set positionUsing if it hasn't already been set
       if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
 
       // Add transition
-      $bar.css(barPositionCSS(n, speed, ease));
+      css(bar, barPositionCSS(n, speed, ease));
 
       if (n === 1) {
         // Fade out
-        $progress.css({ transition: 'none', opacity: 1 });
-        $progress[0].offsetWidth; /* Repaint */
+        css(progress, { 
+          transition: 'none', 
+          opacity: 1 
+        });
+        progress.offsetWidth; /* Repaint */
 
         setTimeout(function() {
-          $progress.css({ transition: 'all '+speed+'ms linear', opacity: 0 });
+          css(progress, { 
+            transition: 'all ' + speed + 'ms linear', 
+            opacity: 0 
+          });
           setTimeout(function() {
             NProgress.remove();
             next();
@@ -169,25 +182,30 @@
    */
 
   NProgress.render = function(fromStart) {
-    if (NProgress.isRendered()) return $("#nprogress");
-    $('html').addClass('nprogress-busy');
+    if (NProgress.isRendered()) return document.getElementById('nprogress');
 
-    var $el = $("<div id='nprogress'>")
-      .html(Settings.template);
+    addClass(document.documentElement, 'nprogress-busy');
+    
+    var progress = document.createElement('div');
+    progress.id = 'nprogress';
+    progress.innerHTML = Settings.template;
 
-    var perc = fromStart ? '-100' : toBarPerc(NProgress.status || 0);
-
-    $el.find('[role="bar"]').css({
+    var bar      = progress.querySelector(Settings.barSelector),
+        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        spinner;
+    
+    css(bar, {
       transition: 'all 0 linear',
-      transform: 'translate3d('+perc+'%,0,0)'
+      transform: 'translate3d(' + perc + '%,0,0)'
     });
 
-    if (!Settings.showSpinner)
-      $el.find('[role="spinner"]').remove();
+    if (!Settings.showSpinner) {
+      spinner = progress.querySelector(Settings.spinnerSelector);
+      spinner && removeElement(spinner);
+    }
 
-    $el.appendTo(document.body);
-
-    return $el;
+    document.body.appendChild(progress);
+    return progress;
   };
 
   /**
@@ -195,8 +213,9 @@
    */
 
   NProgress.remove = function() {
-    $('html').removeClass('nprogress-busy');
-    $('#nprogress').remove();
+    removeClass(document.documentElement, 'nprogress-busy');
+    var progress = document.getElementById('nprogress');
+    progress && removeElement(progress);
   };
 
   /**
@@ -204,7 +223,7 @@
    */
 
   NProgress.isRendered = function() {
-    return ($("#nprogress").length > 0);
+    return !!document.getElementById('nprogress');
   };
 
   /**
@@ -272,6 +291,143 @@
     barCSS.transition = 'all '+speed+'ms '+ease;
 
     return barCSS;
+  }
+
+  /**
+   * (Internal) Queues a function to be executed.
+   */
+
+  var queue = (function() {
+    var pending = [];
+    
+    function next() {
+      var fn = pending.shift();
+      if (fn) {
+        fn(next);
+      }
+    }
+
+    return function(fn) {
+      pending.push(fn);
+      if (pending.length == 1) next();
+    };
+  })();
+
+  /**
+   * (Internal) Applies css properties to an element, similar to the jQuery 
+   * css method.
+   *
+   * While this helper does assist with vendor prefixed property names, it 
+   * does not perform any manipulation of values prior to setting styles.
+   */
+
+  var css = (function() {
+    var cssPrefixes = [ 'Webkit', 'O', 'Moz', 'ms' ],
+        cssProps    = {};
+
+    function camelCase(string) {
+      return string.replace(/^-ms-/, 'ms-').replace(/-([\da-z])/gi, function(match, letter) {
+        return letter.toUpperCase();
+      });
+    }
+
+    function getVendorProp(name) {
+      var style = document.body.style;
+      if (name in style) return name;
+
+      var i = cssPrefixes.length,
+          capName = name.charAt(0).toUpperCase() + name.slice(1),
+          vendorName;
+      while (i--) {
+        vendorName = cssPrefixes[i] + capName;
+        if (vendorName in style) return vendorName;
+      }
+
+      return name;
+    }
+
+    function getStyleProp(name) {
+      name = camelCase(name);
+      return cssProps[name] || (cssProps[name] = getVendorProp(name));
+    }
+
+    function applyCss(element, prop, value) {
+      prop = getStyleProp(prop);
+      element.style[prop] = value;
+    }
+
+    return function(element, properties) {
+      var args = arguments,
+          prop, 
+          value;
+
+      if (args.length == 2) {
+        for (prop in properties) {
+          value = properties[prop];
+          if (value !== undefined && properties.hasOwnProperty(prop)) applyCss(element, prop, value);
+        }
+      } else {
+        applyCss(element, args[1], args[2]);
+      }
+    }
+  })();
+
+  /**
+   * (Internal) Determines if an element or space separated list of class names contains as class name.
+   */
+
+  function hasClass(element, name) {
+    var list = typeof element == 'string' ? element : classList(element);
+    return list.indexOf(' ' + name + ' ') >= 0;
+  }
+
+  /**
+   * (Internal) Adds a class to an element.
+   */
+
+  function addClass(element, name) {
+    var oldList = classList(element),
+        newList = oldList + name;
+
+    if (hasClass(oldList, name)) return; 
+
+    // Trim the opening space.
+    element.className = newList.substring(1);
+  }
+
+  /**
+   * (Internal) Removes a class from an element.
+   */
+
+  function removeClass(element, name) {
+    var oldList = classList(element).replace(/\s+/gi, ' '),
+        newList;
+
+    if (!hasClass(element, name)) return;
+
+    // Replace the class name.
+    newList = oldList.replace(' ' + name + ' ', ' ');
+
+    // Trim the opening and closing spaces.
+    element.className = newList.substring(1, newList.length - 1);
+  }
+
+  /**
+   * (Internal) Gets a space separated list of the class names on the element. 
+   * The list is wrapped with a single space on each end to facilitate finding 
+   * matches within the list.
+   */
+
+  function classList(element) {
+    return (' ' + (element.className || '') + ' ').replace(/\s+/gi, ' ');
+  }
+
+  /**
+   * (Internal) Removes an element from the DOM.
+   */
+
+  function removeElement(element) {
+    element && element.parentNode && element.parentNode.removeChild(element);
   }
 
   return NProgress;
