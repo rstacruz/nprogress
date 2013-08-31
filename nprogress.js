@@ -163,6 +163,26 @@
     return NProgress.inc(Math.random() * Settings.trickleRate);
   };
 
+  /* 
+   * Shows the spinner independently from the progress bar.
+   */
+  NProgress.showSpinner = function () {
+    
+    var $el = NProgress.render();
+    $el.find('[role="spinner"]').show();
+    
+  };
+  
+  /*
+   * Hides the spinner independently from the progress bar.
+   */
+  NProgress.hideSpinner = function () {
+    
+    var $el = NProgress.render();
+    $el.find('[role="spinner"]').hide();
+    
+  };
+
   /**
    * (Internal) renders the progress bar markup based on the `template`
    * setting.
@@ -183,7 +203,7 @@
     });
 
     if (!Settings.showSpinner)
-      $el.find('[role="spinner"]').remove();
+      $el.find('[role="spinner"]').hide();
 
     $el.appendTo(document.body);
 
