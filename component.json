@@ -5,7 +5,7 @@
   "version": "0.1.2",
   "keywords": ["progress","bar","spinner"],
   "dependencies": {
-    "component/jQuery": "*"
+    "components/jquery": "*"
   },
   "development": {
     "chaijs/chai": "*",
