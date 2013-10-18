@@ -16,7 +16,8 @@
 }
 
 /* Fancy blur effect */
-#nprogress .peg {
+#nprogress .bar:after {
+  content: " ";
   display: block;
   position: absolute;
   right: 0px;
