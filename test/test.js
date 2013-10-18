@@ -71,6 +71,14 @@
         NProgress.start();
         assert.equal(NProgress.status, NProgress.settings.minimum);
       });
+
+      it('must be attached to specified parent', function() {
+        var test = $('<div>', {id: 'test'}).appendTo('body');
+        NProgress.configure({parent: test});
+        NProgress.start();
+        assert.isTrue($("#nprogress").parent().is(test));
+        assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-parent"));
+      });
     });
 
     // ----
@@ -88,6 +96,19 @@
         done();
       });
     });
+
+    // ----
+
+    describe('.remove()', function() {
+      it('should be removed from the parent', function() {
+        NProgress.set(1);
+        NProgress.remove();
+
+        var parent = $(NProgress.settings.parent);
+        assert.isFalse(parent.hasClass('nprogress-parent'));
+        assert.equal(parent.find('#nprogress').length, 0);
+      });
+    })
 
     // ----
 

@@ -6,7 +6,7 @@
 #nprogress .bar {
   background: #29d;
 
-  position: fixed;
+  position: absolute;
   z-index: 100;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
 /* Remove these to get rid of the spinner */
 #nprogress .spinner {
   display: block;
-  position: fixed;
+  position: absolute;
   z-index: 100;
   top: 15px;
   right: 15px;
@@ -51,6 +51,16 @@
 
   -webkit-animation: nprogress-spinner 400ms linear infinite;
           animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+body.nprogress-parent #nprogress .bar,
+body.nprogress-parent #nprogress .spinner {
+  position: fixed;
 }
 
 @-webkit-keyframes nprogress-spinner {

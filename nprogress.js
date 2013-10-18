@@ -27,6 +27,7 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
+    parent: 'body',
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -221,7 +222,9 @@
     if (!Settings.showSpinner)
       $el.find('[role="spinner"]').remove();
 
-    $el.appendTo(document.body);
+    $(Settings.parent)
+      .addClass('nprogress-parent')
+      .append($el);
 
     return $el;
   };
@@ -231,6 +234,7 @@
    */
 
   NProgress.remove = function() {
+    $(Settings.parent).removeClass('nprogress-parent');
     $('html').removeClass('nprogress-busy');
     $('#nprogress').remove();
   };
