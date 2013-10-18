@@ -16,18 +16,16 @@
 }
 
 /* Fancy blur effect */
-#nprogress .peg {
+#nprogress .bar:after {
+  content: " ";
   display: block;
   position: absolute;
   right: 0px;
-  width: 100px;
+  width: 120px;
   height: 100%;
-  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  border-bottom-left-radius: 100px 2px;
+  box-shadow: 2px 0 5px #29d;
   opacity: 1.0;
-
-  -webkit-transform: rotate(3deg) translate(0px, -4px);
-      -ms-transform: rotate(3deg) translate(0px, -4px);
-          transform: rotate(3deg) translate(0px, -4px);
 }
 
 /* Remove these to get rid of the spinner */
