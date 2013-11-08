@@ -3,7 +3,7 @@
 
 ;(function(factory) {
 
-  if (typeof module === 'function') {
+  if (typeof module !== 'undefined') {
     module.exports = factory(this.jQuery || require('jquery'));
   } else if (typeof define === 'function' && define.amd) {
     define(['jquery'], function($) {
