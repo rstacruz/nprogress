@@ -112,6 +112,12 @@ Want to turn off loading spinner? Set `showSpinner` to `false`.
 NProgress.configure({ showSpinner: false });
 ~~~
 
+Set a callback function to be executed once the bar is fully loaded.
+
+~~~ js
+NProgress.configure({ callback: function() ... });
+~~~
+
 Customization
 -------------
 

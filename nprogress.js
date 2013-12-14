@@ -27,7 +27,8 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+    callback: null
   };
 
   /**
@@ -85,6 +86,12 @@
           setTimeout(function() {
             NProgress.remove();
             next();
+            
+            // Execute callback once finished
+            if ($.isFunction(Settings.callback)) {
+                Settings.callback.apply(NProgress)
+            }
+            
           }, speed);
         }, speed);
       } else {
