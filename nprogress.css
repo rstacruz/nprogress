@@ -6,7 +6,7 @@
 #nprogress .bar {
   background: #29d;
 
-  position: fixed;
+  position: fixed; /* set this to absolute to use with a containerElement */
   z-index: 100;
   top: 0;
   left: 0;
@@ -33,7 +33,7 @@
 /* Remove these to get rid of the spinner */
 #nprogress .spinner {
   display: block;
-  position: fixed;
+  position: fixed; /* set this to absolute to use with a containerElement */
   z-index: 100;
   top: 15px;
   right: 15px;
