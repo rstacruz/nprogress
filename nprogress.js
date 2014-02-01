@@ -27,7 +27,8 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+    containerElement: undefined
   };
 
   /**
@@ -166,24 +167,24 @@
   /**
    * Waits for all supplied jQuery promises and
    * increases the progress as the promises resolve.
-   * 
+   *
    * @param $promise jQUery Promise
    */
   (function() {
     var initial = 0, current = 0;
-    
+
     NProgress.promise = function($promise) {
       if (!$promise || $promise.state() == "resolved") {
         return this;
       }
-      
+
       if (current == 0) {
         NProgress.start();
       }
-      
+
       initial++;
       current++;
-      
+
       $promise.always(function() {
         current--;
         if (current == 0) {
@@ -193,10 +194,10 @@
             NProgress.set((initial - current) / initial);
         }
       });
-      
+
       return this;
     };
-    
+
   })();
 
   /**
@@ -221,7 +222,7 @@
     if (!Settings.showSpinner)
       $el.find('[role="spinner"]').remove();
 
-    $el.appendTo(document.body);
+    $el.appendTo(Settings.containerElement || document.body);
 
     return $el;
   };
