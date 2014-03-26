@@ -2,7 +2,7 @@
   "name": "nprogress",
   "repo": "rstacruz/nprogress",
   "description": "slim progress bar",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "keywords": [
     "progress",
     "bar",
@@ -19,6 +19,8 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "components",
+    "test",
+    "vendor"
   ]
 }
