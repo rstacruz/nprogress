@@ -20,6 +20,8 @@
     "**/.*",
     "node_modules",
     "components",
-    "package.json"
+    "package.json",
+    "test",
+    "vendor"
   ]
 }
