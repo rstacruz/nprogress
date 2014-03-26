@@ -10,7 +10,7 @@
     "test": "./node_modules/.bin/mocha -R spec"
   },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "chai": "~1.6.1",
     "mocha": "~1.11.0",
     "jsdom": "~0.6.5"
