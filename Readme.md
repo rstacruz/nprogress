@@ -9,7 +9,7 @@ Medium.
 Installation
 ------------
 
-Add jQuery (1.8 or above), [nprogress.js] and [nprogress.css] to your project.
+Add [nprogress.js] and [nprogress.css] to your project.
 
 Basic usage
 -----------
