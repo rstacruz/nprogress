@@ -1,5 +1,11 @@
+v0.1.3 -- March 26, 2014
+------------------------
+
+ * Remove jQuery dependency. (#28, #7, #17, @rurjur)
+ * Update Readme to change year to 2014. (#73, @rwholmes)
+
 v0.1.2 -- August 21, 2013
---------------------------
+-------------------------
 
 Minor update for proper [Bower] and [Component] support.
 
