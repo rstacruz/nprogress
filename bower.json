@@ -19,6 +19,7 @@
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
+    "components",
+    "package.json"
   ]
 }
