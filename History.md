@@ -1,3 +1,18 @@
+v0.1.4 - Unreleased
+-------------------
+
+ * Bower: don't download package.json. Fixes browserify + jquery problem. (#65, @amelon)
+ 
+Internal changes:
+
+ * Use SVG to display Travis-CI badge. (#77, @Mithgol)
+ * Readme: update .inc() and .status docs (#34, @lacivert)
+ * Readme: update year (#73, @rwholmes)
+
+To do:
+
+ * Fix Require.js support? (#64)
+
 v0.1.3 -- March 26, 2014
 ------------------------
 
