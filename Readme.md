@@ -60,6 +60,12 @@ every image load (or similar).
 NProgress.inc();
 ~~~
 
+If you want to increment by a specific value, you can pass that as a parameter:
+
+~~~ js
+NProgress.inc(0.2);    // This will get the current status value and adds 0.2 until status is 0.994
+~~~
+
 __Force-done:__ By passing `true` to `done()`, it will show the progress bar
 even if it's not being shown. (The default behavior is that *.done()* will not
     do anything if *.start()* isn't called)
@@ -67,6 +73,8 @@ even if it's not being shown. (The default behavior is that *.done()* will not
 ~~~ js
 NProgress.done(true);
 ~~~
+
+__Get the status value:__ To get the status value, use `.status`
 
 Configuration
 -------------
