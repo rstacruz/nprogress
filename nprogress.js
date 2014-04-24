@@ -125,7 +125,7 @@
         if (!NProgress.status) return;
         NProgress.trickle();
         work();
-      }, Settings.trickleSpeed);
+      }, trickleSpeed());
     };
 
     if (Settings.trickle) work();
@@ -284,6 +284,14 @@
       // Browsers without translate() support, e.g. IE7-8
       return 'margin';
     }
+  };
+
+  /**
+  * returns a random trickle speed value
+  *
+  * */
+  function trickleSpeed(){
+    return Math.random() * Settings.trickleSpeed * 2; 
   };
 
   /**
