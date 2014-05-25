@@ -6,6 +6,7 @@
      "type": "git",
      "url": "https://github.com/rstacruz/nprogress.git"
   },
+  "main": "./nprogress.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec"
   },
