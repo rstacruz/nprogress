@@ -1,6 +1,7 @@
 {
   "name": "nprogress",
   "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "description": "Simple slim progress bars",
   "version": "0.1.4",
   "repository": {
      "type": "git",

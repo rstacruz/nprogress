@@ -9,6 +9,8 @@ Medium.
 Installation
 ------------
 
+NProgress is available via [bower] and [npm].
+
 Add [nprogress.js] and [nprogress.css] to your project.
 
 Basic usage
@@ -152,4 +154,6 @@ its [contributors][c]
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
 [nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
+[bower]: http://bower.io/search/?q=nprogress
+[npm]: https://www.npmjs.org/package/nprogress
 
