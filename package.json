@@ -10,6 +10,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec"
   },
+  "main": "nprogress.js",
   "license": "MIT",
   "devDependencies": {
     "chai": "~1.6.1",
