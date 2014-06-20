@@ -1,6 +1,5 @@
-v0.1.4 - Unreleased
--------------------
-
+v0.1.4 - June 21, 2014
+----------------------
 
  * Bower: don't download package.json. Fixes browserify + jquery problem. (#65, @amelon)
  * Fix compatibility with Karma. (#75, @shaqq)
