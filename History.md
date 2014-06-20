@@ -1,5 +1,12 @@
-v0.1.4 - June 21, 2014
-----------------------
+v0.1.5 -- unreleased
+--------------------
+
+To do:
+
+ * Fix Require.js support? (#64)
+
+v0.1.4 -- June 21, 2014
+-----------------------
 
  * Bower: don't download package.json. Fixes browserify + jquery problem. (#65, @amelon)
  * Fix compatibility with Karma. (#75, @shaqq)
@@ -9,10 +16,6 @@ Internal changes:
  * Use SVG to display Travis-CI badge. (#77, @Mithgol)
  * Readme: update .inc() and .status docs (#34, @lacivert)
  * Readme: update year (#73, @rwholmes)
-
-To do:
-
- * Fix Require.js support? (#64)
 
 v0.1.3 -- March 26, 2014
 ------------------------
