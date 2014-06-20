@@ -1,9 +1,14 @@
-v0.1.5 -- unreleased
+v0.1.6 -- unreleased
 --------------------
 
 To do:
 
  * Fix Require.js support? (#64)
+
+v0.1.5 -- June 21, 2014
+-----------------------
+
+ * Release properly to the npm registry. (#82)
 
 v0.1.4 -- June 21, 2014
 -----------------------
