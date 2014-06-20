@@ -11,6 +11,9 @@ Installation
 
 NProgress is available via [bower] and [npm].
 
+    $ bower install --save nprogress
+    $ npm   install --save nprogress
+
 Add [nprogress.js] and [nprogress.css] to your project.
 
 Basic usage
