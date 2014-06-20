@@ -31,3 +31,7 @@ Releasing
 Tag and stuff (`git release`), then:
 
     $ git push origin master:gh-pages
+
+And publish to npm:
+
+    $ npm publish
