@@ -74,9 +74,6 @@
     progress.offsetWidth; /* Repaint */
 
     queue(function(next) {
-      // Set positionUsing if it hasn't already been set
-      if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
-
       // Add transition
       css(bar, barPositionCSS(n, speed, ease));
 
@@ -225,13 +222,13 @@
     progress.innerHTML = Settings.template;
 
     var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        perc     = fromStart ? 0 : NProgress.status || 0,
         spinner;
     
-    css(bar, {
-      transition: 'all 0 linear',
-      transform: 'translate3d(' + perc + '%,0,0)'
-    });
+    // Set positionUsing if it hasn't already been set
+    if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
+
+    css(bar, barPositionCSS(perc, 0, 'linear'));
 
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
