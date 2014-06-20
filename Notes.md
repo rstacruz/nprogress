@@ -1,8 +1,3 @@
-Version numbers
----------------
-
-    $ bump *.json nprogress.js
-
 Testing
 -------
 
@@ -20,18 +15,11 @@ Testing component build
     $ component build
     $ open test/component.html
 
-Pushing
--------
-
-    $ git push origin master
-
 Releasing
 ---------
 
-Tag and stuff (`git release`), then:
-
-    $ git push origin master:gh-pages
-
-And publish to npm:
-
-    $ npm publish
+    $ npm test
+    $ bump *.json nprogress.js          # bump version numbers
+    $ git release 0.1.1                 # release to bower/github
+    $ npm publish                       # release to npm
+    $ git push origin master:gh-pages   # update the site
