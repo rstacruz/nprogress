@@ -9,7 +9,7 @@
     "spinner"
   ],
   "license": "MIT",
-  "main": "nprogress.js",
+  "main": ["nprogress.js", "nprogress.css"],
   "scripts": [
     "nprogress.js"
   ],
