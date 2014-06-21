@@ -1,17 +1,17 @@
 /*! NProgress (c) 2013, Rico Sta. Cruz
  *  http://ricostacruz.com/nprogress */
 
-;(function(factory) {
+;(function(root, factory) {
 
-  if (typeof module !== 'undefined' && module.exports) {
-    module.exports = factory();
-  } else if (typeof define === 'function' && define.amd) {
+  if (typeof define === 'function' && define.amd) {
     define(factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
   } else {
-    this.NProgress = factory();
+    root.NProgress = factory();
   }
 
-})(function() {
+})(this, function() {
   var NProgress = {};
 
   NProgress.version = '0.1.5';
