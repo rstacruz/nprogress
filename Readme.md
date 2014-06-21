@@ -84,13 +84,13 @@ __Get the status value:__ To get the status value, use `.status`
 Configuration
 -------------
 
-**minimum**: Changes the minimum percentage. (default: `0.08`)
+`minimum` — Changes the minimum percentage used upon starting. (default: `0.08`)
 
 ~~~ js
 NProgress.configure({ minimum: 0.1 });
 ~~~
 
-**template**: You can change the markup using `template`. To keep the progress
+`template` — You can change the markup using `template`. To keep the progress
 bar working, keep an element with `role='bar'` in there. See the [default template]
 for reference.
 
@@ -100,35 +100,34 @@ NProgress.configure({
 });
 ~~~
 
-**ease** and **speed**:
-Adjust animation settings using `ease` (a CSS easing string) and `speed`
-(in ms).
+`ease` and `speed` — Adjust animation settings using *ease* (a CSS easing string)
+and *speed* (in ms). (default: `ease` and `200`)
 
 ~~~ js
 NProgress.configure({ ease: 'ease', speed: 500 });
 ~~~
 
-**trickle**: Want to turn off trickling? Set `trickle` to `false`. (default: `true`)
+`trickle` — Turn of the automatic incrementing behavior by setting this to `false`. (default: `true`)
 
 ~~~ js
 NProgress.configure({ trickle: false });
 ~~~
 
-**trickleRate** and **trickleSpeed**:
-You can adjust the `trickleRate` (how much to increase per trickle) and 
-`trickleSpeed` (how often to trickle, in ms).
+`trickleRate` and `trickleSpeed` —
+You can adjust the *trickleRate* (how much to increase per trickle) and 
+*trickleSpeed* (how often to trickle, in ms).
 
 ~~~ js
 NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
 ~~~
 
-**showSpinner**: Turn off loading spinner by setting it to false. (default: `true`)
+`showSpinner` — Turn off loading spinner by setting it to false. (default: `true`)
 
 ~~~ js
 NProgress.configure({ showSpinner: false });
 ~~~
 
-**parent**: specify this to change the parent container. (default: `body`)
+`parent` — specify this to change the parent container. (default: `body`)
 
 ~~~ js
 NProgress.configure({ parent: '#container' });
