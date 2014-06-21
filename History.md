@@ -1,7 +1,7 @@
 ## v0.1.6 - unreleased
 
  * Add support for specifying a different parent container. (#86, #14, #33, #39, @jonjaques)
- * Fix Require.js support. (#64, #75, #85)
+ * Fix Require.js support. (#64, #75, #85, #84)
 
 ## v0.1.5 - June 21, 2014
 
