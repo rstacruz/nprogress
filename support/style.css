@@ -3,6 +3,11 @@ i, b {
   font-weight: 400;
 }
 
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background: white;
 }
@@ -130,11 +135,10 @@ button {
 }
 
 .page-header {
-  margin: 1.5em auto;
   text-align: center;
   max-width: 400px;
-  padding: 0 20px;
-  margin: 3em auto;
+  padding: 3em 20px;
+  margin: 0 auto;
 }
 
 .page-header h1 {
@@ -173,7 +177,7 @@ p.brief.big {
   .page-header h1 {
     font-size: 3em; }
   .page-header {
-    margin: 4.5em auto 3.5em auto;
+    padding: 4.5em 20px 3.5em 20px;
   }
 }
 

@@ -27,6 +27,7 @@
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
+    parent: 'body',
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -226,6 +227,7 @@
 
     var bar      = progress.querySelector(Settings.barSelector),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        parent   = document.querySelector(Settings.parent),
         spinner;
     
     css(bar, {
@@ -238,7 +240,11 @@
       spinner && removeElement(spinner);
     }
 
-    document.body.appendChild(progress);
+    if (parent != document.body) {
+      addClass(parent, 'nprogress-custom-parent');
+    }
+
+    parent.appendChild(progress);
     return progress;
   };
 
@@ -248,6 +254,7 @@
 
   NProgress.remove = function() {
     removeClass(document.documentElement, 'nprogress-busy');
+    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent')
     var progress = document.getElementById('nprogress');
     progress && removeElement(progress);
   };
