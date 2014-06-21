@@ -84,14 +84,15 @@ __Get the status value:__ To get the status value, use `.status`
 Configuration
 -------------
 
-Change the minimum percentage using `minimum`.
+**minimum**: Changes the minimum percentage. (default: `0.08`)
 
 ~~~ js
 NProgress.configure({ minimum: 0.1 });
 ~~~
 
-You can change the markup using `template`. To keep the progress
-bar working, keep an element with `role='bar'` in there.
+**template**: You can change the markup using `template`. To keep the progress
+bar working, keep an element with `role='bar'` in there. See the [default template]
+for reference.
 
 ~~~ js
 NProgress.configure({
@@ -99,19 +100,21 @@ NProgress.configure({
 });
 ~~~
 
-Adjust animation settings using `ease` (a CSS easing string) and `speed` (in 
-    ms).
+**ease** and **speed**:
+Adjust animation settings using `ease` (a CSS easing string) and `speed`
+(in ms).
 
 ~~~ js
 NProgress.configure({ ease: 'ease', speed: 500 });
 ~~~
 
-Want to turn off trickling? Set `trickle` to `false`.
+**trickle**: Want to turn off trickling? Set `trickle` to `false`. (default: `true`)
 
 ~~~ js
 NProgress.configure({ trickle: false });
 ~~~
 
+**trickleRate** and **trickleSpeed**:
 You can adjust the `trickleRate` (how much to increase per trickle) and 
 `trickleSpeed` (how often to trickle, in ms).
 
@@ -119,10 +122,16 @@ You can adjust the `trickleRate` (how much to increase per trickle) and
 NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
 ~~~
 
-Want to turn off loading spinner? Set `showSpinner` to `false`.
+**showSpinner**: Turn off loading spinner by setting it to false. (default: `true`)
 
 ~~~ js
 NProgress.configure({ showSpinner: false });
+~~~
+
+**parent**: specify this to change the parent container. (default: `body`)
+
+~~~ js
+NProgress.configure({ parent: '#container' });
 ~~~
 
 Customization
@@ -151,6 +160,8 @@ its [contributors][c]
  * [My website](http://ricostacruz.com) (ricostacruz.com)
  * [Github](http://github.com/rstacruz) (@rstacruz)
  * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
+
+[default template]: https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
 
 [rsc]: http://ricostacruz.com
 [c]:   http://github.com/rstacruz/nprogress/contributors
