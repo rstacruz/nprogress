@@ -172,7 +172,7 @@ __Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
 [![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-brightgreen.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
 
 __Chat__: join us at gitter.im.<br>
-[![Chat](http://img.shields.io/badge/gitter.im-rstacruz/nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
+[![Chat](http://img.shields.io/badge/gitter-rstacruz_/_nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
 
 Acknowledgements
 ----------------
