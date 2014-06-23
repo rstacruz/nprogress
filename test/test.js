@@ -108,7 +108,7 @@
         assert.isFalse(parent.hasClass('nprogress-custom-parent'));
         assert.equal(parent.find('#nprogress').length, 0);
       });
-    })
+    });
 
     // ----
 
