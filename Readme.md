@@ -12,7 +12,11 @@ Installation
 NProgress is available via [bower] and [npm].
 
     $ bower install --save nprogress
-    $ npm   install --save nprogress
+    $ npm install --save nprogress
+
+[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
+[bower]: http://bower.io/search/?q=nprogress
+[npm]: https://www.npmjs.org/package/nprogress
 
 Add [nprogress.js] and [nprogress.css] to your project.
 
@@ -173,6 +177,4 @@ its [contributors][c]
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
 [nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
-[bower]: http://bower.io/search/?q=nprogress
-[npm]: https://www.npmjs.org/package/nprogress
 
