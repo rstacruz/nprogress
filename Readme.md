@@ -177,17 +177,17 @@ __Chat__: join us at gitter.im.<br>
 Acknowledgements
 ----------------
 
-© 2013, 2014, Rico Sta. Cruz. Released under the [MIT License](License.md).
+**NProgress** © 2013, 2014, Rico Sta. Cruz. Released under the [MIT 
+License](License.md).
 
-**NProgress** is authored and maintained by [Rico Sta. Cruz][rsc] with help from 
-its [contributors][c]
+Authored and maintained by [Rico Sta. Cruz][rsc] with help from
+[contributors][c].
 
  * [My website](http://ricostacruz.com) (ricostacruz.com)
  * [Github](http://github.com/rstacruz) (@rstacruz)
  * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
 
 [default template]: https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
-
 [rsc]: http://ricostacruz.com
 [c]:   http://github.com/rstacruz/nprogress/contributors
 [Turbolinks]: https://github.com/rails/turbolinks
