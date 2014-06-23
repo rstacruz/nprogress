@@ -9,6 +9,13 @@ Medium.
 Installation
 ------------
 
+Add [nprogress.js] and [nprogress.css] to your project.
+
+```html
+<script src='nprogress.js'></script>
+<link rel='stylesheet' href='nprogress.css'/>
+```
+
 NProgress is available via [bower] and [npm].
 
     $ bower install --save nprogress
@@ -17,8 +24,6 @@ NProgress is available via [bower] and [npm].
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
 [bower]: http://bower.io/search/?q=nprogress
 [npm]: https://www.npmjs.org/package/nprogress
-
-Add [nprogress.js] and [nprogress.css] to your project.
 
 Basic usage
 -----------
@@ -155,13 +160,24 @@ make your own!
 Resources
 ---------
 
- * [New UI Pattern: Website Loading
- Bars](http://www.usabilitypost.com/2013/08/19/new-ui-pattern-website-loading-bars/) (usabilitypost.com)
+ * [New UI Pattern: Website Loading Bars](http://www.usabilitypost.com/2013/08/19/new-ui-pattern-website-loading-bars/) (usabilitypost.com)
+
+Support
+-------
+
+__Bugs and requests__: submit them through the project's issues tracker.<br>
+[![Issues](http://img.shields.io/github/issues/rstacruz/nprogress.svg)]( https://github.com/rstacruz/nprogress/issues )
+
+__Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
+[![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-brightgreen.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
+
+__Chat__: join us at gitter.im.<br>
+[![Chat](http://img.shields.io/badge/gitter.im-rstacruz/nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
 
 Acknowledgements
 ----------------
 
-© 2013, Rico Sta. Cruz. Released under the [MIT License](License.md).
+© 2013, 2014, Rico Sta. Cruz. Released under the [MIT License](License.md).
 
 **NProgress** is authored and maintained by [Rico Sta. Cruz][rsc] with help from 
 its [contributors][c]
