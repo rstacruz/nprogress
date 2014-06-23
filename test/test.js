@@ -2,14 +2,20 @@
   if (typeof module === 'object') require('./setup');
   var w = this;
 
+  function extend(dest, src) {
+    for (var key in dest) {
+      if (dest.hasOwnProperty(key)) src[key] = dest[key];
+    }
+    return dest;
+  }
+
   testSuite('NProgress', function() {
-    var $, NProgress;
+    var NProgress;
 
     beforeEach(function() {
-      $ = w.jQuery || require('jquery');
       NProgress = w.NProgress || require('nprogress');
 
-      this.settings = $.extend({}, NProgress.settings);
+      this.settings = extend({}, NProgress.settings);
     });
 
     afterEach(function() {
