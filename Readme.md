@@ -169,10 +169,10 @@ __Bugs and requests__: submit them through the project's issues tracker.<br>
 [![Issues](http://img.shields.io/github/issues/rstacruz/nprogress.svg)]( https://github.com/rstacruz/nprogress/issues )
 
 __Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
-[![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-blue.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
+[![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-brightgreen.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
 
 __Chat__: join us at gitter.im.<br>
-[![Chat](http://img.shields.io/badge/gitter-rstacruz / nprogress-blue.svg)]( https://gitter.im/rstacruz/nprogress )
+[![Chat](http://img.shields.io/badge/gitter-rstacruz / nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
 
 Acknowledgements
 ----------------
