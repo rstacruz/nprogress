@@ -4,7 +4,6 @@ NProgress
 Slim progress bars for Ajax'y applications. Inspired by Google, YouTube, and
 Medium.
 
-[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
 
 Installation
 ------------
@@ -21,7 +20,6 @@ NProgress is available via [bower] and [npm].
     $ bower install --save nprogress
     $ npm install --save nprogress
 
-[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
 [bower]: http://bower.io/search/?q=nprogress
 [npm]: https://www.npmjs.org/package/nprogress
 
@@ -174,23 +172,24 @@ __Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
 __Chat__: join us at gitter.im.<br>
 [![Chat](http://img.shields.io/badge/gitter-rstacruz / nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
 
-Acknowledgements
-----------------
-
-**NProgress** © 2013, 2014, Rico Sta. Cruz. Released under the [MIT 
-License](License.md).
-
-Authored and maintained by [Rico Sta. Cruz][rsc] with help from
-[contributors][c].
-
- * [My website](http://ricostacruz.com) (ricostacruz.com)
- * [Github](http://github.com/rstacruz) (@rstacruz)
- * [Twitter](http://twitter.com/rstacruz) (@rstacruz)
-
-[default template]: https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
-[rsc]: http://ricostacruz.com
-[c]:   http://github.com/rstacruz/nprogress/contributors
+[default template]: 
+https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
 [nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
 
+Thanks
+------
+
+**NProgress** © 2013-2014, Rico Sta. Cruz. Released under the [MIT License].<br>
+Authored and maintained by Rico Sta. Cruz with help from [contributors].
+
+> [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
+> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
+> Twitter [@rstacruz](https://twitter.com/rstacruz)
+
+[MIT License]: http://mit-license.org/
+[contributors]: http://github.com/rstacruz/jsfuse/contributors
+
+[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
