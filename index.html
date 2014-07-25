@@ -49,6 +49,11 @@
         &mdash;
         completes the progress
       </p>
+      <p>
+        <button class='button play' id='config-style'></button>
+        <i>NProgress</i><b>.configure(<span><input id='config-text' type='text' value="{barHeight: '5px', barColor: '#801515'}"/>)</b>
+      </p>
+
     </div>
     <div class='actions'>
       <a href='https://github.com/rstacruz/nprogress' class='button primary big'>
@@ -77,8 +82,22 @@
     $("#b-40").click(function() { NProgress.set(0.4); });
     $("#b-inc").click(function() { NProgress.inc(); });
     $("#b-100").click(function() { NProgress.done(); });
+    $("#config-style").click(function() { 
+      var config_text = $('#config-text').val();
+      console.log(config_text);
+      try {
+        eval('var obj = ' + config_text);
+        if(typeof obj == 'object') {
+          console.log(obj);
+          NProgress.configure(obj);
+          NProgress.start();
+        }
+      } catch(e) {
+        alert('Config error: ' + e.message);
+      }   
+    });
   </script>
 
-  <script>var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="//hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
+  <script>var HN=[];HN.factory=function(e){return function(){HN.push([e].concat(Array.prototype.slice.call(arguments,0)))};},HN.on=HN.factory("on"),HN.once=HN.factory("once"),HN.off=HN.factory("off"),HN.emit=HN.factory("emit"),HN.load=function(){var e="hn-button.js";if(document.getElementById(e))return;var t=document.createElement("script");t.id=e,t.src="http://hn-button.herokuapp.com/hn-button.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n)},HN.load();</script>
 </body>
 </html>

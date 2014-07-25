@@ -20,6 +20,8 @@
     minimum: 0.08,
     easing: 'ease',
     positionUsing: '',
+    barHeight: '2px',
+    barColor: '#29d', 
     speed: 200,
     trickle: true,
     trickleRate: 0.02,
@@ -226,13 +228,19 @@
     progress.innerHTML = Settings.template;
 
     var bar      = progress.querySelector(Settings.barSelector),
+        peg      = progress.querySelector('.peg'),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
         parent   = document.querySelector(Settings.parent),
         spinner;
     
     css(bar, {
+      height: Settings.barHeight,
+      'background-color': Settings.barColor,
       transition: 'all 0 linear',
       transform: 'translate3d(' + perc + '%,0,0)'
+    });
+    css(peg, {
+      'box-shadow': '0 0 10px ' + Settings.barColor + ', 0 0 5px ' + Settings.barColor
     });
 
     if (!Settings.showSpinner) {
