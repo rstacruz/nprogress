@@ -150,7 +150,7 @@ Customization
 -------------
 
 Just edit `nprogress.css` to your liking. Tip: you probably only want to find
-and replace occurances of `#29d`.
+and replace occurrences of `#29d`.
 
 The included CSS file is pretty minimal... in fact, feel free to scrap it and
 make your own!
