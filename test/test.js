@@ -1,13 +1,17 @@
 (function() {
-  if (typeof module === 'object') require('./setup');
-  var w = this;
+  if (typeof process === 'object') {
+    require('mocha-jsdom')();
+  }
 
-  testSuite('NProgress', function() {
+  var root = this;
+  var assert = (root.chai || require('chai')).assert;
+
+  describe('NProgress', function() {
     var $, NProgress;
 
     beforeEach(function() {
-      $ = w.jQuery || require('jquery');
-      NProgress = w.NProgress || require('nprogress');
+      $ = root.jQuery || require('jquery');
+      NProgress = root.NProgress || require('../nprogress');
 
       this.settings = $.extend({}, NProgress.settings);
     });

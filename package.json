@@ -14,8 +14,10 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "~1.6.1",
+    "jquery": "^2.1.1",
+    "jsdom": "~0.6.5",
     "mocha": "~1.11.0",
-    "jsdom": "~0.6.5"
+    "mocha-jsdom": "^0.1.1"
   },
   "dependencies": {}
 }
