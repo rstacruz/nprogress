@@ -52,6 +52,10 @@ Ideas
  * Make a fancy loading bar even without Turbolinks/Pjax! Bind it to
  `$(document).ready` and `$(window).load`.
 
+ * [Binding to Angular's `$http` `request` and `response` methods][nprogress-angular].
+
+[nprogress-angular]: https://github.com/caarlos0/nprogress-rails/blob/master/app/assets/javascripts/nprogress-angular.js
+
 Advanced usage
 --------------
 
