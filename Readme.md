@@ -189,7 +189,7 @@ Authored and maintained by Rico Sta. Cruz with help from [contributors].
 > Twitter [@rstacruz](https://twitter.com/rstacruz)
 
 [MIT License]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/jsfuse/contributors
+[contributors]: http://github.com/rstacruz/nprogress/contributors
 
 [![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
