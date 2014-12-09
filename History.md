@@ -1,3 +1,7 @@
+## v0.2.0 - unreleased
+
+ * Remove jQuery dependency in component (#93, @slang800)
+
 ## v0.1.6 - June 25, 2014
 
  * Add support for specifying a different parent container. (#86, #14, #33, #39, @jonjaques)
