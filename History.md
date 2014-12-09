@@ -1,6 +1,8 @@
 ## v0.2.0 - unreleased
 
  * Remove jQuery dependency in component (#93, @slang800)
+ * Fix typo in Readme (#92, @FND)
+ * Fix typo in Readme (#90, @mdxs)
 
 ## v0.1.6 - June 25, 2014
 
