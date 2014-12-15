@@ -18,6 +18,7 @@
 
   var Settings = NProgress.settings = {
     minimum: 0.08,
+    maximum: 1,
     easing: 'ease',
     positionUsing: '',
     speed: 200,
@@ -112,6 +113,13 @@
   };
 
   /**
+   * Shorthand for maximum configuration. Must be greater than minimum.
+   */
+  NProgress.max = function(maximum) {
+    if (typeof maximum === 'number' && maximum > Settings.minimum) Settings.maximum = maximum;
+  };
+
+  /**
    * Shows the progress bar.
    * This is the same as setting the status to 0%, except that it doesn't go backwards.
    *
@@ -163,10 +171,10 @@
       return NProgress.start();
     } else {
       if (typeof amount !== 'number') {
-        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+        amount = (1 - n) * clamp(Math.random() * n, 0.1, Settings.maximum - 0.05);
       }
 
-      n = clamp(n + amount, 0, 0.994);
+      n = clamp(n + amount, 0, Settings.maximum - 0.006);
       return NProgress.set(n);
     }
   };
