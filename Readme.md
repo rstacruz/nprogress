@@ -15,13 +15,14 @@ Add [nprogress.js] and [nprogress.css] to your project.
 <link rel='stylesheet' href='nprogress.css'/>
 ```
 
-NProgress is available via [bower] and [npm].
+NProgress is available via [bower] and [npm] and [spm].
 
     $ bower install --save nprogress
     $ npm install --save nprogress
 
 [bower]: http://bower.io/search/?q=nprogress
 [npm]: https://www.npmjs.org/package/nprogress
+[spm]: http://spmjs.io/package/nprogress
 
 Basic usage
 -----------
@@ -193,3 +194,4 @@ Authored and maintained by Rico Sta. Cruz with help from [contributors].
 
 [![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
+[![spm package](http://spmjs.io/badge/nprogress)](http://spmjs.io/package/nprogress)
