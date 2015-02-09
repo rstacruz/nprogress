@@ -72,3 +72,5 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Hide spinner when ie678 */
+#nprogress .spinner{display:none\9;}
