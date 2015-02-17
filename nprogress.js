@@ -53,6 +53,11 @@
    */
 
   NProgress.status = null;
+  
+  /**
+   * Queue worker
+   */
+  NProgress.queueWorker = 0;
 
   /**
    * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
@@ -81,23 +86,37 @@
       // Add transition
       css(bar, barPositionCSS(n, speed, ease));
 
+      // Fade in
+      css(progress, { 
+        transition: 'none', 
+        opacity: 1 
+      });
+        
       if (n === 1) {
-        // Fade out
-        css(progress, { 
-          transition: 'none', 
-          opacity: 1 
-        });
         progress.offsetWidth; /* Repaint */
-
+        NProgress.queueWorker += 2;
+        
         setTimeout(function() {
-          css(progress, { 
-            transition: 'all ' + speed + 'ms linear', 
-            opacity: 0 
-          });
-          setTimeout(function() {
-            NProgress.remove();
-            next();
-          }, speed);
+          if (NProgress.queueWorker == 2) {
+            NProgress.queueWorker -= 1;
+            
+            // Fade out
+            css(progress, { 
+              transition: 'all ' + speed + 'ms linear', 
+              opacity: 0 
+            });
+          
+            setTimeout(function() {
+              NProgress.queueWorker -= 1;
+              
+              if (NProgress.queueWorker == 0) {
+                NProgress.remove();
+                next();
+              }
+            }, speed);
+          } else {
+            NProgress.queueWorker -= 2;
+          }
         }, speed);
       } else {
         setTimeout(next, speed);
