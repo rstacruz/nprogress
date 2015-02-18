@@ -97,7 +97,7 @@
         NProgress.queueWorker += 2;
         
         setTimeout(function() {
-          if (NProgress.queueWorker == 2) {
+          if (NProgress.queueWorker == 2 && ! NProgress.isStarted()) {
             NProgress.queueWorker -= 1;
             
             // Fade out
@@ -109,7 +109,7 @@
             setTimeout(function() {
               NProgress.queueWorker -= 1;
               
-              if (NProgress.queueWorker == 0) {
+              if (NProgress.queueWorker == 0 && ! NProgress.isStarted()) {
                 NProgress.remove();
                 next();
               }
