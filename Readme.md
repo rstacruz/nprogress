@@ -110,12 +110,12 @@ NProgress.configure({
 });
 ~~~
 
-#### `ease` and `speed`
-Adjust animation settings using *ease* (a CSS easing string)
+#### `easing` and `speed`
+Adjust animation settings using *easing* (a CSS easing string)
 and *speed* (in ms). (default: `ease` and `200`)
 
 ~~~ js
-NProgress.configure({ ease: 'ease', speed: 500 });
+NProgress.configure({ easing: 'ease', speed: 500 });
 ~~~
 
 #### `trickle`
