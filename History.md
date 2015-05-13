@@ -1,8 +1,10 @@
 ## v0.2.0 - unreleased
 
- * Remove jQuery dependency in component (#93, @slang800)
- * Fix typo in Readme (#92, @FND)
- * Fix typo in Readme (#90, @mdxs)
+ * #93 - Remove jQuery dependency in component (@slang800)
+ * #120 - Fix the Readme showing a wrong example for `ease` (@teeceepee)
+ * #92 - Fix typo in Readme (@FND)
+ * #90 - Fix typo in Readme (@mdxs)
+ * #119 - Fix typo in Readme (@infertux)
 
 ## v0.1.6 - June 25, 2014
 
