@@ -1,4 +1,4 @@
-## v0.2.0 - unreleased
+## [v0.2.0] - May 13, 2015
 
  * [#93] - Remove jQuery dependency in component ([@slang800])
  * [#120] - Fix the Readme showing a wrong example for `ease` ([@teeceepee])
@@ -107,3 +107,4 @@ Initial release.
 [v0.1.2]: https://github.com/rstacruz/nprogress/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/rstacruz/nprogress/compare/v0.1.0...v0.1.1
 [#53]: https://github.com/rstacruz/nprogress/issues/53
+[v0.2.0]: https://github.com/rstacruz/nprogress/compare/v0.1.6...v0.2.0
