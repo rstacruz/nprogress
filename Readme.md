@@ -119,7 +119,7 @@ NProgress.configure({ easing: 'ease', speed: 500 });
 ~~~
 
 #### `trickle`
-Turn of the automatic incrementing behavior by setting this to `false`. (default: `true`)
+Turn off the automatic incrementing behavior by setting this to `false`. (default: `true`)
 
 ~~~ js
 NProgress.configure({ trickle: false });
