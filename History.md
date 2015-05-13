@@ -108,3 +108,4 @@ Initial release.
 [v0.1.1]: https://github.com/rstacruz/nprogress/compare/v0.1.0...v0.1.1
 [#53]: https://github.com/rstacruz/nprogress/issues/53
 [v0.2.0]: https://github.com/rstacruz/nprogress/compare/v0.1.6...v0.2.0
+[@drodil]: https://github.com/drodil
