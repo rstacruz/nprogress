@@ -2,9 +2,13 @@
 
  * [#93] - Remove jQuery dependency in component ([@slang800])
  * [#120] - Fix the Readme showing a wrong example for `ease` ([@teeceepee])
+
+Minor changes:
+
  * [#92] - Fix typo in Readme ([@FND])
  * [#90] - Fix typo in Readme ([@mdxs])
  * [#119] - Fix typo in Readme ([@infertux])
+ * [#53] - Use `===` instead of `==` ([@drodil])
 
 ## [v0.1.6] - June 25, 2014
 
@@ -102,3 +106,4 @@ Initial release.
 [v0.1.3]: https://github.com/rstacruz/nprogress/compare/v0.1.2...v0.1.3
 [v0.1.2]: https://github.com/rstacruz/nprogress/compare/v0.1.1...v0.1.2
 [v0.1.1]: https://github.com/rstacruz/nprogress/compare/v0.1.0...v0.1.1
+[#53]: https://github.com/rstacruz/nprogress/issues/53
