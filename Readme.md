@@ -34,14 +34,22 @@ NProgress.start();
 NProgress.done();
 ~~~
 
-Using [Turbolinks] or similar? Ensure you're using Turbolinks 1.3.0+, and use 
-this: (explained 
-    [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
+### Turbolinks
+Ensure you're using Turbolinks 1.3.0+, and use 
+this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
 
 ~~~ js
 $(document).on('page:fetch',   function() { NProgress.start(); });
 $(document).on('page:change',  function() { NProgress.done(); });
 $(document).on('page:restore', function() { NProgress.remove(); });
+~~~
+
+### Pjax
+Try this: (explained [here](https://github.com/rstacruz/nprogress/issues/22#issuecomment-36540472))
+
+~~~ js
+$(document).on('pjax:start', function() { NProgress.start(); });
+$(document).on('pjax:end',   function() { NProgress.done();  });
 ~~~
 
 Ideas
