@@ -25,6 +25,7 @@
     trickleRate: 0.02,
     trickleSpeed: 800,
     showSpinner: true,
+    showBar: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
@@ -79,7 +80,9 @@
       if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
 
       // Add transition
+      if (Settings.showBar){
       css(bar, barPositionCSS(n, speed, ease));
+      }
 
       if (n === 1) {
         // Fade out
@@ -238,6 +241,11 @@
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
+    }
+    
+    if (!Settings.showBar) {
+      bar = progress.querySelector(Settings.barSelector);
+      bar && removeElement(bar);
     }
 
     if (parent != document.body) {
