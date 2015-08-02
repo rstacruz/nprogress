@@ -3,7 +3,7 @@
   pointer-events: none;
 }
 
-#nprogress .bar {
+#nprogress .nprogress-bar {
   background: #29d;
 
   position: fixed;
@@ -59,7 +59,7 @@
 }
 
 .nprogress-custom-parent #nprogress .spinner,
-.nprogress-custom-parent #nprogress .bar {
+.nprogress-custom-parent #nprogress .nprogress-bar {
   position: absolute;
 }
 
