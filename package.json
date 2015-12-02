@@ -8,7 +8,8 @@
     "url": "https://github.com/rstacruz/nprogress.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "prepublish": "uglifyjs --compress --mangle -o nprogress.min.js -- nprogress.js"
   },
   "main": "nprogress.js",
   "license": "MIT",
@@ -17,7 +18,8 @@
     "jquery": "^2.1.1",
     "jsdom": "^5.4.3",
     "mocha": "^2.2.4",
-    "mocha-jsdom": "^0.3.0"
+    "mocha-jsdom": "^0.3.0",
+    "uglify-js": "2.6.1"
   },
   "dependencies": {},
   "jspm": {
