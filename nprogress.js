@@ -18,12 +18,11 @@
 
   var Settings = NProgress.settings = {
     minimum: 0.08,
-    easing: 'ease',
+    easing: 'linear',
     positionUsing: '',
-    speed: 200,
+    speed: 350,
     trickle: true,
-    trickleRate: 0.02,
-    trickleSpeed: 800,
+    trickleSpeed: 250,
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
@@ -161,9 +160,26 @@
 
     if (!n) {
       return NProgress.start();
+    } else if(n > 1) {
+      return;
     } else {
       if (typeof amount !== 'number') {
-        amount = (1 - n) * clamp(Math.random() * n, 0.1, 0.95);
+        if (n >= 0 && n < 0.25) {
+          // Start out between 3 - 6% increments
+          amount = (Math.random() * (5 - 3 + 1) + 3) / 100;
+        } else if (n >= 0.25 && n < 0.65) {
+          // increment between 0 - 3%
+          amount = (Math.random() * 3) / 100;
+        } else if (n >= 0.65 && n < 0.9) {
+          // increment between 0 - 2%
+          amount = (Math.random() * 2) / 100;
+        } else if (n >= 0.9 && n < 0.99) {
+          // finally, increment it .5 %
+          amount = 0.005;
+        } else {
+          // after 99%, don't increment:
+          amount = 0;
+        }
       }
 
       n = clamp(n + amount, 0, 0.994);
@@ -172,7 +188,7 @@
   };
 
   NProgress.trickle = function() {
-    return NProgress.inc(Math.random() * Settings.trickleRate);
+    return NProgress.inc();
   };
 
   /**
