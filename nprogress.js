@@ -24,6 +24,8 @@
     trickle: true,
     trickleSpeed: 250,
     showSpinner: true,
+	removeFromDOM: true,
+	forceRedraw: false,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
@@ -71,7 +73,11 @@
         speed    = Settings.speed,
         ease     = Settings.easing;
 
-    progress.offsetWidth; /* Repaint */
+		
+		if(Settings.forceRedraw)
+		{
+			progress.offsetWidth; /* Repaint */
+		}
 
     queue(function(next) {
       // Set positionUsing if it hasn't already been set
@@ -86,7 +92,11 @@
           transition: 'none',
           opacity: 1
         });
-        progress.offsetWidth; /* Repaint */
+			
+		if(Settings.forceRedraw)
+		{
+			progress.offsetWidth; /* Repaint */
+		}
 
         setTimeout(function() {
           css(progress, {
@@ -118,6 +128,15 @@
    *
    */
   NProgress.start = function() {
+  
+  
+	if(NProgress.isRendered() && !Settings.removeFromDOM)
+	{
+		var progress=  document.getElementById('nprogress');
+		//Marius - set to visible after hiding
+		progress.style.visibility = "visible";
+	}
+
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
@@ -269,10 +288,19 @@
    */
 
   NProgress.remove = function() {
-    removeClass(document.documentElement, 'nprogress-busy');
-    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
-    var progress = document.getElementById('nprogress');
-    progress && removeElement(progress);
+	if(!Settings.removeFromDOM)
+	{
+		//Marius change - hide rather than remove from DOM, as this is super expensive in IE
+		var progress = document.getElementById('nprogress');
+		progress.style.visibility = "hidden";
+	}
+	else
+	{
+	    removeClass(document.documentElement, 'nprogress-busy');
+		removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
+		var progress = document.getElementById('nprogress');
+		progress && removeElement(progress);
+	}
   };
 
   /**
