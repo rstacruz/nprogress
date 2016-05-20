@@ -24,7 +24,7 @@
     trickle: true,
     trickleSpeed: 250,
     showSpinner: true,
-	removeFromDOM: true,
+	removeFromDOM: false,
 	forceRedraw: false,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
