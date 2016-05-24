@@ -135,6 +135,7 @@
 		var progress=  document.getElementById('nprogress');
 		//Marius - set to visible after hiding
 		progress.style.visibility = "visible";
+		NProgress.status = null;
 	}
 
     if (!NProgress.status) NProgress.set(0);
