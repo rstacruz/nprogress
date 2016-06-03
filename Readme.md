@@ -155,6 +155,13 @@ specify this to change the parent container. (default: `body`)
 NProgress.configure({ parent: '#container' });
 ~~~
 
+#### `rtl`
+Change the progress direction to right-to-left. (default: `false`)
+
+~~~ js
+NProgress.configure({ rtl: true });
+~~~
+
 Customization
 -------------
 

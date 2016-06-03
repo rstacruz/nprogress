@@ -24,6 +24,7 @@
     trickle: true,
     trickleSpeed: 250,
     showSpinner: true,
+    rtl: false,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
@@ -242,7 +243,7 @@
     progress.innerHTML = Settings.template;
 
     var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        perc     = fromStart ? toBarPerc(0) : toBarPerc(NProgress.status || 0),
         parent   = document.querySelector(Settings.parent),
         spinner;
 
@@ -325,6 +326,7 @@
    */
 
   function toBarPerc(n) {
+    if (NProgress.settings.rtl) return (1 - n) * 100;
     return (-1 + n) * 100;
   }
 
