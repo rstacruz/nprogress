@@ -35,7 +35,7 @@ NProgress.done();
 ~~~
 
 ### Turbolinks
-Ensure you're using Turbolinks 1.3.0+, and use 
+Ensure you're using Turbolinks 1.3.0+, and use
 this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
 
 ~~~ js
@@ -134,7 +134,7 @@ NProgress.configure({ trickle: false });
 ~~~
 
 #### `trickleRate` and `trickleSpeed`
-You can adjust the *trickleRate* (how much to increase per trickle) and 
+You can adjust the *trickleRate* (how much to increase per trickle) and
 *trickleSpeed* (how often to trickle, in ms).
 
 ~~~ js
@@ -153,6 +153,14 @@ specify this to change the parent container. (default: `body`)
 
 ~~~ js
 NProgress.configure({ parent: '#container' });
+~~~
+
+#### `direction` : leftToRightIncreased, leftToRightReduced, rightToLeftIncreased, rightToLeftReduced.
+change the direction of progress bar's animation.(default: `leftToRightIncreased`)
+
+
+~~~ js
+NProgress.configure({ direction: 'leftToRightReduced' });
 ~~~
 
 Customization
@@ -181,7 +189,7 @@ __Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
 __Chat__: join us at gitter.im.<br>
 [![Chat](http://img.shields.io/badge/gitter-rstacruz / nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
 
-[default template]: 
+[default template]:
 https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
@@ -200,6 +208,6 @@ Authored and maintained by Rico Sta. Cruz with help from [contributors].
 [MIT License]: http://mit-license.org/
 [contributors]: http://github.com/rstacruz/nprogress/contributors
 
-[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress)
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
 [![spm package](http://spmjs.io/badge/nprogress)](http://spmjs.io/package/nprogress)
