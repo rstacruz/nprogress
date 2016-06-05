@@ -27,6 +27,7 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
+    direction: 'leftToRightIncreased',//leftToRightIncreased(default),leftToRightReduced,rightToLeftIncreased,rightToLeftReduced.
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
 
@@ -240,9 +241,10 @@
     var progress = document.createElement('div');
     progress.id = 'nprogress';
     progress.innerHTML = Settings.template;
+    progress.className = {'leftToRightIncreased':'clockwise','leftToRightReduced':'anti-clockwise','rightToLeftIncreased':'anti-clockwise','rightToLeftReduced':'clockwise'}[Settings.direction];
 
     var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        perc     = fromStart ? {'leftToRightIncreased':'-100','leftToRightReduced':'0','rightToLeftIncreased':'100','rightToLeftReduced':'0'}[Settings.direction] : toBarPerc(NProgress.status || 0),
         parent   = document.querySelector(Settings.parent),
         spinner;
 
@@ -325,7 +327,7 @@
    */
 
   function toBarPerc(n) {
-    return (-1 + n) * 100;
+    return ({'leftToRightIncreased':-1+n,'leftToRightReduced':-n,'rightToLeftIncreased':1-n,'rightToLeftReduced':n}[Settings.direction]) * 100;
   }
 
 

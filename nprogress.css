@@ -53,6 +53,12 @@
           animation: nprogress-spinner 400ms linear infinite;
 }
 
+#nprogress.anti-clockwise .spinner-icon {
+  -webkit-animation-direction: reverse;
+          animation-direction: reverse;
+}
+
+
 .nprogress-custom-parent {
   overflow: hidden;
   position: relative;
