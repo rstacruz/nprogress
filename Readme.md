@@ -137,7 +137,7 @@ NProgress.configure({ trickle: false });
 Adjust how often to trickle/increment, in ms.
 
 ~~~ js
-NProgress.configure({ trickleSpeed: 800 });
+NProgress.configure({ trickleSpeed: 200 });
 ~~~
 
 #### `showSpinner`
