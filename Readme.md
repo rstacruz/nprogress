@@ -147,12 +147,11 @@ Turn off the automatic incrementing behavior by setting this to `false`. (defaul
 NProgress.configure({ trickle: false });
 ~~~
 
-#### `trickleRate` and `trickleSpeed`
-You can adjust the *trickleRate* (how much to increase per trickle) and 
-*trickleSpeed* (how often to trickle, in ms).
+#### `trickleSpeed`
+How often to trickle, in ms.
 
 ~~~ js
-NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
+NProgress.configure({ trickleSpeed: 800 });
 ~~~
 
 #### `showSpinner`
