@@ -34,7 +34,21 @@ NProgress.start();
 NProgress.done();
 ~~~
 
-### Turbolinks
+### Turbolinks (version 5+)
+Ensure you're using Turbolinks 5+, and use 
+this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-239107109))
+
+~~~ js
+$(document).on('turbolinks:click', function() {
+  NProgress.start();
+});
+$(document).on('turbolinks:render', function() {
+  NProgress.done();
+  NProgress.remove();
+});
+~~~
+
+### Turbolinks (version 3 and below)
 Ensure you're using Turbolinks 1.3.0+, and use 
 this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
 
