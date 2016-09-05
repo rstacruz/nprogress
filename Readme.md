@@ -169,7 +169,7 @@ specify this to change the parent container. (default: `body`)
 NProgress.configure({ parent: '#container' });
 ~~~
 
-### `topPosition`
+#### `topPosition`
 Configure this to change the top position of the bar. (default: `0`)
 
 ~~~ js
