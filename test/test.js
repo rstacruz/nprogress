@@ -82,11 +82,15 @@
         NProgress.start();
         assert.isTrue($("#nprogress").parent().is(selectorParent));
         assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
-
-        var elementParent = $('<div>').appendTo('body');
-        NProgress.configure({parent: elementParent.get()});
-        assert.isTrue($("#nprogress").parent().is(elementParent));
       });
+
+      it('can specify an HTMLElement as a parent', function() {
+        var elementParent = $('<div id="bar">Hello</div>').appendTo('body');
+        NProgress.configure({parent: '#bar' });
+        NProgress.start();
+        assert.isTrue($("#nprogress").parent().is(elementParent));
+        assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
+      })
     });
 
     // ----
