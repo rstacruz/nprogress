@@ -112,11 +112,21 @@
     // ----
 
     describe('.remove()', function() {
-      it('should be removed from the parent', function() {
+      it('should be removed from the parent (selector)', function() {
         NProgress.set(1);
         NProgress.remove();
 
         var parent = $(NProgress.settings.parent);
+        assert.isFalse(parent.hasClass('nprogress-custom-parent'));
+        assert.equal(parent.find('#nprogress').length, 0);
+      });
+
+      it('should be removed from the parent (element)', function() {
+        var parent = $('<div>').appendTo('body');
+        NProgress.configure({ parent: parent });
+        NProgress.set(1);
+        NProgress.remove();
+
         assert.isFalse(parent.hasClass('nprogress-custom-parent'));
         assert.equal(parent.find('#nprogress').length, 0);
       });
