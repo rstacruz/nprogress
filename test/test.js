@@ -85,8 +85,8 @@
       });
 
       it('can specify an HTMLElement as a parent', function() {
-        var elementParent = $('<div id="bar">Hello</div>').appendTo('body');
-        NProgress.configure({parent: '#bar' });
+        var elementParent = $('<div>Hello</div>').appendTo('body');
+        NProgress.configure({parent: elementParent[0] });
         NProgress.start();
         assert.isTrue($("#nprogress").parent().is(elementParent));
         assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
@@ -123,7 +123,7 @@
 
       it('should be removed from the parent (element)', function() {
         var parent = $('<div>').appendTo('body');
-        NProgress.configure({ parent: parent });
+        NProgress.configure({ parent: parent[0] });
         NProgress.set(1);
         NProgress.remove();
 
