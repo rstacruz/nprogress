@@ -163,10 +163,11 @@ NProgress.configure({ showSpinner: false });
 ~~~
 
 #### `parent`
-specify this to change the parent container. (default: `body`)
+Specify this to change the parent container. Accepts a selector or an `Element`. (default: `body`)
 
 ~~~ js
 NProgress.configure({ parent: '#container' });
+NProgress.configure({ parent: document.querySelector('#container') });
 ~~~
 
 Customization
