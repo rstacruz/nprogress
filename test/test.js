@@ -77,11 +77,15 @@
       });
 
       it('must be attached to specified parent', function() {
-        var test = $('<div>', {id: 'test'}).appendTo('body');
+        var selectorParent = $('<div>', {id: 'test'}).appendTo('body');
         NProgress.configure({parent: '#test'});
         NProgress.start();
-        assert.isTrue($("#nprogress").parent().is(test));
+        assert.isTrue($("#nprogress").parent().is(selectorParent));
         assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
+
+        var elementParent = $('<div>').appendTo('body');
+        NProgress.configure({parent: elementParent.get()});
+        assert.isTrue($("#nprogress").parent().is(elementParent));
       });
     });
 
