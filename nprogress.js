@@ -243,7 +243,7 @@
 
     var bar      = progress.querySelector(Settings.barSelector),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
+        parent   = getElement(Settings.parent),
         spinner;
 
     css(bar, {
@@ -486,6 +486,15 @@
   function removeElement(element) {
     element && element.parentNode && element.parentNode.removeChild(element);
   }
+
+  /**
+   * (Internal) Finds an HTMLElement by selector, or returns the
+   * provided HTMLElement if the input is in fact one.
+   **/
+
+   function getElement(selectorOrElement) {
+     return selectorOrElement instanceof Element ? selectorOrElement : document.querySelector(selectorOrElement);
+   }
 
   return NProgress;
 });
