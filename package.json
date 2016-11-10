@@ -11,6 +11,7 @@
     "test": "mocha"
   },
   "main": "nprogress.js",
+  "style": "nprogress.css",
   "license": "MIT",
   "devDependencies": {
     "chai": "~1.6.1",
