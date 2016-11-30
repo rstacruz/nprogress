@@ -256,6 +256,11 @@
       spinner && removeElement(spinner);
     }
 
+    // fallback to body, if DOM element hasn't been added in DOM yet
+    if (!document.querySelector(Settings.parent)) {
+      parent = document.body;
+    }
+
     if (parent != document.body) {
       addClass(parent, 'nprogress-custom-parent');
     }
