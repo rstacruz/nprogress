@@ -20,9 +20,9 @@
     minimum: 0.08,
     easing: 'linear',
     positionUsing: '',
-    speed: 350,
+    speed: 200,
     trickle: true,
-    trickleSpeed: 250,
+    trickleSpeed: 200,
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
@@ -164,22 +164,11 @@
       return;
     } else {
       if (typeof amount !== 'number') {
-        if (n >= 0 && n < 0.25) {
-          // Start out between 3 - 6% increments
-          amount = (Math.random() * (5 - 3 + 1) + 3) / 100;
-        } else if (n >= 0.25 && n < 0.65) {
-          // increment between 0 - 3%
-          amount = (Math.random() * 3) / 100;
-        } else if (n >= 0.65 && n < 0.9) {
-          // increment between 0 - 2%
-          amount = (Math.random() * 2) / 100;
-        } else if (n >= 0.9 && n < 0.99) {
-          // finally, increment it .5 %
-          amount = 0.005;
-        } else {
-          // after 99%, don't increment:
-          amount = 0;
-        }
+        if (n >= 0 && n < 0.2) { amount = 0.1; }
+        else if (n >= 0.2 && n < 0.5) { amount = 0.04; }
+        else if (n >= 0.5 && n < 0.8) { amount = 0.02; }
+        else if (n >= 0.8 && n < 0.99) { amount = 0.005; }
+        else { amount = 0; }
       }
 
       n = clamp(n + amount, 0, 0.994);
