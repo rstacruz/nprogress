@@ -39,7 +39,7 @@ Ensure you're using Turbolinks 5+, and use
 this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-239107109))
 
 ~~~ js
-$(document).on('turbolinks:click', function() {
+$(document).on('turbolinks:visit', function() {
   NProgress.start();
 });
 $(document).on('turbolinks:render', function() {
