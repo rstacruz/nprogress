@@ -34,14 +34,36 @@ NProgress.start();
 NProgress.done();
 ~~~
 
-Using [Turbolinks] or similar? Ensure you're using Turbolinks 1.3.0+, and use 
-this: (explained 
-    [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
+### Turbolinks (version 5+)
+Ensure you're using Turbolinks 5+, and use 
+this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-239107109))
+
+~~~ js
+$(document).on('turbolinks:click', function() {
+  NProgress.start();
+});
+$(document).on('turbolinks:render', function() {
+  NProgress.done();
+  NProgress.remove();
+});
+~~~
+
+### Turbolinks (version 3 and below)
+Ensure you're using Turbolinks 1.3.0+, and use 
+this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
 
 ~~~ js
 $(document).on('page:fetch',   function() { NProgress.start(); });
 $(document).on('page:change',  function() { NProgress.done(); });
 $(document).on('page:restore', function() { NProgress.remove(); });
+~~~
+
+### Pjax
+Try this: (explained [here](https://github.com/rstacruz/nprogress/issues/22#issuecomment-36540472))
+
+~~~ js
+$(document).on('pjax:start', function() { NProgress.start(); });
+$(document).on('pjax:end',   function() { NProgress.done();  });
 ~~~
 
 Ideas
@@ -125,12 +147,11 @@ Turn off the automatic incrementing behavior by setting this to `false`. (defaul
 NProgress.configure({ trickle: false });
 ~~~
 
-#### `trickleRate` and `trickleSpeed`
-You can adjust the *trickleRate* (how much to increase per trickle) and 
-*trickleSpeed* (how often to trickle, in ms).
+#### `trickleSpeed`
+Adjust how often to trickle/increment, in ms.
 
 ~~~ js
-NProgress.configure({ trickleRate: 0.02, trickleSpeed: 800 });
+NProgress.configure({ trickleSpeed: 200 });
 ~~~
 
 #### `showSpinner`

@@ -1,5 +1,7 @@
 ## [v0.2.0] - May 13, 2015
 
+This is a maintenance release with cleanups. No functionality changes were introduced.
+
  * [#93] - Remove jQuery dependency in component ([@slang800])
  * [#120] - Fix the Readme showing a wrong example for `ease` ([@teeceepee])
 
@@ -9,6 +11,7 @@ Minor changes:
  * [#90] - Fix typo in Readme ([@mdxs])
  * [#119] - Fix typo in Readme ([@infertux])
  * [#53] - Use `===` instead of `==` ([@drodil])
+ * Update test dependencies
 
 ## [v0.1.6] - June 25, 2014
 
@@ -108,3 +111,4 @@ Initial release.
 [v0.1.1]: https://github.com/rstacruz/nprogress/compare/v0.1.0...v0.1.1
 [#53]: https://github.com/rstacruz/nprogress/issues/53
 [v0.2.0]: https://github.com/rstacruz/nprogress/compare/v0.1.6...v0.2.0
+[@drodil]: https://github.com/drodil
