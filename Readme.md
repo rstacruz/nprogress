@@ -121,6 +121,13 @@ Changes the minimum percentage used upon starting. (default: `0.08`)
 NProgress.configure({ minimum: 0.1 });
 ~~~
 
+#### `maximum`
+Changes the maximum percentage the bar will increment to. (default: `0.994`)
+
+~~~ js
+NProgress.configure({ minimum: 0.1 });
+~~~
+
 #### `template`
 You can change the markup using `template`. To keep the progress
 bar working, keep an element with `role='bar'` in there. See the [default template]

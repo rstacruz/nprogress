@@ -18,6 +18,7 @@
 
   var Settings = NProgress.settings = {
     minimum: 0.08,
+    maximum: 0.994,
     easing: 'linear',
     positionUsing: '',
     speed: 200,
@@ -171,7 +172,7 @@
         else { amount = 0; }
       }
 
-      n = clamp(n + amount, 0, 0.994);
+      n = clamp(n + amount, 0, Settings.maximum);
       return NProgress.set(n);
     }
   };
