@@ -7,11 +7,12 @@
   var assert = (root.chai || require('chai')).assert;
 
   describe('NProgress', function() {
-    var $, NProgress;
+    var $, NProgress, NProgressModule;
 
     beforeEach(function() {
       $ = root.jQuery || require('jquery');
-      NProgress = root.NProgress || require('../nprogress');
+      NProgressModule = root.NProgress || require('../nprogress');
+      NProgress = NProgressModule();
 
       this.settings = $.extend({}, NProgress.settings);
     });
@@ -26,13 +27,12 @@
     });
 
     describe('.set()', function() {
-      it('.set(0) must render', function(done) {
+      it('.set(0) must render', function() {
         NProgress.set(0);
         assert.equal($("#nprogress").length, 1);
         assert.equal($("#nprogress .bar").length, 1);
         assert.equal($("#nprogress .peg").length, 1);
         assert.equal($("#nprogress .spinner").length, 1);
-        done();
       });
 
       it('.set(1) should appear and disappear', function(done) {
@@ -79,25 +79,27 @@
       it('must be attached to specified parent', function() {
         var test = $('<div>', {id: 'test'}).appendTo('body');
         NProgress.configure({parent: '#test'});
+
         NProgress.start();
+
         assert.isTrue($("#nprogress").parent().is(test));
         assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
+
+        test.remove();
       });
     });
 
     // ----
 
     describe('.done()', function() {
-      it('must not render without start', function(done) {
+      it('must not render without start', function() {
         NProgress.done();
         assert.equal($("#nprogress").length, 0);
-        done();
       });
 
-      it('.done(true) must render', function(done) {
+      it('.done(true) must render', function() {
         NProgress.done(true);
         assert.equal($("#nprogress").length, 1);
-        done();
       });
     });
 
@@ -170,6 +172,73 @@
         assert.equal($("#nprogress .spinner").length, 0);
       });
     });
+
+
+    describe('Tests having multi instance with different parent', function() {
+        var parent1;
+        var parent2;
+
+        beforeEach(function() {
+            parent1 = $('<div>', {id: 'parent1'}).appendTo('body');
+            parent2 = $('<div>', {id: 'parent2'}).appendTo('body');
+        });
+
+
+        afterEach(function() {
+            parent1.remove();
+            parent2.remove();
+        });
+
+
+        it('should render 2 progress bar', function() {
+            var nprogress1 = NProgressModule();
+            var nprogress2 = NProgressModule();
+            nprogress1.configure({parent: '#parent1'});
+            nprogress2.configure({parent: '#parent2'});
+
+            nprogress1.set(0);
+            nprogress2.set(0);
+
+            assert.equal($("#parent1 #nprogress").length, 1);
+            assert.equal($("#parent2 #nprogress").length, 1);
+        });
+
+
+        it('should not affect each other after multi set', function(done) {
+            var nprogress1 = NProgressModule();
+            var nprogress2 = NProgressModule();
+            nprogress1.configure({parent: '#parent1'});
+            nprogress2.configure({parent: '#parent2', speed: 10});
+
+            nprogress1.set(0);
+            nprogress2.set(0).set(1);
+
+            assert.equal($("#parent1 #nprogress").length, 1);
+            assert.equal($("#parent2 #nprogress").length, 1);
+
+            setTimeout(function() {
+              assert.equal($("#parent2 #nprogress").length, 0);
+              done();
+            }, 70);
+        });
+
+
+        it('should not affect each other when removing one', function() {
+            var nprogress1 = NProgressModule();
+            var nprogress2 = NProgressModule();
+            nprogress1.configure({parent: '#parent1'});
+            nprogress2.configure({parent: '#parent2', speed: 10});
+
+            nprogress1.set(0);
+            nprogress2.set(0);
+
+            assert.equal($("#parent1 #nprogress").length, 1);
+            assert.equal($("#parent2 #nprogress").length, 1);
+
+            nprogress1.remove();
+            assert.equal($("#parent1 #nprogress").length, 0);
+        });
+    })
   });
 
 })();
