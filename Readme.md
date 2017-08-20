@@ -214,5 +214,4 @@ Authored and maintained by Rico Sta. Cruz with help from [contributors].
 [contributors]: http://github.com/rstacruz/nprogress/contributors
 
 [![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
-[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
-[![spm package](http://spmjs.io/badge/nprogress)](http://spmjs.io/package/nprogress)
+[![npm version](https://img.shields.io/npm/v/nprogress.svg)](https://npmjs.org/package/nprogress "View this project on npm")
