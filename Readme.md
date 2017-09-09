@@ -15,14 +15,12 @@ Add [nprogress.js] and [nprogress.css] to your project.
 <link rel='stylesheet' href='nprogress.css'/>
 ```
 
-NProgress is available via [bower] and [npm] and [spm].
+NProgress is available via [bower] and [npm].
 
-    $ bower install --save nprogress
     $ npm install --save nprogress
 
 [bower]: http://bower.io/search/?q=nprogress
 [npm]: https://www.npmjs.org/package/nprogress
-[spm]: http://spmjs.io/package/nprogress
 
 Basic usage
 -----------
