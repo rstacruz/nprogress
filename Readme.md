@@ -1,15 +1,19 @@
 NProgress
 =========
 
+[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
+
 > Minimalist progress bar
 
 Slim progress bars for Ajax'y applications. Inspired by Google, YouTube, and
 Medium.
 
-[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
-[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
+*****
 
 <a target='_blank' rel='nofollow' href='https://app.codesponsor.io/link/mpgUepSsuAMdpQbEST7TWH6T/rstacruz/nprogress'>  <img alt='Sponsor' width='888' height='68' src='https://app.codesponsor.io/embed/mpgUepSsuAMdpQbEST7TWH6T/rstacruz/nprogress.svg' /></a>
+
+*****
 
 Installation
 ------------
