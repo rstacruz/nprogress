@@ -232,8 +232,11 @@
 
     var bar      = progress.querySelector(Settings.barSelector),
         perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
         spinner;
+
+    var parent = Settings.parent.nodeType === 1
+      ? Settings.parent
+      : document.querySelector(Settings.parent);
 
     css(bar, {
       transition: 'all 0 linear',
