@@ -41,7 +41,16 @@
         assert.equal($("#nprogress").length, 1);
 
         setTimeout(function() {
+		
+		if(NProgress.settings.removeFromDOM)
+		{
           assert.equal($("#nprogress").length, 0);
+		}
+		else
+		{
+			$("#nprogress").visibility = "hidden";
+		}
+
           done();
         }, 70);
       });
@@ -109,8 +118,17 @@
         NProgress.remove();
 
         var parent = $(NProgress.settings.parent);
-        assert.isFalse(parent.hasClass('nprogress-custom-parent'));
-        assert.equal(parent.find('#nprogress').length, 0);
+		
+		if(NProgress.settings.removeFromDOM)
+		{
+			assert.isFalse(parent.hasClass('nprogress-custom-parent'));
+			assert.equal(parent.find('#nprogress').length, 0);
+		}
+		else
+		{
+			$("#nprogress").visibility = "hidden";
+		}		
+		
       });
     });
 

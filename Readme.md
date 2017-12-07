@@ -171,11 +171,27 @@ NProgress.configure({ showSpinner: false });
 ~~~
 
 #### `parent`
-specify this to change the parent container. (default: `body`)
+Specify this to change the parent container. (default: `body`)
 
 ~~~ js
 NProgress.configure({ parent: '#container' });
 ~~~
+
+#### `forceRedraw`
+Force redraw in the browser when the progress changes. Can have performance implications. (default: `false`)
+
+~~~ js
+NProgress.configure({ forceRedraw: 'true' });
+~~~
+
+#### `removeFromDOM`
+Remove the component from the DOM when done, re-add when needed. This can have performance implications on complex apps in IE 11 as style calculations are slow. (default: `false`)
+
+~~~ js
+NProgress.configure({ removeFromDOM: 'true' });
+~~~
+
+
 
 Customization
 -------------
