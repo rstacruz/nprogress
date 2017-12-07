@@ -54,6 +54,12 @@
   NProgress.status = null;
 
   /**
+   * How many times it's been started
+   */
+
+  NProgress.count = 0;
+
+  /**
    * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
    *
    *     NProgress.set(0.4);
@@ -107,7 +113,7 @@
   };
 
   NProgress.isStarted = function() {
-    return typeof NProgress.status === 'number';
+    return NProgress.count > 0;
   };
 
   /**
@@ -119,6 +125,8 @@
    */
   NProgress.start = function() {
     if (!NProgress.status) NProgress.set(0);
+
+    NProgress.count++;
 
     var work = function() {
       setTimeout(function() {
@@ -146,6 +154,8 @@
    */
 
   NProgress.done = function(force) {
+    NProgress.count = 0;
+
     if (!force && !NProgress.status) return this;
 
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
