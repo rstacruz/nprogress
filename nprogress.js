@@ -27,7 +27,8 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+    isPaused: false
   };
 
   /**
@@ -119,6 +120,7 @@
    */
   NProgress.start = function() {
     if (!NProgress.status) NProgress.set(0);
+    Settings.isPaused = false;
 
     var work = function() {
       setTimeout(function() {
@@ -177,15 +179,15 @@
   };
 
   NProgress.continue = function() {
-    return NProgress.configure({trickle: true});
+    return NProgress.configure({isPaused: true});
   }
 
   NProgress.pause = function() {
-    return NProgress.configure({trickle: false});
+    return NProgress.configure({isPaused: false});
   }
 
   NProgress.trickle = function() {
-    return Settings.trickle ? NProgress.inc() : this;
+    return Settings.isPaused ? this : NProgress.inc();
   };
 
   /**
