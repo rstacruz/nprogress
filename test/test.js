@@ -172,20 +172,8 @@
     });
 
     describe('.pause()', function() {
-      it('should be able to create paused nprogress', function(done) {
-        this.timeout(600)
-        NProgress.pause();
-        NProgress.start();
-        NProgress.set(0.3);
-
-        setTimeout(function() {
-          assert.operator(NProgress.status, '==', 0.3);
-          done();
-        }, 500);
-      });
-
       it('should be able to pause and unpause existing nprogress', function(done) {
-        this.timeout(2000)
+        this.timeout(2000);
         NProgress.continue();
         NProgress.start();
         NProgress.set(0.3);
@@ -206,6 +194,18 @@
           assert.operator(NProgress.status, '>', pausedValue);
           done();
         }, 700);
+      });
+
+      it('should not be a persitent operation', function(done) {
+        this.timeout(600);
+        NProgress.pause();
+        NProgress.set(0);
+        NProgress.start(); // <--- this should be unpaused progress bar
+
+        setTimeout(function() {
+          assert.operator(NProgress.status, '>', NProgress.settings.minimum);
+          done();
+        }, 300);
       });
     });
   });

@@ -179,11 +179,11 @@
   };
 
   NProgress.continue = function() {
-    return NProgress.configure({isPaused: true});
+    return NProgress.configure({isPaused: false});
   }
 
   NProgress.pause = function() {
-    return NProgress.configure({isPaused: false});
+    return NProgress.configure({isPaused: true});
   }
 
   NProgress.trickle = function() {
