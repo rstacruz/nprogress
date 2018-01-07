@@ -176,8 +176,16 @@
     }
   };
 
+  NProgress.continue = function() {
+    return NProgress.configure({trickle: true});
+  }
+
+  NProgress.pause = function() {
+    return NProgress.configure({trickle: false});
+  }
+
   NProgress.trickle = function() {
-    return NProgress.inc();
+    return Settings.trickle ? NProgress.inc() : this;
   };
 
   /**
