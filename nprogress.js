@@ -267,6 +267,7 @@
    */
 
   NProgress.remove = function() {
+    NProgress.status = null;
     removeClass(document.documentElement, 'nprogress-busy');
     removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
     var progress = NProgress.getElement();

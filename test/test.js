@@ -114,6 +114,20 @@
         assert.isFalse(parent.hasClass('nprogress-custom-parent'));
         assert.equal(parent.find('#nprogress').length, 0);
       });
+
+
+      it('should be removed from the parent even after trickleSpeed', function(done) {
+        NProgress.start();
+
+        NProgress.remove();
+
+        var parent = $(NProgress.settings.parent);
+        setTimeout(function() {
+          assert.isFalse(parent.hasClass('nprogress-custom-parent'));
+          assert.equal(parent.find('#nprogress').length, 0);
+          done();
+        }, NProgress.settings.trickleSpeed + 1);        
+      });
     });
 
     // ----
