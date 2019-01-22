@@ -180,6 +180,30 @@
     return NProgress.inc();
   };
 
+  // delay extension, see https://github.com/rstacruz/nprogress/issues/169#issuecomment-456312510
+  
+  NProgress.doStart = NProgress.start;
+  NProgress.doDone = NProgress.done;
+  
+  NProgress.clearDelay = function () {
+    if (this.startDelay) {
+      clearTimeout(this.startDelay);
+      this.startDelay = undefined;
+    }
+  }
+  
+  NProgress.start = function () {
+    this.clearDelay();
+    this.startDelay = setTimeout(function () {
+      NProgress.doStart();
+    }, this.settings.delay || 0);
+  };
+  
+  NProgress.done = function () {
+    this.clearDelay();
+    this.doDone();
+  };
+  
   /**
    * Waits for all supplied jQuery promises and
    * increases the progress as the promises resolve.
