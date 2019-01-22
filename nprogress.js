@@ -18,6 +18,7 @@
 
   var Settings = NProgress.settings = {
     minimum: 0.08,
+    delay: 50,
     easing: 'linear',
     positionUsing: '',
     speed: 200,
@@ -111,13 +112,21 @@
   };
 
   /**
-   * Shows the progress bar.
+   * Shows the progress bar after the delay.
    * This is the same as setting the status to 0%, except that it doesn't go backwards.
    *
    *     NProgress.start();
    *
    */
-  NProgress.start = function() {
+  NProgress.start = function () {
+    this.clearDelay();
+    this.startDelay = setTimeout(function () {
+      NProgress.doStart();
+    }, Settings.delay || 0);
+  };
+  
+  
+  NProgress.doStart = function() {
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
@@ -146,6 +155,7 @@
    */
 
   NProgress.done = function(force) {
+    this.clearDelay();
     if (!force && !NProgress.status) return this;
 
     return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
@@ -180,28 +190,11 @@
     return NProgress.inc();
   };
 
-  // delay extension, see https://github.com/rstacruz/nprogress/issues/169#issuecomment-456312510
-  
-  NProgress.doStart = NProgress.start;
-  NProgress.doDone = NProgress.done;
-  
   NProgress.clearDelay = function () {
     if (this.startDelay) {
       clearTimeout(this.startDelay);
       this.startDelay = undefined;
     }
-  }
-  
-  NProgress.start = function () {
-    this.clearDelay();
-    this.startDelay = setTimeout(function () {
-      NProgress.doStart();
-    }, this.settings.delay || 0);
-  };
-  
-  NProgress.done = function () {
-    this.clearDelay();
-    this.doDone();
   };
   
   /**
