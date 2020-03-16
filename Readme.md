@@ -1,6 +1,7 @@
 NProgress
 =========
 
+[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/rstacruz/nprogress) 
 [![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
 [![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/nprogress)
@@ -190,6 +191,19 @@ Resources
 ---------
 
  * [New UI Pattern: Website Loading Bars](http://www.usabilitypost.com/2013/08/19/new-ui-pattern-website-loading-bars/) (usabilitypost.com)
+
+
+Contributing
+-------
+
+### Contribute using one click online setup
+
+You can use Gitpod(a free online VS-Code like IDE) for contributing. With a single click it will launch a workspace and automatically:
+
+- clone the nprogress repo.
+- install the dependencies.
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/rstacruz/nprogress)
 
 Support
 -------
