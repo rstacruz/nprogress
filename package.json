@@ -7,10 +7,15 @@
     "type": "git",
     "url": "https://github.com/rstacruz/nprogress.git"
   },
+  "source": "src/nprogress.js",
+  "main": "dist/nprogress.js",
+  "module": "dist/nprogress.mjs",
+  "umd:main": "dist/nprogress.umd.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "microbundle",
+    "dev": "microbundle watch"
   },
-  "main": "nprogress.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -18,7 +23,7 @@
     "@types/jest": "^25.2.1",
     "babel-jest": "^25.2.6",
     "jest": "^25.2.7",
-    "microbundle": "^0.12.0-next.8"
+    "microbundle": "^0.11.0"
   },
   "dependencies": {}
 }
