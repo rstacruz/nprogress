@@ -8,16 +8,20 @@
     "url": "https://github.com/rstacruz/nprogress.git"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "jest"
   },
   "main": "nprogress.js",
   "license": "MIT",
+  "jest": {
+    "transform": {
+      "\\.m?jsx?$": "jest-esm-transformer"
+    }
+  },
   "devDependencies": {
-    "chai": "~1.6.1",
-    "jquery": "^2.1.1",
-    "jsdom": "^5.4.3",
-    "mocha": "^2.2.4",
-    "mocha-jsdom": "^0.3.0"
+    "@types/jest": "^25.2.1",
+    "jest": "^25.2.7",
+    "jest-esm-transformer": "^1.0.0",
+    "microbundle": "^0.12.0-next.8"
   },
   "dependencies": {}
 }
