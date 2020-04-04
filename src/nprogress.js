@@ -43,7 +43,8 @@ NProgress.status = null;
 
 /**
  * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
- *
+ * @param {number} n
+ * @example
  *     NProgress.set(0.4);
  *     NProgress.set(1.0);
  */
@@ -103,9 +104,10 @@ NProgress.isStarted = function () {
  * Shows the progress bar.
  * This is the same as setting the status to 0%, except that it doesn't go backwards.
  *
+ * @example
  *     NProgress.start();
- *
  */
+
 NProgress.start = function () {
   if (!NProgress.status) NProgress.set(0);
 
@@ -315,6 +317,7 @@ function clamp(n, min, max) {
 /**
  * (Internal) converts a percentage (`0..1`) to a bar translateX
  * percentage (`-100%..0%`).
+ * @param {Number} n
  */
 
 function toBarPerc(n) {
@@ -425,7 +428,10 @@ var css = (function () {
 })();
 
 /**
- * (Internal) Determines if an element or space separated list of class names contains a class name.
+ * (Internal) Determines if an element or space separated list of class names
+ * contains a class name.
+ * @param {Node} element
+ * @param {string} name
  */
 
 function hasClass(element, name) {
@@ -435,6 +441,8 @@ function hasClass(element, name) {
 
 /**
  * (Internal) Adds a class to an element.
+ * @param {Node} element
+ * @param {string} name
  */
 
 function addClass(element, name) {
