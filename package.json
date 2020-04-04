@@ -12,15 +12,12 @@
   },
   "main": "nprogress.js",
   "license": "MIT",
-  "jest": {
-    "transform": {
-      "\\.m?jsx?$": "jest-esm-transformer"
-    }
-  },
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
     "@types/jest": "^25.2.1",
+    "babel-jest": "^25.2.6",
     "jest": "^25.2.7",
-    "jest-esm-transformer": "^1.0.0",
     "microbundle": "^0.12.0-next.8"
   },
   "dependencies": {}
