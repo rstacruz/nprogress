@@ -1,16 +1,16 @@
 :root {
-  --bar-color: #29d;
-  --bar-height: 2px;
+  --nprogress-color: #29d;
+  --nprogress-spinner-opacity: 1;
 }
 
-/* Make clicks pass-through */
-
 #nprogress {
+  /* Make clicks pass-through */
   pointer-events: none;
 }
 
 #nprogress .bar {
-  background: var(--bar-color);
+  background: #29d;
+  background: var(--nprogress-color);
   position: fixed;
   z-index: 1031;
   top: 0;
@@ -19,16 +19,16 @@
   height: var(--bar-height);
 }
 
-/* Fancy blur effect */
-
+/* Glow effect */
 #nprogress .peg {
   display: block;
   position: absolute;
   right: 0px;
   width: 100px;
   height: 100%;
-  box-shadow: 0 0 10px var(--bar-color), 0 0 5px var(--bar-color);
-  opacity: 1.0;
+  box-shadow: 0 0 10px #29d, 0 0 5px #29d;
+  box-shadow: 0 0 10px var(--nprogress-color), 0 0 5px var(--nprogress-color);
+  opacity: 1;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
   transform: rotate(3deg) translate(0px, -4px);
@@ -42,6 +42,7 @@
   z-index: 1031;
   top: 15px;
   right: 15px;
+  opacity: var(--nprogress-spinner-opacity);
 }
 
 #nprogress .spinner-icon {
@@ -49,8 +50,10 @@
   height: 18px;
   box-sizing: border-box;
   border: solid 2px transparent;
-  border-top-color: var(--bar-color);
-  border-left-color: var(--bar-color);
+  border-top-color: #29d;
+  border-top-color: var(--nprogress-color);
+  border-left-color: #29d;
+  border-left-color: var(--nprogress-color);
   border-radius: 50%;
   -webkit-animation: nprogress-spinner 400ms linear infinite;
   animation: nprogress-spinner 400ms linear infinite;
