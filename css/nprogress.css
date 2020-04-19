@@ -1,5 +1,6 @@
 :root {
   --nprogress-color: #29d;
+  --nprogress-height: 2px;
   --nprogress-spinner-opacity: 1;
 }
 
@@ -16,7 +17,8 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--bar-height);
+  height: 2px;
+  height: var(--nprogress-height);
 }
 
 /* Glow effect */
@@ -34,8 +36,7 @@
   transform: rotate(3deg) translate(0px, -4px);
 }
 
-/* Remove these to get rid of the spinner */
-
+/* Spinner */
 #nprogress .spinner {
   display: block;
   position: fixed;
@@ -72,6 +73,7 @@
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -81,6 +83,7 @@
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }

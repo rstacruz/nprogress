@@ -1,3 +1,15 @@
+## 1.0.0 - unreleased
+
+New features:
+
+* [#217] - NProgress.parent now supports DOM nodes. ([@anyclub])
+* [#219] - CSS variables support. ([@anselal])
+
+[#217]: https://github.com/rstacruz/nprogress/issues/217
+[#219]: https://github.com/rstacruz/nprogress/issues/219
+[@anyclub]: https://github.com/anyclub
+[@anselal]: https://github.com/anselal
+
 ## [v0.2.0] - May 13, 2015
 
 This is a maintenance release with cleanups. No functionality changes were introduced.
@@ -27,7 +39,7 @@ Minor changes:
 
  * [#65] - Bower: don't download package.json. Fixes browserify + jquery problem. ([@amelon])
  * [#75] - Fix compatibility with Karma. ([@shaqq])
- 
+
 Internal changes:
 
  * [#77] - Use SVG to display Travis-CI badge. ([@Mithgol])
