@@ -230,10 +230,14 @@
     progress.id = 'nprogress';
     progress.innerHTML = Settings.template;
 
-    var bar      = progress.querySelector(Settings.barSelector),
-        perc     = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
-        parent   = document.querySelector(Settings.parent),
-        spinner;
+
+
+    var bar = progress.querySelector(Settings.barSelector),
+        perc = fromStart ? '-100' : toBarPerc(NProgress.status || 0),
+        parent = isDOM(Settings.parent)
+          ? Settings.parent
+          : document.querySelector(Settings.parent),
+        spinner
 
     css(bar, {
       transition: 'all 0 linear',
@@ -259,7 +263,10 @@
 
   NProgress.remove = function() {
     removeClass(document.documentElement, 'nprogress-busy');
-    removeClass(document.querySelector(Settings.parent), 'nprogress-custom-parent');
+    var parent = isDOM(Settings.parent)
+      ? Settings.parent
+      : document.querySelector(Settings.parent)
+    removeClass(parent, 'nprogress-custom-parent')
     var progress = document.getElementById('nprogress');
     progress && removeElement(progress);
   };
@@ -301,6 +308,18 @@
   /**
    * Helpers
    */
+
+  function isDOM (obj) {
+    if (typeof HTMLElement === 'object') {
+      return obj instanceof HTMLElement
+    }
+    return (
+      obj &&
+      typeof obj === 'object' &&
+      obj.nodeType === 1 &&
+      typeof obj.nodeName === 'string'
+    )
+  }
 
   function clamp(n, min, max) {
     if (n < min) return min;
