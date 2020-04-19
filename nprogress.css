@@ -1,6 +1,8 @@
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
+  position: relative;
+  z-index: 65535;
 }
 
 #nprogress .bar {
