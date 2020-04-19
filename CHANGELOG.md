@@ -1,9 +1,13 @@
 ## 1.0.0 - unreleased
 
-New features:
+### New features
 
 * [#217] - NProgress.parent now supports DOM nodes. ([@anyclub])
 * [#219] - CSS variables support. ([@anselal])
+
+### Breaking changes
+
+- Removed support for Bower, component.json, and jspm. NProgress is now available via npm.
 
 [#217]: https://github.com/rstacruz/nprogress/issues/217
 [#219]: https://github.com/rstacruz/nprogress/issues/219
