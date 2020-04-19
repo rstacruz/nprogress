@@ -1,8 +1,15 @@
 const NProgress = {};
 
+/**
+ * @typedef CSSDefinition
+ * @property {string=} margin-left
+ * @property {string=} transition
+ * @property {string=} transform
+ */
+
 NProgress.version = "0.2.0";
 
-var Settings = (NProgress.settings = {
+var Settings = {
   minimum: 0.08,
   easing: "linear",
   positionUsing: "",
@@ -15,7 +22,9 @@ var Settings = (NProgress.settings = {
   parent: "body",
   template:
     '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
-});
+};
+
+NProgress.settings = Settings;
 
 /**
  * Updates configuration.
@@ -23,9 +32,14 @@ var Settings = (NProgress.settings = {
  *     NProgress.configure({
  *       minimum: 0.1
  *     });
+ *
+ * @param {Partial<typeof Settings>} options
  */
 NProgress.configure = function (options) {
-  var key, value;
+  /** @type {keyof typeof Settings} */
+  var key;
+  var value;
+
   for (key in options) {
     value = options[key];
     if (value !== undefined && options.hasOwnProperty(key))
@@ -37,6 +51,7 @@ NProgress.configure = function (options) {
 
 /**
  * Last number.
+ * @type {null | number}
  */
 
 NProgress.status = null;
@@ -134,6 +149,8 @@ NProgress.start = function () {
  * If `true` is passed, it will show the progress bar even if its hidden.
  *
  *     NProgress.done(true);
+ *
+ * @param {boolean | null | void} force
  */
 
 NProgress.done = function (force) {
@@ -144,6 +161,9 @@ NProgress.done = function (force) {
 
 /**
  * Increments by a random amount.
+ *
+ * @param {number} amount
+ * @return {NProgress}
  */
 
 NProgress.inc = function (amount) {
@@ -191,10 +211,20 @@ NProgress.render = function (fromStart) {
   progress.id = "nprogress";
   progress.innerHTML = Settings.template;
 
-  var bar = progress.querySelector(Settings.barSelector),
-    perc = fromStart ? "-100" : toBarPerc(NProgress.status || 0),
-    parent = document.querySelector(Settings.parent),
-    spinner;
+  /** @type HTMLElement | null */
+  let bar = progress.querySelector(Settings.barSelector);
+  if (!bar)
+    throw new Error(`NProgress: No bar found for '${Settings.barSelector}'`);
+
+  let perc = fromStart ? "-100" : toBarPerc(NProgress.status || 0);
+
+  /** @type HTMLElement | null */
+  let parent = document.querySelector(Settings.parent);
+  if (!parent)
+    throw new Error(`NProgress: Invalid parent '${Settings.parent}'`);
+
+  /** @type HTMLElement | null */
+  let spinner;
 
   css(bar, {
     transition: "all 0 linear",
@@ -269,7 +299,10 @@ NProgress.getPositioningCSS = function () {
 };
 
 /**
- * Helpers
+ * Helper for clamping to min and max values
+ * @param {number} n
+ * @param {number} min
+ * @param {number} max
  */
 
 function clamp(n, min, max) {
@@ -291,9 +324,14 @@ function toBarPerc(n) {
 /**
  * (Internal) returns the correct CSS for changing the bar's
  * position given an n percentage, and speed and ease from Settings
+ *
+ * @param {number} n
+ * @param {number} speed
+ * @param {string} ease
  */
 
 function barPositionCSS(n, speed, ease) {
+  /** @type CSSDefinition */
   var barCSS;
 
   if (Settings.positionUsing === "translate3d") {
@@ -304,7 +342,7 @@ function barPositionCSS(n, speed, ease) {
     barCSS = { "margin-left": toBarPerc(n) + "%" };
   }
 
-  barCSS.transition = "all " + speed + "ms " + ease;
+  barCSS.transition = `all ${speed}ms ${ease}`;
 
   return barCSS;
 }
@@ -341,6 +379,10 @@ var css = (function () {
   var cssPrefixes = ["Webkit", "O", "Moz", "ms"],
     cssProps = {};
 
+  /**
+   * @param {string} string
+   */
+
   function camelCase(string) {
     return string
       .replace(/^-ms-/, "ms-")
@@ -348,6 +390,11 @@ var css = (function () {
         return letter.toUpperCase();
       });
   }
+
+  /**
+   * @param {string} name
+   * @return string
+   */
 
   function getVendorProp(name) {
     var style = document.body.style;
@@ -364,17 +411,24 @@ var css = (function () {
     return name;
   }
 
-  function getStyleProp(name) {
+  function getStyleProp(/** @type string */ name) {
     name = camelCase(name);
     return cssProps[name] || (cssProps[name] = getVendorProp(name));
   }
 
-  function applyCss(element, prop, value) {
+  function applyCss(
+    /** @type HTMLElement */ element,
+    /** @type string */ prop,
+    /** @type string */ value
+  ) {
     prop = getStyleProp(prop);
     element.style[prop] = value;
   }
 
-  return function (element, properties) {
+  return function (
+    /** @type HTMLElement */ element,
+    /** @type any */ properties
+  ) {
     var args = arguments,
       prop,
       value;
@@ -394,7 +448,8 @@ var css = (function () {
 /**
  * (Internal) Determines if an element or space separated list of class names
  * contains a class name.
- * @param {Node} element
+ *
+ * @param {HTMLElement} element
  * @param {string} name
  */
 
@@ -405,7 +460,7 @@ function hasClass(element, name) {
 
 /**
  * (Internal) Adds a class to an element.
- * @param {Node} element
+ * @param {HTMLElement} element
  * @param {string} name
  */
 
@@ -440,6 +495,8 @@ function removeClass(element, name) {
  * (Internal) Gets a space separated list of the class names on the element.
  * The list is wrapped with a single space on each end to facilitate finding
  * matches within the list.
+ *
+ * @param {HTMLElement | null | void} element
  */
 
 function classList(element) {
@@ -451,6 +508,8 @@ function classList(element) {
 
 /**
  * (Internal) Removes an element from the DOM.
+ *
+ * @param {HTMLElement | null | void} element
  */
 
 function removeElement(element) {
