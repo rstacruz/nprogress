@@ -27,7 +27,8 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+    topPosition: '0'
   };
 
   /**
@@ -79,6 +80,9 @@
 
       // Add transition
       css(bar, barPositionCSS(n, speed, ease));
+      
+      // Set position from top
+      css(bar, { top: Settings.topPosition });
 
       if (n === 1) {
         // Fade out
