@@ -1,7 +1,7 @@
 {
   "name": "nprogress",
   "description": "Simple slim progress bars",
-  "version": "1.0.0-0",
+  "version": "1.0.0-1",
   "author": "Rico Sta. Cruz <rstacruz@users.noreply.github.com>",
   "bugs": {
     "url": "https://github.com/rstacruz/nprogress/issues"
