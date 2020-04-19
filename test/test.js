@@ -135,6 +135,12 @@
         assert.operator(NProgress.status, '>', start);
       });
 
+      it('should respect maximum', function() {
+        NProgress.configure({ maximum: 0.8 });
+        for (var i=0; i<100; ++i) { NProgress.inc(); }
+        assert.equal(NProgress.status, NProgress.settings.maximum);
+      });
+
       it('should never reach 1.0', function() {
         for (var i=0; i<100; ++i) { NProgress.inc(); }
         assert.operator(NProgress.status, '<', 1.0);
