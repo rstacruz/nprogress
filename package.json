@@ -2,7 +2,10 @@
   "name": "nprogress",
   "description": "Simple slim progress bars",
   "version": "0.2.0",
-  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
+  "author": "Rico Sta. Cruz <rstacruz@users.noreply.github.com>",
+  "bugs": {
+    "url": "https://github.com/rstacruz/nprogress/issues"
+  },
   "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -13,12 +16,20 @@
     "microbundle": "^0.11.0",
     "prettier": "^2.0.4"
   },
+  "homepage": "https://github.com/rstacruz/nprogress#readme",
+  "keywords": [
+    "bar",
+    "indicator",
+    "loading",
+    "nprogress",
+    "progress"
+  ],
   "license": "MIT",
   "main": "dist/nprogress.js",
   "module": "dist/nprogress.mjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rstacruz/nprogress.git"
+    "url": "git+https://github.com/rstacruz/nprogress.git"
   },
   "scripts": {
     "build": "microbundle",
