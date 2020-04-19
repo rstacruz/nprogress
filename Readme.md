@@ -143,7 +143,7 @@ NProgress.configure({
 
 #### `easing` and `speed`
 Adjust animation settings using *easing* (a CSS easing string)
-and *speed* (in ms). (default: `ease` and `200`)
+and *speed* (in ms). (default: `linear` and `200`)
 
 ~~~ js
 NProgress.configure({ easing: 'ease', speed: 500 });
