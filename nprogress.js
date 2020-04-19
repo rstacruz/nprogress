@@ -27,7 +27,8 @@
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+    scheduler: window.setTimeout
   };
 
   /**
@@ -88,18 +89,18 @@
         });
         progress.offsetWidth; /* Repaint */
 
-        setTimeout(function() {
+        Settings.scheduler(function() {
           css(progress, {
             transition: 'all ' + speed + 'ms linear',
             opacity: 0
           });
-          setTimeout(function() {
+          Settings.scheduler(function() {
             NProgress.remove();
             next();
           }, speed);
         }, speed);
       } else {
-        setTimeout(next, speed);
+        Settings.scheduler(next, speed);
       }
     });
 
@@ -121,7 +122,7 @@
     if (!NProgress.status) NProgress.set(0);
 
     var work = function() {
-      setTimeout(function() {
+      Settings.scheduler(function() {
         if (!NProgress.status) return;
         NProgress.trickle();
         work();

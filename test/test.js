@@ -5,6 +5,7 @@
 
   var root = this;
   var assert = (root.chai || require('chai')).assert;
+  var td = require('testdouble');
 
   describe('NProgress', function() {
     var $, NProgress;
@@ -170,6 +171,16 @@
         assert.equal($("#nprogress .spinner").length, 0);
       });
     });
-  });
 
+    describe('.configure(scheduler)', function() {
+      it('should allow for an alternate scheduler to be provided', function() {
+        var scheduler = td.function('custom scheduler');
+
+        NProgress.configure({ scheduler: scheduler });
+        NProgress.start();
+
+        td.verify(scheduler(td.matchers.isA(Function), td.matchers.isA(Number)));
+      });
+    });
+  });
 })();

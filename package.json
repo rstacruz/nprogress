@@ -17,7 +17,8 @@
     "jquery": "^3.5.0",
     "jsdom": "^5.4.3",
     "mocha": "^2.2.4",
-    "mocha-jsdom": "^0.3.0"
+    "mocha-jsdom": "^0.3.0",
+    "testdouble": "^1.9.0"
   },
   "dependencies": {},
   "jspm": {
