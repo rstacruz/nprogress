@@ -29,7 +29,7 @@
       it('.set(0) must render', function(done) {
         NProgress.set(0);
         assert.equal($("#nprogress").length, 1);
-        assert.equal($("#nprogress .bar").length, 1);
+        assert.equal($("#nprogress .nprogress-bar").length, 1);
         assert.equal($("#nprogress .peg").length, 1);
         assert.equal($("#nprogress .spinner").length, 1);
         done();
