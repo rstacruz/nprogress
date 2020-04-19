@@ -65,8 +65,7 @@
   position: relative;
 }
 
-.nprogress-custom-parent #nprogress .spinner,
-.nprogress-custom-parent #nprogress .bar {
+.nprogress-custom-parent #nprogress .spinner, .nprogress-custom-parent #nprogress .bar {
   position: absolute;
 }
 
