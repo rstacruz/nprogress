@@ -1,4 +1,13 @@
+import { removeElement, addClass, removeClass } from "./dom";
+
 const NProgress = {};
+
+/**
+ * Last number.
+ * @type {null | number}
+ */
+
+NProgress.status = null;
 
 /**
  * @typedef CSSDefinition
@@ -7,9 +16,7 @@ const NProgress = {};
  * @property {string=} transform
  */
 
-NProgress.version = "0.2.0";
-
-var Settings = {
+let Settings = {
   minimum: 0.08,
   easing: "linear",
   positionUsing: "",
@@ -24,8 +31,6 @@ var Settings = {
     '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
 };
 
-NProgress.settings = Settings;
-
 /**
  * Updates configuration.
  *
@@ -35,7 +40,8 @@ NProgress.settings = Settings;
  *
  * @param {Partial<typeof Settings>} options
  */
-NProgress.configure = function (options) {
+
+function configure(options) {
   /** @type {keyof typeof Settings} */
   var key;
   var value;
@@ -47,14 +53,7 @@ NProgress.configure = function (options) {
   }
 
   return this;
-};
-
-/**
- * Last number.
- * @type {null | number}
- */
-
-NProgress.status = null;
+}
 
 /**
  * Sets the progress bar status, where `n` is a number from `0.0` to `1.0`.
@@ -64,8 +63,8 @@ NProgress.status = null;
  *     NProgress.set(1.0);
  */
 
-NProgress.set = function (n) {
-  var started = NProgress.isStarted();
+function set(n) {
+  var started = isStarted();
 
   n = clamp(n, Settings.minimum, 1);
   NProgress.status = n === 1 ? null : n;
@@ -109,11 +108,11 @@ NProgress.set = function (n) {
   });
 
   return this;
-};
+}
 
-NProgress.isStarted = function () {
+function isStarted() {
   return typeof NProgress.status === "number";
-};
+}
 
 /**
  * Shows the progress bar.
@@ -124,12 +123,12 @@ NProgress.isStarted = function () {
  */
 
 NProgress.start = function () {
-  if (!NProgress.status) NProgress.set(0);
+  if (!NProgress.status) set(0);
 
   var work = function () {
     setTimeout(function () {
       if (!NProgress.status) return;
-      NProgress.trickle();
+      inc();
       work();
     }, Settings.trickleSpeed);
   };
@@ -156,7 +155,9 @@ NProgress.start = function () {
 NProgress.done = function (force) {
   if (!force && !NProgress.status) return this;
 
-  return NProgress.inc(0.3 + 0.5 * Math.random()).set(1);
+  inc(0.3 + 0.5 * Math.random());
+  set(1);
+  return NProgress;
 };
 
 /**
@@ -166,7 +167,7 @@ NProgress.done = function (force) {
  * @return {NProgress}
  */
 
-NProgress.inc = function (amount) {
+function inc(amount) {
   var n = NProgress.status;
 
   if (!n) {
@@ -189,13 +190,17 @@ NProgress.inc = function (amount) {
     }
 
     n = clamp(n + amount, 0, 0.994);
-    return NProgress.set(n);
+    return set(n);
   }
-};
+}
 
-NProgress.trickle = function () {
-  return NProgress.inc();
-};
+/*
+ * Alias for inc().
+ */
+
+function trickle() {
+  return inc();
+}
 
 /**
  * (Internal) renders the progress bar markup based on the `template`
@@ -445,75 +450,15 @@ var css = (function () {
   };
 })();
 
-/**
- * (Internal) Determines if an element or space separated list of class names
- * contains a class name.
- *
- * @param {HTMLElement} element
- * @param {string} name
+/*
+ * Export
  */
 
-function hasClass(element, name) {
-  var list = typeof element == "string" ? element : classList(element);
-  return list.indexOf(" " + name + " ") >= 0;
-}
-
-/**
- * (Internal) Adds a class to an element.
- * @param {HTMLElement} element
- * @param {string} name
- */
-
-function addClass(element, name) {
-  var oldList = classList(element),
-    newList = oldList + name;
-
-  if (hasClass(oldList, name)) return;
-
-  // Trim the opening space.
-  element.className = newList.substring(1);
-}
-
-/**
- * (Internal) Removes a class from an element.
- */
-
-function removeClass(element, name) {
-  var oldList = classList(element),
-    newList;
-
-  if (!hasClass(element, name)) return;
-
-  // Replace the class name.
-  newList = oldList.replace(" " + name + " ", " ");
-
-  // Trim the opening and closing spaces.
-  element.className = newList.substring(1, newList.length - 1);
-}
-
-/**
- * (Internal) Gets a space separated list of the class names on the element.
- * The list is wrapped with a single space on each end to facilitate finding
- * matches within the list.
- *
- * @param {HTMLElement | null | void} element
- */
-
-function classList(element) {
-  return (" " + ((element && element.className) || "") + " ").replace(
-    /\s+/gi,
-    " "
-  );
-}
-
-/**
- * (Internal) Removes an element from the DOM.
- *
- * @param {HTMLElement | null | void} element
- */
-
-function removeElement(element) {
-  element && element.parentNode && element.parentNode.removeChild(element);
-}
+NProgress.configure = configure;
+NProgress.isStarted = isStarted;
+NProgress.set = set;
+NProgress.settings = Settings;
+NProgress.inc = inc;
+NProgress.trickle = trickle;
 
 export default NProgress;

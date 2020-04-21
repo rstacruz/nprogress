@@ -55,22 +55,35 @@ describe("set()", () => {
 });
 
 describe(".start()", function () {
-  // it('must render', function(done) {
-  //   NProgress.start();
-  //   assert.equal($("#nprogress").length, 1);
-  //   done();
-  // });
-  // it('must respect minimum', function() {
-  //   NProgress.start();
-  //   assert.equal(NProgress.status, NProgress.settings.minimum);
-  // });
-  // it('must be attached to specified parent', function() {
-  //   var test = $('<div>', {id: 'test'}).appendTo('body');
-  //   NProgress.configure({parent: '#test'});
-  //   NProgress.start();
-  //   assert.isTrue($("#nprogress").parent().is(test));
-  //   assert.isTrue($(NProgress.settings.parent).hasClass("nprogress-custom-parent"));
-  // });
+  it("must render", function (done) {
+    NProgress.start();
+    expect(all("#nprogress").length).toEqual(1);
+    done();
+  });
+
+  it("must respect minimum", function () {
+    NProgress.start();
+    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+  });
+});
+
+describe("with specific parent", () => {
+  /** @type HTMLElement */
+  let test;
+
+  beforeEach(() => {
+    test = document.createElement("div");
+    test.id = "test";
+    document.body.appendChild(test);
+  });
+
+  it("must be attached to specified parent", function () {
+    NProgress.configure({ parent: "#test" });
+    NProgress.start();
+
+    expect(qs("#nprogress").parentNode).toEqual(test);
+    expect(test.classList.contains("nprogress-custom-parent")).toBeTruthy();
+  });
 });
 
 describe(".done()", () => {
@@ -105,20 +118,27 @@ describe(".inc()", function () {
     expect(all("#nprogress").length).toEqual(1);
   });
 
-  // it('should start with minimum', function() {
-  //   NProgress.inc();
-  //   assert.equal(NProgress.status, NProgress.settings.minimum);
-  // });
-  // it('should increment', function() {
-  //   NProgress.start();
-  //   var start = NProgress.status;
-  //   NProgress.inc();
-  //   assert.operator(NProgress.status, '>', start);
-  // });
-  // it('should never reach 1.0', function() {
-  //   for (var i=0; i<100; ++i) { NProgress.inc(); }
-  //   assert.operator(NProgress.status, '<', 1.0);
-  // });
+  it("should start with minimum", function () {
+    NProgress.inc();
+    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+  });
+
+  it("should increment", function () {
+    NProgress.start();
+
+    let start = NProgress.status;
+    NProgress.inc();
+
+    expect(NProgress.status).toBeGreaterThan(start);
+  });
+
+  it("should never reach 1.0", function () {
+    for (let i = 0; i < 100; ++i) {
+      NProgress.inc();
+    }
+
+    expect(NProgress.status).toBeLessThan(1);
+  });
 });
 
 describe(".configure()", function () {
@@ -128,20 +148,19 @@ describe(".configure()", function () {
   });
 });
 
-// // ----
-
 describe(".configure(showSpinner)", function () {
-  // it('should render spinner by default', function() {
-  //   NProgress.start();
-  //   assert.equal($("#nprogress .spinner").length, 1);
-  // });
-  // it('should be true by default', function() {
-  //   assert.equal(NProgress.settings.showSpinner, true);
-  // });
-  // it('should hide (on false)', function() {
-  //   NProgress.configure({ showSpinner: false });
-  //   NProgress.start();
-  //   assert.equal($("#nprogress .spinner").length, 0);
-  // });
-  // });
+  it("should render spinner by default", function () {
+    NProgress.start();
+    expect(all("#nprogress .spinner").length).toEqual(1);
+  });
+
+  it("should be true by default", function () {
+    expect(NProgress.settings.showSpinner).toEqual(true);
+  });
+
+  it("should hide (on false)", function () {
+    NProgress.configure({ showSpinner: false });
+    NProgress.start();
+    expect(all("#nprogress .spinner").length).toEqual(0);
+  });
 });
