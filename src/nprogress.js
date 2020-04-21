@@ -8,14 +8,31 @@ import {
 } from "./utilities";
 import setCSS from "./css";
 
-const NProgress = {};
-
 /**
- * Last number.
- * @type {null | number}
+ * The current progress number from 0...1, or `null` if not started.
+ * @type {number | null}
  */
 
-NProgress.status = null;
+let status = null;
+
+/**
+ * Returns the current percentage.
+ * @return {number | null
+ */
+
+function getPercent() {
+  return status;
+}
+
+/**
+ * (Internal) sets the percent value.
+ * This is only used in tests. Please use `set()` instead.
+ * @param {number} value
+ */
+
+function setPercent(value) {
+  status = value;
+}
 
 /**
  * @typedef CSSDefinition
@@ -37,6 +54,25 @@ let Settings = {
   parent: "body",
   template:
     '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>',
+};
+
+/**
+ * Default export for CommonJS and for chaining
+ */
+
+const NProgress = {
+  configure,
+  done,
+  getPercent,
+  inc,
+  isRendered,
+  isStarted,
+  remove,
+  render,
+  set,
+  settings: Settings,
+  start,
+  trickle: inc,
 };
 
 /**
@@ -74,7 +110,7 @@ function set(n) {
   var started = isStarted();
 
   n = clamp(n, Settings.minimum, 1);
-  NProgress.status = n === 1 ? null : n;
+  setPercent(n === 1 ? null : n);
 
   var progress = render(!started),
     bar = progress.querySelector(Settings.barSelector),
@@ -121,7 +157,7 @@ function set(n) {
 }
 
 function isStarted() {
-  return typeof NProgress.status === "number";
+  return typeof getPercent() === "number";
 }
 
 /**
@@ -132,12 +168,12 @@ function isStarted() {
  *     NProgress.start();
  */
 
-NProgress.start = function () {
-  if (!NProgress.status) set(0);
+function start() {
+  if (!getPercent()) set(0);
 
   var work = function () {
     setTimeout(function () {
-      if (!NProgress.status) return;
+      if (!getPercent()) return;
       inc();
       work();
     }, Settings.trickleSpeed);
@@ -146,7 +182,7 @@ NProgress.start = function () {
   if (Settings.trickle) work();
 
   return NProgress;
-};
+}
 
 /**
  * Hides the progress bar.
@@ -162,13 +198,13 @@ NProgress.start = function () {
  * @param {boolean | null | void} force
  */
 
-NProgress.done = function (force) {
-  if (!force && !NProgress.status) return NProgress;
+function done(force) {
+  if (!force && !getPercent()) return NProgress;
 
   inc(0.3 + 0.5 * Math.random());
   set(1);
   return NProgress;
-};
+}
 
 /**
  * Increments by a random amount.
@@ -178,10 +214,10 @@ NProgress.done = function (force) {
  */
 
 function inc(amount) {
-  var n = NProgress.status;
+  var n = getPercent();
 
   if (!n) {
-    return NProgress.start();
+    return start();
   } else if (n > 1) {
     return;
   } else {
@@ -205,14 +241,16 @@ function inc(amount) {
 }
 
 /**
+ * Returns the parent node as an HTMLElement.
  * @return {HTMLElement}
  */
 
-function getParent() {
+function getParentElement() {
   if (typeof Settings.parent === "string") {
     let parent = document.querySelector(Settings.parent);
     if (!parent)
       throw new Error(`NProgress: Invalid parent '${Settings.parent}'`);
+
     return parent;
   } else {
     return Settings.parent;
@@ -240,10 +278,10 @@ function render(fromStart) {
   if (!bar)
     throw new Error(`NProgress: No bar found for '${Settings.barSelector}'`);
 
-  let perc = fromStart ? "-100" : toBarPerc(NProgress.status || 0);
+  let perc = fromStart ? "-100" : toBarPerc(getPercent() || 0);
 
   /** @type HTMLElement */
-  let parent = getParent();
+  let parent = getParentElement();
 
   /** @type HTMLElement | null */
   let spinner;
@@ -289,28 +327,24 @@ function isRendered() {
   return !!document.getElementById("nprogress");
 }
 
-// Default export for commonjs / import NProgress
-NProgress.configure = configure;
-NProgress.inc = inc;
-NProgress.isRendered = isRendered;
-NProgress.isStarted = isStarted;
-NProgress.remove = remove;
-NProgress.render = render;
-NProgress.set = set;
-NProgress.settings = Settings;
-NProgress.trickle = inc;
+/*
+ * Export for ESM
+ */
 
-// Export for ESM
 export {
   configure,
-  inc,
+  done,
+  getPercent,
   inc as trickle,
+  inc,
   isRendered,
   isStarted,
   remove,
   render,
   set,
+  setPercent as _setPercent,
   Settings as settings,
+  start,
 };
 
 export default NProgress;

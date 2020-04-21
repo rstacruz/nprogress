@@ -1,4 +1,4 @@
-import NProgress from "./nprogress";
+import NProgress, { _setPercent } from "./nprogress";
 
 jest.useFakeTimers();
 
@@ -17,7 +17,7 @@ beforeEach(() => {
 
 afterEach(() => {
   remove(qs("#nprogress"));
-  NProgress.status = null;
+  _setPercent(null);
   Object.assign(NProgress.settings, defaults);
 });
 
@@ -40,17 +40,17 @@ describe("set()", () => {
 
   it("must respect minimum", () => {
     NProgress.set(0);
-    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+    expect(NProgress.getPercent()).toEqual(NProgress.settings.minimum);
   });
 
   it("must clamp to minimum", () => {
     NProgress.set(-100);
-    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+    expect(NProgress.getPercent()).toEqual(NProgress.settings.minimum);
   });
 
   it("must clamp to maximum", () => {
     NProgress.set(400);
-    expect(NProgress.status).toEqual(null);
+    expect(NProgress.getPercent()).toEqual(null);
   });
 });
 
@@ -63,7 +63,7 @@ describe(".start()", function () {
 
   it("must respect minimum", function () {
     NProgress.start();
-    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+    expect(NProgress.getPercent()).toEqual(NProgress.settings.minimum);
   });
 });
 
@@ -120,16 +120,16 @@ describe(".inc()", function () {
 
   it("should start with minimum", function () {
     NProgress.inc();
-    expect(NProgress.status).toEqual(NProgress.settings.minimum);
+    expect(NProgress.getPercent()).toEqual(NProgress.settings.minimum);
   });
 
   it("should increment", function () {
     NProgress.start();
 
-    let start = NProgress.status;
+    let start = NProgress.getPercent();
     NProgress.inc();
 
-    expect(NProgress.status).toBeGreaterThan(start);
+    expect(NProgress.getPercent()).toBeGreaterThan(start);
   });
 
   it("should never reach 1.0", function () {
@@ -137,7 +137,7 @@ describe(".inc()", function () {
       NProgress.inc();
     }
 
-    expect(NProgress.status).toBeLessThan(1);
+    expect(NProgress.getPercent()).toBeLessThan(1);
   });
 });
 

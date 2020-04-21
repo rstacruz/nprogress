@@ -2,7 +2,7 @@
 
 [![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress)
 [![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
-[![jsDelivr Hits](https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/nprogress)
+[![jsDelivr hits](https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/nprogress)
 
 > Minimalist progress bar
 
@@ -57,7 +57,7 @@ Also available via [jsdelivr] CDN:
 
 ## Basic usage
 
-Simply call `start()` and `done()` to control the progress bar.
+Call `start()` and `done()` to control the progress bar.
 
 ```js
 NProgress.start();
@@ -167,7 +167,11 @@ do anything if _.start()_ isn't called)
 NProgress.done(true);
 ```
 
-**Get the status value:** To get the status value, use `.status`.
+**Get the current percentage:** Use `getPercent()` to get the current value.
+
+```js
+console.log(NProgress.getPercent());
+```
 
 ## Configuration
 
@@ -181,9 +185,7 @@ NProgress.configure({ minimum: 0.1 });
 
 #### `template`
 
-You can change the markup using `template`. To keep the progress
-bar working, keep an element with `role='bar'` in there. See the [default template]
-for reference.
+You can change the markup using `template`. To keep the progress bar working, keep an element with `role='bar'` in there. See the [default template] for reference.
 
 ```js
 NProgress.configure({
@@ -193,8 +195,7 @@ NProgress.configure({
 
 #### `easing` and `speed`
 
-Adjust animation settings using _easing_ (a CSS easing string)
-and _speed_ (in ms). (default: `ease` and `200`)
+Adjust animation settings using _easing_ (a CSS easing string) and _speed_ (in ms). (default: `ease` and `200`)
 
 ```js
 NProgress.configure({ easing: "ease", speed: 500 });
