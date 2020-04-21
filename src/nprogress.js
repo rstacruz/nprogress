@@ -1,4 +1,10 @@
 import { removeElement, addClass, removeClass } from "./dom";
+import {
+  toBarPerc,
+  barPositionCSS,
+  clamp,
+  getPositioningCSS,
+} from "./utilities";
 import setCSS from "./css";
 
 const NProgress = {};
@@ -44,11 +50,10 @@ let Settings = {
 
 function configure(options) {
   /** @type {keyof typeof Settings} */
-  var key;
-  var value;
+  let key;
 
   for (key in options) {
-    value = options[key];
+    let value = options[key];
     if (value !== undefined && options.hasOwnProperty(key))
       Settings[key] = value;
   }
@@ -78,12 +83,15 @@ function set(n) {
   progress.offsetWidth; /* Repaint */
 
   queue(function (next) {
-    // Set positionUsing if it hasn't already been set
-    if (Settings.positionUsing === "")
-      Settings.positionUsing = NProgress.getPositioningCSS();
-
     // Add transition
-    setCSS(bar, barPositionCSS(n, speed, ease));
+    const css = barPositionCSS(
+      Settings.positionUsing || getPositioningCSS(),
+      n,
+      speed,
+      ease
+    );
+
+    setCSS(bar, css);
 
     if (n === 1) {
       // Fade out
@@ -99,7 +107,7 @@ function set(n) {
           opacity: 0,
         });
         setTimeout(function () {
-          NProgress.remove();
+          remove();
           next();
         }, speed);
       }, speed);
@@ -195,12 +203,19 @@ function inc(amount) {
   }
 }
 
-/*
- * Alias for inc().
+/**
+ * @return {HTMLElement}
  */
 
-function trickle() {
-  return inc();
+function getParent() {
+  if (typeof Settings.parent === "string") {
+    let parent = document.querySelector(Settings.parent);
+    if (!parent)
+      throw new Error(`NProgress: Invalid parent '${Settings.parent}'`);
+    return parent;
+  } else {
+    return Settings.parent;
+  }
 }
 
 /**
@@ -209,7 +224,7 @@ function trickle() {
  */
 
 NProgress.render = function (fromStart) {
-  if (NProgress.isRendered()) return document.getElementById("nprogress");
+  if (isRendered()) return document.getElementById("nprogress");
 
   addClass(document.documentElement, "nprogress-busy");
 
@@ -224,10 +239,8 @@ NProgress.render = function (fromStart) {
 
   let perc = fromStart ? "-100" : toBarPerc(NProgress.status || 0);
 
-  /** @type HTMLElement | null */
-  let parent = document.querySelector(Settings.parent);
-  if (!parent)
-    throw new Error(`NProgress: Invalid parent '${Settings.parent}'`);
+  /** @type HTMLElement */
+  let parent = getParent();
 
   /** @type HTMLElement | null */
   let spinner;
@@ -254,103 +267,23 @@ NProgress.render = function (fromStart) {
  * Removes the element. Opposite of render().
  */
 
-NProgress.remove = function () {
+function remove() {
   removeClass(document.documentElement, "nprogress-busy");
   removeClass(
     document.querySelector(Settings.parent),
     "nprogress-custom-parent"
   );
-  var progress = document.getElementById("nprogress");
+
+  let progress = document.getElementById("nprogress");
   progress && removeElement(progress);
-};
+}
 
 /**
  * Checks if the progress bar is rendered.
  */
 
-NProgress.isRendered = function () {
+function isRendered() {
   return !!document.getElementById("nprogress");
-};
-
-/**
- * Determine which positioning CSS rule to use.
- */
-
-NProgress.getPositioningCSS = function () {
-  // Sniff on document.body.style
-  var bodyStyle = document.body.style;
-
-  // Sniff prefixes
-  var vendorPrefix =
-    "WebkitTransform" in bodyStyle
-      ? "Webkit"
-      : "MozTransform" in bodyStyle
-      ? "Moz"
-      : "msTransform" in bodyStyle
-      ? "ms"
-      : "OTransform" in bodyStyle
-      ? "O"
-      : "";
-
-  if (vendorPrefix + "Perspective" in bodyStyle) {
-    // Modern browsers with 3D support, e.g. Webkit, IE10
-    return "translate3d";
-  } else if (vendorPrefix + "Transform" in bodyStyle) {
-    // Browsers without 3D support, e.g. IE9
-    return "translate";
-  } else {
-    // Browsers without translate() support, e.g. IE7-8
-    return "margin";
-  }
-};
-
-/**
- * Helper for clamping to min and max values
- * @param {number} n
- * @param {number} min
- * @param {number} max
- */
-
-function clamp(n, min, max) {
-  if (n < min) return min;
-  if (n > max) return max;
-  return n;
-}
-
-/**
- * (Internal) converts a percentage (`0..1`) to a bar translateX
- * percentage (`-100%..0%`).
- * @param {Number} n
- */
-
-function toBarPerc(n) {
-  return (-1 + n) * 100;
-}
-
-/**
- * (Internal) returns the correct CSS for changing the bar's
- * position given an n percentage, and speed and ease from Settings
- *
- * @param {number} n
- * @param {number} speed
- * @param {string} ease
- */
-
-function barPositionCSS(n, speed, ease) {
-  /** @type CSSDefinition */
-  var barCSS;
-
-  if (Settings.positionUsing === "translate3d") {
-    barCSS = { transform: "translate3d(" + toBarPerc(n) + "%,0,0)" };
-  } else if (Settings.positionUsing === "translate") {
-    barCSS = { transform: "translate(" + toBarPerc(n) + "%,0)" };
-  } else {
-    barCSS = { "margin-left": toBarPerc(n) + "%" };
-  }
-
-  barCSS.transition = `all ${speed}ms ${ease}`;
-
-  return barCSS;
 }
 
 /**
@@ -373,15 +306,26 @@ var queue = (function () {
   };
 })();
 
-/*
- * Export
- */
-
+// Default export for commonjs / import NProgress
 NProgress.configure = configure;
+NProgress.inc = inc;
+NProgress.isRendered = isRendered;
 NProgress.isStarted = isStarted;
+NProgress.remove = remove;
 NProgress.set = set;
 NProgress.settings = Settings;
-NProgress.inc = inc;
-NProgress.trickle = trickle;
+NProgress.trickle = inc;
+
+// Export for ESM
+export {
+  configure,
+  inc,
+  inc as trickle,
+  isRendered,
+  isStarted,
+  remove,
+  set,
+  Settings as settings,
+};
 
 export default NProgress;

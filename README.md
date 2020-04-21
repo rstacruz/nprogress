@@ -21,7 +21,7 @@ npm install --save nprogress
 <summary>ES modules</summary>
 
 ```js
-import NProgress from "nprogress";
+import * as NProgress from "nprogress";
 ```
 
 ```css
@@ -167,7 +167,7 @@ do anything if _.start()_ isn't called)
 NProgress.done(true);
 ```
 
-**Get the status value:** To get the status value, use `.status`
+**Get the status value:** To get the status value, use `.status`.
 
 ## Configuration
 
