@@ -41,7 +41,7 @@ $nprogress-color: #29d;
 </details>
 
 <details>
-<summary>CDN via jsdelivr</summary>
+<summary>UMD build (via CDN)</summary>
 
 ```html
 <script src="nprogress.js"></script>
@@ -50,7 +50,7 @@ $nprogress-color: #29d;
 
 Also available via [jsdelivr] CDN:
 
-- https://cdn.jsdelivr.net/npm/nprogress@next/dist/nprogress.js
+- https://cdn.jsdelivr.net/npm/nprogress@next/dist/nprogress.umd.js
 - https://cdn.jsdelivr.net/npm/nprogress@next/css/nprogress.css
 
 </details>

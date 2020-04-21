@@ -1,4 +1,5 @@
 import { removeElement, addClass, removeClass } from "./dom";
+import { queue } from "./queue";
 import {
   toBarPerc,
   barPositionCSS,
@@ -58,7 +59,7 @@ function configure(options) {
       Settings[key] = value;
   }
 
-  return this;
+  return NProgress;
 }
 
 /**
@@ -75,7 +76,7 @@ function set(n) {
   n = clamp(n, Settings.minimum, 1);
   NProgress.status = n === 1 ? null : n;
 
-  var progress = NProgress.render(!started),
+  var progress = render(!started),
     bar = progress.querySelector(Settings.barSelector),
     speed = Settings.speed,
     ease = Settings.easing;
@@ -116,7 +117,7 @@ function set(n) {
     }
   });
 
-  return this;
+  return NProgress;
 }
 
 function isStarted() {
@@ -144,7 +145,7 @@ NProgress.start = function () {
 
   if (Settings.trickle) work();
 
-  return this;
+  return NProgress;
 };
 
 /**
@@ -162,7 +163,7 @@ NProgress.start = function () {
  */
 
 NProgress.done = function (force) {
-  if (!force && !NProgress.status) return this;
+  if (!force && !NProgress.status) return NProgress;
 
   inc(0.3 + 0.5 * Math.random());
   set(1);
@@ -221,9 +222,11 @@ function getParent() {
 /**
  * (Internal) renders the progress bar markup based on the `template`
  * setting.
+ *
+ * @param {boolean=} fromStart If true, then it will reset to 0% before starting
  */
 
-NProgress.render = function (fromStart) {
+function render(fromStart) {
   if (isRendered()) return document.getElementById("nprogress");
 
   addClass(document.documentElement, "nprogress-busy");
@@ -261,7 +264,7 @@ NProgress.render = function (fromStart) {
 
   parent.appendChild(progress);
   return progress;
-};
+}
 
 /**
  * Removes the element. Opposite of render().
@@ -286,32 +289,13 @@ function isRendered() {
   return !!document.getElementById("nprogress");
 }
 
-/**
- * (Internal) Queues a function to be executed.
- */
-
-var queue = (function () {
-  var pending = [];
-
-  function next() {
-    var fn = pending.shift();
-    if (fn) {
-      fn(next);
-    }
-  }
-
-  return function (fn) {
-    pending.push(fn);
-    if (pending.length == 1) next();
-  };
-})();
-
 // Default export for commonjs / import NProgress
 NProgress.configure = configure;
 NProgress.inc = inc;
 NProgress.isRendered = isRendered;
 NProgress.isStarted = isStarted;
 NProgress.remove = remove;
+NProgress.render = render;
 NProgress.set = set;
 NProgress.settings = Settings;
 NProgress.trickle = inc;
@@ -324,6 +308,7 @@ export {
   isRendered,
   isStarted,
   remove,
+  render,
   set,
   Settings as settings,
 };
