@@ -3,3 +3,4 @@ build
 components
 yarn-error.log
 dist
+/coverage

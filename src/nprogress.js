@@ -1,4 +1,5 @@
 import { removeElement, addClass, removeClass } from "./dom";
+import setCSS from "./css";
 
 const NProgress = {};
 
@@ -82,18 +83,18 @@ function set(n) {
       Settings.positionUsing = NProgress.getPositioningCSS();
 
     // Add transition
-    css(bar, barPositionCSS(n, speed, ease));
+    setCSS(bar, barPositionCSS(n, speed, ease));
 
     if (n === 1) {
       // Fade out
-      css(progress, {
+      setCSS(progress, {
         transition: "none",
         opacity: 1,
       });
       progress.offsetWidth; /* Repaint */
 
       setTimeout(function () {
-        css(progress, {
+        setCSS(progress, {
           transition: "all " + speed + "ms linear",
           opacity: 0,
         });
@@ -231,7 +232,7 @@ NProgress.render = function (fromStart) {
   /** @type HTMLElement | null */
   let spinner;
 
-  css(bar, {
+  setCSS(bar, {
     transition: "all 0 linear",
     transform: "translate3d(" + perc + "%,0,0)",
   });
@@ -369,84 +370,6 @@ var queue = (function () {
   return function (fn) {
     pending.push(fn);
     if (pending.length == 1) next();
-  };
-})();
-
-/**
- * (Internal) Applies css properties to an element, similar to the jQuery
- * css method.
- *
- * While this helper does assist with vendor prefixed property names, it
- * does not perform any manipulation of values prior to setting styles.
- */
-
-var css = (function () {
-  var cssPrefixes = ["Webkit", "O", "Moz", "ms"],
-    cssProps = {};
-
-  /**
-   * @param {string} string
-   */
-
-  function camelCase(string) {
-    return string
-      .replace(/^-ms-/, "ms-")
-      .replace(/-([\da-z])/gi, function (match, letter) {
-        return letter.toUpperCase();
-      });
-  }
-
-  /**
-   * @param {string} name
-   * @return string
-   */
-
-  function getVendorProp(name) {
-    var style = document.body.style;
-    if (name in style) return name;
-
-    var i = cssPrefixes.length,
-      capName = name.charAt(0).toUpperCase() + name.slice(1),
-      vendorName;
-    while (i--) {
-      vendorName = cssPrefixes[i] + capName;
-      if (vendorName in style) return vendorName;
-    }
-
-    return name;
-  }
-
-  function getStyleProp(/** @type string */ name) {
-    name = camelCase(name);
-    return cssProps[name] || (cssProps[name] = getVendorProp(name));
-  }
-
-  function applyCss(
-    /** @type HTMLElement */ element,
-    /** @type string */ prop,
-    /** @type string */ value
-  ) {
-    prop = getStyleProp(prop);
-    element.style[prop] = value;
-  }
-
-  return function (
-    /** @type HTMLElement */ element,
-    /** @type any */ properties
-  ) {
-    var args = arguments,
-      prop,
-      value;
-
-    if (args.length == 2) {
-      for (prop in properties) {
-        value = properties[prop];
-        if (value !== undefined && properties.hasOwnProperty(prop))
-          applyCss(element, prop, value);
-      }
-    } else {
-      applyCss(element, args[1], args[2]);
-    }
   };
 })();
 
