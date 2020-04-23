@@ -1,47 +1,52 @@
 {
   "name": "nprogress",
-  "author": "Rico Sta. Cruz <hi@ricostacruz.com>",
   "description": "Simple slim progress bars",
-  "version": "0.2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rstacruz/nprogress.git"
-  },
-  "scripts": {
-    "test": "mocha"
-  },
-  "main": "nprogress.js",
-  "license": "MIT",
-  "devDependencies": {
-    "chai": "~1.6.1",
-    "jquery": "^3.5.0",
-    "jsdom": "^5.4.3",
-    "mocha": "^2.2.4",
-    "mocha-jsdom": "^0.3.0"
+  "version": "1.0.0-1",
+  "author": "Rico Sta. Cruz <rstacruz@users.noreply.github.com>",
+  "bugs": {
+    "url": "https://github.com/rstacruz/nprogress/issues"
   },
   "dependencies": {},
-  "jspm": {
-    "format": "global",
-    "shim": {
-      "nprogress": {
-        "deps": [
-          "./nprogress.css!"
-        ]
-      }
-    },
-    "dependencies": {
-      "css": "*"
-    }
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.9.0",
+    "@types/jest": "^25.2.1",
+    "babel-jest": "^25.3.0",
+    "jest": "^25.3.0",
+    "microbundle": "^0.11.0",
+    "prettier": "^2.0.4"
   },
-  "spm": {
-    "main": "nprogress.js",
-    "output": [
-      "nprogress.css"
-    ],
-    "ignore": [
-      "support",
-      "test",
-      "vendor"
-    ]
-  }
+  "files": [
+    "demo.html",
+    "dist",
+    "css",
+    "src"
+  ],
+  "homepage": "https://github.com/rstacruz/nprogress#readme",
+  "keywords": [
+    "bar",
+    "indicator",
+    "loading",
+    "nprogress",
+    "progress"
+  ],
+  "license": "MIT",
+  "main": "dist/nprogress.js",
+  "module": "dist/nprogress.mjs",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rstacruz/nprogress.git"
+  },
+  "scripts": {
+    "build": "microbundle --name NProgress",
+    "dev": "npm run build -- watch",
+    "format": "prettier --write 'src/*.js' 'css/*.{css,scss}'",
+    "prettier:check": "prettier --check 'src/*.js' 'css/*.{css,scss}'",
+    "test": "jest"
+  },
+  "source": "src/nprogress.js",
+  "umd:main": "dist/nprogress.umd.js"
 }

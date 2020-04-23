@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="dist/nprogress.umd.js"></script>
+    <link rel="stylesheet" href="css/nprogress.css">
+    <style data-js-dynamic-style></style>
+  </head>
+  <body>
+    <div class="actions">
+      <button data-js-start>Start</button>
+      <button data-js-done>Done</button>
+      <button data-js-style-0>Reset</button>
+      <button data-js-style-1>Style 1</button>
+    </div>
+
+    <script>
+      function qs(selector) {
+        return document.querySelector(selector);
+      }
+
+      console.log('NProgress demo')
+
+      qs("[data-js-start]").addEventListener("click", () => {
+        NProgress.start();
+      });
+
+      qs("[data-js-done]").addEventListener("click", () => {
+        NProgress.done();
+      });
+
+      qs("[data-js-style-0]").addEventListener("click", () => {
+        qs("[data-js-dynamic-style]").innerHTML = "";
+      });
+
+      qs("[data-js-style-1]").addEventListener("click", () => {
+        qs("[data-js-dynamic-style]").innerHTML = `
+          #nprogress {
+            --nprogress-color: #f00;
+            --nprogress-height: 1px;
+            --nprogress-spinner-size: 32px;
+            --nprogress-spinner-stroke-width: 1px;
+          }
+        `;
+      });
+    </script>
+  </body>
+</html>
