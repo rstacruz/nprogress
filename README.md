@@ -1,13 +1,66 @@
-# NProgress
+<h1 align='center'>
+NProgress
+</h1>
 
-[![Status](https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master)](http://travis-ci.org/rstacruz/nprogress)
-[![npm version](https://img.shields.io/npm/v/nprogress.png)](https://npmjs.org/package/nprogress "View this project on npm")
-[![jsDelivr hits](https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded)](https://www.jsdelivr.com/package/npm/nprogress)
+<p align='center'>
+Minimalist progress bar
+</p>
 
-> Minimalist progress bar
+<p align='center'>
+
+<a href='https://travis-ci.org/rstacruz/nprogress' title='Travis CI'>
+<img src='https://api.travis-ci.org/rstacruz/nprogress.svg?branch=master' alt='Build status'>
+</a>
+
+<a href='https://npmjs.org/package/nprogress' title='View this project on npm'>
+<img src='https://img.shields.io/npm/v/nprogress.png' alt='npm version'>
+</a>
+
+<a href='https://www.jsdelivr.com/package/npm/nprogress'>
+<img src='https://data.jsdelivr.com/v1/package/npm/nprogress/badge?style=rounded' alt='jsDelivr hits'>
+</a>
+
+</p>
 
 Slim progress bars for web applications. Inspired by Google, YouTube, and
 Medium.
+
+
+<details>
+<summary><strong>Table of contents</strong></summary>
+
+<!-- toc -->
+
+- [Installation](#installation)
+- [Basic API](#basic-api)
+- [Integration](#integration)
+  * [Turbolinks (version 5+)](#turbolinks-version-5)
+  * [Turbolinks (v3 and below)](#turbolinks-v3-and-below)
+  * [Pjax](#pjax)
+  * [jQuery AJAX](#jquery-ajax)
+- [CSS styling](#css-styling)
+  * [CSS variables](#css-variables)
+  * [Sass](#sass)
+- [Advanced API](#advanced-api)
+  * [`set()`](#set)
+  * [`inc()`](#inc)
+  * [`done(true)`](#donetrue)
+  * [`getPercent()`](#getpercent)
+- [Configuration](#configuration)
+    + [`minimum`](#minimum)
+    + [`template`](#template)
+    + [`easing` and `speed`](#easing-and-speed)
+    + [`trickle`](#trickle)
+    + [`trickleSpeed`](#tricklespeed)
+    + [`showSpinner`](#showspinner)
+    + [`parent`](#parent)
+- [Customization examples](#customization-examples)
+- [Resources](#resources)
+- [Thanks](#thanks)
+
+<!-- tocstop -->
+
+</details>
 
 ## Installation
 
@@ -55,7 +108,7 @@ Also available via [jsdelivr] CDN:
 
 </details>
 
-## Basic usage
+## Basic API
 
 Call `start()` and `done()` to control the progress bar.
 
@@ -68,6 +121,8 @@ NProgress.done();
 
 <details>
 <summary>Turbolinks (version 5+)</summary>
+
+### Turbolinks (version 5+)
 
 Ensure you're using Turbolinks 5+, and use
 this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-239107109))
@@ -86,6 +141,8 @@ $(document).on("turbolinks:render", function () {
 
 <details>
 <summary>Turbolinks (v3 and below)</summary>
+
+### Turbolinks (v3 and below)
 
 Ensure you're using Turbolinks 1.3.0+, and use
 this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
@@ -107,6 +164,8 @@ $(document).on("page:restore", function () {
 <details>
 <summary>Pjax</summary>
 
+### Pjax
+
 Try this: (explained [here](https://github.com/rstacruz/nprogress/issues/22#issuecomment-36540472))
 
 ```js
@@ -121,7 +180,9 @@ $(document).on("pjax:end", function () {
 </details>
 
 <details>
-<summary>jQuery</summary>
+<summary>jQuery AJAX</summary>
+
+### jQuery AJAX
 
 ```js
 $(document).on("ajaxStart", function () {
@@ -134,7 +195,35 @@ $(document).on("ajaxStop", function () {
 
 </details>
 
-## Advanced usage
+## CSS styling
+
+Colors can be customized using CSS variables.
+
+### CSS variables
+
+```css
+#nprogress {
+  --nprogress-color: #29d;
+  --nprogress-height: 2px;
+  --nprogress-spinner-opacity: 1;
+  --nprogress-spinner-size: 18px;
+  --nprogress-spinner-stroke-width: 2px;
+}
+```
+
+### Sass
+
+```css
+$nprogress-color: #29d;
+```
+
+
+## Advanced API
+
+<details>
+<summary>set()</summary>
+
+### `set()`
 
 **Percentages:** To set a progress percentage, call `.set(n)`, where _n_ is a
 number between `0..1`.
@@ -144,6 +233,13 @@ NProgress.set(0.0); // Sorta same as .start()
 NProgress.set(0.4);
 NProgress.set(1.0); // Sorta same as .done()
 ```
+
+</details>
+
+<details>
+<summary>inc()</summary>
+
+### `inc()`
 
 **Incrementing:** To increment the progress bar, just use `.inc()`. This
 increments it with a random amount. This will never get to 100%: use it for
@@ -159,6 +255,13 @@ If you want to increment by a specific value, you can pass that as a parameter:
 NProgress.inc(0.2); // This will get the current status value and adds 0.2 until status is 0.994
 ```
 
+</details>
+
+<details>
+<summary>done(true)</summary>
+
+### `done(true)`
+
 **Force-done:** By passing `true` to `done()`, it will show the progress bar
 even if it's not being shown. (The default behavior is that _.done()_ will not
 do anything if _.start()_ isn't called)
@@ -167,11 +270,20 @@ do anything if _.start()_ isn't called)
 NProgress.done(true);
 ```
 
+</details>
+
+<details>
+<summary>getPercent()</summary>
+
+### `getPercent()`
+
 **Get the current percentage:** Use `getPercent()` to get the current value.
 
 ```js
 console.log(NProgress.getPercent());
 ```
+
+<details>
 
 ## Configuration
 
@@ -233,24 +345,10 @@ specify this to change the parent container. (default: `body`)
 NProgress.configure({ parent: "#container" });
 ```
 
-## Customization
-
-Colors can be customized using CSS variables.
-
-```css
-#nprogress {
-  --nprogress-color: #29d;
-  --nprogress-height: 2px;
-  --nprogress-spinner-opacity: 1;
-  --nprogress-spinner-size: 18px;
-  --nprogress-spinner-stroke-width: 2px;
-}
-```
-
 ## Customization examples
 
-<summary>
-<details>Hiding the spinner</details>
+<details>
+<summary>Hiding the spinner</summary>
 
 ```css
 #nprogress {
@@ -258,10 +356,10 @@ Colors can be customized using CSS variables.
 }
 ```
 
-</summary>
+</details>
 
-<summary>
-<details>Changing the color</details>
+<details>
+<summary>Changing the color</summary>
 
 ```css
 #nprogress {
@@ -269,7 +367,7 @@ Colors can be customized using CSS variables.
 }
 ```
 
-</summary>
+</details>
 
 ## Resources
 
