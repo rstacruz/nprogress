@@ -43,11 +43,11 @@ function setPercent(value) {
 
 let Settings = {
   minimum: 0.08,
-  easing: "linear",
+  easing: "ease-out",
   positionUsing: "",
   speed: 200,
   trickle: true,
-  trickleSpeed: 200,
+  trickleSpeed: 600,
   showSpinner: true,
   barSelector: '[role="bar"]',
   spinnerSelector: '[role="spinner"]',
