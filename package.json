@@ -16,6 +16,12 @@
     "microbundle": "^0.11.0",
     "prettier": "^2.0.4"
   },
+  "files": [
+    "demo.html",
+    "dist",
+    "css",
+    "src"
+  ],
   "homepage": "https://github.com/rstacruz/nprogress#readme",
   "keywords": [
     "bar",
@@ -35,8 +41,8 @@
     "url": "git+https://github.com/rstacruz/nprogress.git"
   },
   "scripts": {
-    "build": "microbundle",
-    "dev": "microbundle watch",
+    "build": "microbundle --name NProgress",
+    "dev": "npm run build -- watch",
     "format": "prettier --write 'src/*.js' 'css/*.{css,scss}'",
     "prettier:check": "prettier --check 'src/*.js' 'css/*.{css,scss}'",
     "test": "jest"

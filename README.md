@@ -238,7 +238,7 @@ NProgress.configure({ parent: "#container" });
 Colors can be customized using CSS variables.
 
 ```css
-:root {
+#nprogress {
   --nprogress-color: #29d;
   --nprogress-height: 2px;
   --nprogress-spinner-opacity: 1;
@@ -246,6 +246,30 @@ Colors can be customized using CSS variables.
   --nprogress-spinner-stroke-width: 2px;
 }
 ```
+
+## Customization examples
+
+<summary>
+<details>Hiding the spinner</details>
+
+```css
+#nprogress {
+  --nprogress-spinner-opacity: 0;
+}
+```
+
+</summary>
+
+<summary>
+<details>Changing the color</details>
+
+```css
+#nprogress {
+  --nprogress-color: #29d;
+}
+```
+
+</summary>
 
 ## Resources
 
