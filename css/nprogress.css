@@ -1,10 +1,12 @@
-:root {
-  --nprogress-color: #29d;
-  --nprogress-height: 2px;
-  --nprogress-spinner-opacity: 1;
-  --nprogress-spinner-size: 18px;
-  --nprogress-spinner-stroke-width: 2px;
-}
+/*
+  :root {
+    --nprogress-color: #29d;
+    --nprogress-height: 2px;
+    --nprogress-spinner-opacity: 1;
+    --nprogress-spinner-size: 18px;
+    --nprogress-spinner-stroke-width: 2px;
+  }
+*/
 
 #nprogress {
   /* Make clicks pass-through */
@@ -13,14 +15,14 @@
 
 #nprogress .bar {
   background: #29d;
-  background: var(--nprogress-color);
+  background: var(--nprogress-color, #29d);
   position: fixed;
   z-index: 1031;
   top: 0;
   left: 0;
   width: 100%;
   height: 2px;
-  height: var(--nprogress-height);
+  height: var(--nprogress-height, 2px);
 }
 
 /* Glow effect */
@@ -31,7 +33,8 @@
   width: 100px;
   height: 100%;
   box-shadow: 0 0 10px #29d, 0 0 5px #29d;
-  box-shadow: 0 0 10px var(--nprogress-color), 0 0 5px var(--nprogress-color);
+  box-shadow: 0 0 10px var(--nprogress-color, #29d),
+    0 0 5px var(--nprogress-color, #29d);
   opacity: 1;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
   -ms-transform: rotate(3deg) translate(0px, -4px);
@@ -45,21 +48,21 @@
   z-index: 1031;
   top: 15px;
   right: 15px;
-  opacity: var(--nprogress-spinner-opacity);
+  opacity: var(--nprogress-spinner-opacity, 1);
 }
 
 #nprogress .spinner-icon {
   width: 18px;
-  width: var(--nprogress-spinner-size);
+  width: var(--nprogress-spinner-size, 18px);
   height: 18px;
-  height: var(--nprogress-spinner-size);
+  height: var(--nprogress-spinner-size, 18px);
   box-sizing: border-box;
   border: solid 2px transparent;
-  border: solid var(--nprogress-spinner-stroke-width) transparent;
+  border: solid var(--nprogress-spinner-stroke-width, 2px) transparent;
   border-top-color: #29d;
-  border-top-color: var(--nprogress-color);
+  border-top-color: var(--nprogress-color, #29d);
   border-left-color: #29d;
-  border-left-color: var(--nprogress-color);
+  border-left-color: var(--nprogress-color, #29d);
   border-radius: 50%;
   -webkit-animation: nprogress-spinner 400ms linear infinite;
   animation: nprogress-spinner 400ms linear infinite;
