@@ -68,6 +68,7 @@
 
     var progress = NProgress.render(!started),
         bar      = progress.querySelector(Settings.barSelector),
+        spinner  = progress.querySelector(Settings.spinnerSelector),
         speed    = Settings.speed,
         ease     = Settings.easing;
 
@@ -80,19 +81,26 @@
       // Add transition
       css(bar, barPositionCSS(n, speed, ease));
 
+
       if (n === 1) {
         // Fade out
-        css(progress, {
-          transition: 'none',
-          opacity: 1
-        });
+        const fadeElems = [bar, spinner];
+        
+        fadeElems.map(elem =>
+          css(elem, { 
+            transition: 'none', 
+            opacity: 1 
+          })
+        );
         progress.offsetWidth; /* Repaint */
 
-        setTimeout(function() {
-          css(progress, {
-            transition: 'all ' + speed + 'ms linear',
-            opacity: 0
-          });
+        setTimeout(function () {
+          fadeElems.map(elem =>
+            css(elem, { 
+              transition: 'all ' + speed + 'ms linear', 
+              opacity: 0 
+            })
+          );
           setTimeout(function() {
             NProgress.remove();
             next();
