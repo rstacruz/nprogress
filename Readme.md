@@ -20,18 +20,9 @@ Add [nprogress.js] and [nprogress.css] to your project.
 <link rel='stylesheet' href='nprogress.css'/>
 ```
 
-NProgress is available via [bower] and [npm].
+NProgress is available via[npm].
 
-    $ npm install --save nprogress
-
-Also available via [unpkg] CDN:
-
-- https://unpkg.com/nprogress@0.2.0/nprogress.js
-- https://unpkg.com/nprogress@0.2.0/nprogress.css
-
-[bower]: http://bower.io/search/?q=nprogress
-[npm]: https://www.npmjs.org/package/nprogress
-[unpkg]: https://unpkg.com/
+    $ npm install --save @logdna/nprogress
 
 Basic usage
 -----------
@@ -45,7 +36,7 @@ NProgress.done();
 
 ### Turbolinks (version 5+)
 Ensure you're using Turbolinks 5+, and use 
-this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-239107109))
+this: (explained [here](https://github.com/logdna/nprogress/issues/8#issuecomment-239107109))
 
 ~~~ js
 $(document).on('turbolinks:click', function() {
@@ -59,7 +50,7 @@ $(document).on('turbolinks:render', function() {
 
 ### Turbolinks (version 3 and below)
 Ensure you're using Turbolinks 1.3.0+, and use 
-this: (explained [here](https://github.com/rstacruz/nprogress/issues/8#issuecomment-23010560))
+this: (explained [here](https://github.com/logdna/nprogress/issues/8#issuecomment-23010560))
 
 ~~~ js
 $(document).on('page:fetch',   function() { NProgress.start(); });
@@ -68,7 +59,7 @@ $(document).on('page:restore', function() { NProgress.remove(); });
 ~~~
 
 ### Pjax
-Try this: (explained [here](https://github.com/rstacruz/nprogress/issues/22#issuecomment-36540472))
+Try this: (explained [here](https://github.com/logdna/nprogress/issues/22#issuecomment-36540472))
 
 ~~~ js
 $(document).on('pjax:start', function() { NProgress.start(); });
@@ -195,15 +186,15 @@ Support
 -------
 
 __Bugs and requests__: submit them through the project's issues tracker.<br>
-[![Issues](http://img.shields.io/github/issues/rstacruz/nprogress.svg)]( https://github.com/rstacruz/nprogress/issues )
+[![Issues](http://img.shields.io/github/issues/logdna/nprogress.svg)]( https://github.com/logdna/nprogress/issues )
 
 __Questions__: ask them at StackOverflow with the tag *nprogress*.<br>
 [![StackOverflow](http://img.shields.io/badge/stackoverflow-nprogress-brightgreen.svg)]( http://stackoverflow.com/questions/tagged/nprogress )
 
 __Chat__: join us at gitter.im.<br>
-[![Chat](http://img.shields.io/badge/gitter-rstacruz/nprogress-brightgreen.svg)]( https://gitter.im/rstacruz/nprogress )
+[![Chat](http://img.shields.io/badge/gitter-logdna/nprogress-brightgreen.svg)]( https://gitter.im/logdna/nprogress )
 
-[default template]: https://github.com/rstacruz/nprogress/blob/master/nprogress.js#L31
+[default template]: https://github.com/logdna/nprogress/blob/master/nprogress.js#L31
 [Turbolinks]: https://github.com/rails/turbolinks
 [nprogress.js]: http://ricostacruz.com/nprogress/nprogress.js
 [nprogress.css]: http://ricostacruz.com/nprogress/nprogress.css
@@ -211,15 +202,15 @@ __Chat__: join us at gitter.im.<br>
 Thanks
 ------
 
-**NProgress** © 2013-2017, Rico Sta. Cruz. Released under the [MIT License].<br>
+**NProgress** © 2013-2021, Rico Sta. Cruz. Released under the [MIT License].<br>
 Authored and maintained by Rico Sta. Cruz with help from [contributors].
 
 > [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
-> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
-> Twitter [@rstacruz](https://twitter.com/rstacruz)
+> GitHub [@logdna](https://github.com/logdna) &nbsp;&middot;&nbsp;
+> Twitter [@logdna](https://twitter.com/logdna)
 
 [MIT License]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/nprogress/contributors
+[contributors]: http://github.com/logdna/nprogress/contributors
 
-[![](https://img.shields.io/github/followers/rstacruz.svg?style=social&label=@rstacruz)](https://github.com/rstacruz) &nbsp;
-[![](https://img.shields.io/twitter/follow/rstacruz.svg?style=social&label=@rstacruz)](https://twitter.com/rstacruz)
+[![](https://img.shields.io/github/followers/logdna.svg?style=social&label=@logdna)](https://github.com/logdna) &nbsp;
+[![](https://img.shields.io/twitter/follow/logdna.svg?style=social&label=@logdna)](https://twitter.com/logdna)

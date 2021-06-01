@@ -1,7 +1,8 @@
 (function() {
-  if (typeof process === 'object') {
-    require('mocha-jsdom')();
-  }
+  const { JSDOM } =  require('jsdom');
+  const { window } = new JSDOM('<!doctype html><html><body></body></html>');
+  global.document = window.document;
+  global.window = window;
 
   var root = this;
   var assert = (root.chai || require('chai')).assert;
