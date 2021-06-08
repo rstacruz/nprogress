@@ -470,6 +470,12 @@
 
     if (!hasClass(element, name)) return;
 
+    // If the element has a single class, remove the class attribute
+    if (element.classList.length === 1) {
+      element.removeAttribute("class");
+      return;
+    }
+
     // Replace the class name.
     newList = oldList.replace(' ' + name + ' ', ' ');
 
