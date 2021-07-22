@@ -24,10 +24,20 @@
     trickle: true,
     trickleSpeed: 200,
     showSpinner: true,
+    indeterminate: false,
     barSelector: '[role="bar"]',
+    indeterminateSelector: '[role="indeterminate"]',
     spinnerSelector: '[role="spinner"]',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: `<div class="bar" role="bar">
+                <div class="peg"></div>
+              </div>
+              <div class="spinner" role="spinner">
+                <div class="spinner-icon"></div>
+              </div>
+              <div role="indeterminate" class="indeterminate">
+                <div class="inc"></div><div class="dec"></div>
+              </div>`
   };
 
   /**
@@ -78,7 +88,7 @@
       if (Settings.positionUsing === '') Settings.positionUsing = NProgress.getPositioningCSS();
 
       // Add transition
-      css(bar, barPositionCSS(n, speed, ease));
+      if(bar) css(bar, barPositionCSS(n, speed, ease));
 
       if (n === 1) {
         // Fade out
@@ -237,16 +247,28 @@
         parent = isDOM(Settings.parent)
           ? Settings.parent
           : document.querySelector(Settings.parent),
-        spinner
+        spinner,
+        indeterminate
 
     css(bar, {
       transition: 'all 0 linear',
       transform: 'translate3d(' + perc + '%,0,0)'
     });
 
+    console.log(Settings.showSpinner);
+
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
+    }
+
+    if(!Settings.indeterminate) {
+      indeterminate = progress.querySelector(Settings.indeterminateSelector);
+      indeterminate && removeElement(indeterminate);
+    }
+
+    if(Settings.indeterminate) {
+      bar && removeElement(bar);
     }
 
     if (parent != document.body) {
