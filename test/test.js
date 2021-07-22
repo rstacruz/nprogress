@@ -170,6 +170,28 @@
         assert.equal($("#nprogress .spinner").length, 0);
       });
     });
+
+    // ----
+
+    describe('.configure(indeterminate)', function() {
+      it('should render (on true)', function() {
+        NProgress.configure({ indeterminate: true });
+        NProgress.start();
+
+        assert.equal($("#nprogress .indeterminate").length, 1);
+      });
+
+      it('should be false by default', function() {
+        assert.equal(NProgress.settings.indeterminate, false);
+      });
+
+      it('should hide progress bar render (when indeterminate true)', function() {
+        NProgress.configure({ indeterminate: true });
+        NProgress.start();
+
+        assert.equal($("#nprogress .bar").length, 0);
+      });
+    });
   });
 
 })();
