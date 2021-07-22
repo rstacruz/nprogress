@@ -77,7 +77,7 @@
 }
 
 #nprogress .dec {
-  animation: nprogress-indeterminate-decrease 2s 0.5s infinite;;
+  animation: nprogress-indeterminate-decrease 2s 0.5s infinite;
 }
 
 .nprogress-custom-parent {

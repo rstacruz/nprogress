@@ -170,6 +170,13 @@ Turn off loading spinner by setting it to false. (default: `true`)
 NProgress.configure({ showSpinner: false });
 ~~~
 
+#### `indeterminate`
+Set progress bar style as indeterminate (default: `false`)
+
+~~~ js
+NProgress.configure({ indeterminate: true });
+~~~
+
 #### `parent`
 specify this to change the parent container. (default: `body`)
 
