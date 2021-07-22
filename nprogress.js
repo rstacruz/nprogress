@@ -255,8 +255,8 @@
       transform: 'translate3d(' + perc + '%,0,0)'
     });
 
-    console.log(Settings.showSpinner);
 
+    
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
