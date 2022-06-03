@@ -246,6 +246,11 @@
       backgroundColor: Settings.barColor
     });
 
+    // set fancy blur effect color
+    css(progress.querySelector('.peg'), {
+      boxShadow: `0 0 10px ${Settings.barColor}, 0 0 5px ${Settings.barColor}`,
+    });
+
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
