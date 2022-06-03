@@ -23,6 +23,7 @@
     speed: 200,
     trickle: true,
     trickleSpeed: 200,
+    barColor: '#29d',
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
@@ -241,7 +242,8 @@
 
     css(bar, {
       transition: 'all 0 linear',
-      transform: 'translate3d(' + perc + '%,0,0)'
+      transform: 'translate3d(' + perc + '%,0,0)',
+      backgroundColor: Settings.barColor
     });
 
     if (!Settings.showSpinner) {
