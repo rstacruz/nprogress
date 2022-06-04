@@ -245,7 +245,7 @@
     css(bar, {
       transition: 'all 0 linear',
       transform: 'translate3d(' + perc + '%,0,0)',
-      backgroundColor: Settings.barColor
+      backgroundColor: Settings.barColor, // set bar color
     });
 
     // set fancy blur effect color
@@ -257,6 +257,7 @@
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
     } else {
+      // set spinner color
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinnerIconSelector = spinner.querySelector('.spinner-icon');
       css(spinnerIconSelector, {
