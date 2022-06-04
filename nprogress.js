@@ -23,9 +23,11 @@
     speed: 200,
     trickle: true,
     trickleSpeed: 200,
+    barColor: '#29d',
     showSpinner: true,
     barSelector: '[role="bar"]',
     spinnerSelector: '[role="spinner"]',
+    spinnerColor: '#29d',
     parent: 'body',
     template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
   };
@@ -237,16 +239,31 @@
         parent = isDOM(Settings.parent)
           ? Settings.parent
           : document.querySelector(Settings.parent),
-        spinner
+        spinner,
+        spinnerIconSelector
 
     css(bar, {
       transition: 'all 0 linear',
-      transform: 'translate3d(' + perc + '%,0,0)'
+      transform: 'translate3d(' + perc + '%,0,0)',
+      backgroundColor: Settings.barColor, // set bar color
+    });
+
+    // set fancy blur effect color
+    css(progress.querySelector('.peg'), {
+      boxShadow: `0 0 10px ${Settings.barColor}, 0 0 5px ${Settings.barColor}`
     });
 
     if (!Settings.showSpinner) {
       spinner = progress.querySelector(Settings.spinnerSelector);
       spinner && removeElement(spinner);
+    } else {
+      // set spinner color
+      spinner = progress.querySelector(Settings.spinnerSelector);
+      spinnerIconSelector = spinner.querySelector('.spinner-icon');
+      css(spinnerIconSelector, {
+        borderTopColor: Settings.spinnerColor,
+        borderLeftColor: Settings.spinnerColor
+      })
     }
 
     if (parent != document.body) {
