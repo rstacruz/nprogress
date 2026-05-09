@@ -24,10 +24,10 @@
     trickle: true,
     trickleSpeed: 200,
     showSpinner: true,
-    barSelector: '[role="bar"]',
-    spinnerSelector: '[role="spinner"]',
+    barSelector: '.bar',
+    spinnerSelector: '.spinner',
     parent: 'body',
-    template: '<div class="bar" role="bar"><div class="peg"></div></div><div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+    template: '<div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><div class="peg"></div></div><div class="spinner" role="presentation"><div class="spinner-icon"></div></div>'
   };
 
   /**
@@ -70,6 +70,8 @@
         bar      = progress.querySelector(Settings.barSelector),
         speed    = Settings.speed,
         ease     = Settings.easing;
+
+    bar.setAttribute('aria-valuenow', n);
 
     progress.offsetWidth; /* Repaint */
 

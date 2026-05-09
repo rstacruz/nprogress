@@ -132,8 +132,8 @@ NProgress.configure({ minimum: 0.1 });
 
 #### `template`
 You can change the markup using `template`. To keep the progress
-bar working, keep an element with `role='bar'` in there. See the [default template]
-for reference.
+bar working, keep an element that matches `barSelector` in there. See the
+[default template] for reference.
 
 ~~~ js
 NProgress.configure({
