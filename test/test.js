@@ -35,6 +35,23 @@
         done();
       });
 
+      it('must use valid ARIA roles', function() {
+        NProgress.set(0.4);
+
+        assert.equal($("#nprogress .bar").attr('role'), 'progressbar');
+        assert.equal($("#nprogress .bar").attr('aria-valuemin'), '0');
+        assert.equal($("#nprogress .bar").attr('aria-valuemax'), '1');
+        assert.equal($("#nprogress .bar").attr('aria-valuenow'), '0.4');
+        assert.equal($("#nprogress .spinner").attr('role'), 'presentation');
+      });
+
+      it('must update aria-valuenow when progress changes', function() {
+        NProgress.set(0.2);
+        NProgress.set(0.5);
+
+        assert.equal($("#nprogress .bar").attr('aria-valuenow'), '0.5');
+      });
+
       it('.set(1) should appear and disappear', function(done) {
         NProgress.configure({ speed: 10 });
         NProgress.set(0).set(1);
